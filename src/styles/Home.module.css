@@ -5,4 +5,18 @@
   font-weight: 700;
   margin-bottom: 0.5rem;
   line-height: 1.2;
+  color: white;
+}
+.center {
+  text-align: center;
+  color: white;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-image: url("/public/assets/baggrund.jpg");
+  background-size: cover;
+  background-position: center;
 }

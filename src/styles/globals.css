@@ -1,0 +1,17 @@
+@import "fonts.css";
+
+:root {
+  /*Insert colors*/
+
+  /* Fonts */
+  --font-sans: "Lato", sans-serif;
+  --font-serif: "Manus", serif;
+}
+
+.Overskrift {
+  color: rgb(5, 67, 255);
+}
+
+/* body {
+  background-image: url("/leon-contreras-qpdfU6vehgs-unsplash.jpg");
+} */

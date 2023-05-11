@@ -42,10 +42,6 @@ function AppMenu({ isInline = false }) {
         mode={isInline ? "inline" : "horizontal"}
         items={[
           {
-            img: "logo",
-            logo: <UpOutlined />,
-          },
-          {
             label: "Home",
             key: "home",
           },

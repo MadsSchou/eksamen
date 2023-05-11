@@ -1,5 +1,10 @@
 @import "fonts.css";
 
+@font-face {
+  font-family: displayFont;
+  src: url(../assets/metal.ttf);
+}
+
 :root {
   /*Insert colors*/
 

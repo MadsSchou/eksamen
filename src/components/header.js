@@ -6,7 +6,7 @@ export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
   return (
     <>
-      <div style={{ height: "100vh" }}>
+      <div>
         <div style={{ backgroundColor: "darkgray", padding: 12, height: 30 }} className="menuIcon">
           <MenuOutlined
             style={{ color: "white", fontSize: 30, float: "right" }}

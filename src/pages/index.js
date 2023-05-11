@@ -13,6 +13,7 @@ export default function Home() {
         <title>Thunderstrike Metal Festival</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
 
       <div style={{ position: "relative" }}>
         <Image src="/assets/baggrund.jpg" alt="Background image" width={800} height={600} layout="responsive" />
@@ -52,7 +53,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Header />
     </>
   );
 }

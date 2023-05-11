@@ -1,22 +1,25 @@
 import React from "react";
+import styles from "./Schedule.module.css";
 
 function Schedule({ data }) {
   return (
-    <div>
+    <div className={`${styles.overskrift}`}>
       <h1>Schedule</h1>
-      <ul>
+      <button>Bands</button>
+      <button>Tidsplan</button>
+      <div className={`${styles.grid} ${styles.bandGrid}`}>
         {data.map((item) => (
-          <li key={item.id}>
-            <p>Name: {item.name}</p>
-            <p>Members: {item.members}</p>
-            <p>Genre: {item.genre}</p>
-            <p>Logo Credits: {item.logocredits}</p>
-            <img src={item.logo} alt={item.name} />
-            <p>Bio: {item.bio}</p>
-            <p>Slug: {item.slug}</p>
-          </li>
+          <div key={item.id} className={styles.card}>
+            <img src={item.logo} alt={item.name} style={{ maxWidth: "100%" }} />
+            <h2>{item.name}</h2>
+            {/* <p>Members: {item.members}</p>
+          <p>Genre: {item.genre}</p>
+          <p>Bio: {item.bio}</p>
+          <p>Slug: {item.slug}</p>
+          <p>Logo Credits: {item.logocredits}</p> */}
+          </div>
         ))}
-      </ul>
+      </div>{" "}
     </div>
   );
 }

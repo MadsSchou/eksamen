@@ -1,0 +1,65 @@
+import React, { useState } from "react";
+
+const countries = ["USA", "Canada", "Mexico", "United Kingdom", "France", "Germany", "Spain", "Italy", "China", "Japan", "South Korea", "Australia", "New Zealand"];
+
+const PersonalInfo = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Do something with form data, such as submitting it to a server
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="firstName">First Name:</label>
+        <input type="text" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+      </div>
+      <div>
+        <label htmlFor="lastName">Last Name:</label>
+        <input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+      </div>
+      <div>
+        <label htmlFor="email">Email:</label>
+        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      </div>
+      <div>
+        <label htmlFor="address">Address:</label>
+        <input type="text" id="address" value={address} onChange={(e) => setAddress(e.target.value)} />
+      </div>
+      <div>
+        <label htmlFor="zipcode">Zipcode:</label>
+        <input type="text" id="zipcode" value={zipcode} onChange={(e) => setZipcode(e.target.value)} />
+      </div>
+      <div>
+        <label htmlFor="city">City:</label>
+        <input type="text" id="city" value={city} onChange={(e) => setCity(e.target.value)} />
+      </div>
+      <div>
+        <label htmlFor="country">Country:</label>
+        <select id="country" value={country} onChange={(e) => setCountry(e.target.value)}>
+          <option value="">Select a country</option>
+          {countries.map((country) => (
+            <option key={country} value={country}>
+              {country}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label htmlFor="phone">Phone:</label>
+        <input type="tel" id="phone" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+
+export default PersonalInfo;

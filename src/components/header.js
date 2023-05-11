@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Menu, Drawer } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
-import styles from "@/styles/Home.module.css";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -25,7 +24,7 @@ export default function Header() {
           onClose={() => {
             setOpenMenu(false);
           }}
-          closable={false}
+          closable={true}
           bodyStyle={{ backgroundColor: "darkgray" }}
         >
           <AppMenu isInline />
@@ -39,7 +38,7 @@ function AppMenu({ isInline = false }) {
   return (
     <>
       <Menu
-        style={{ backgroundColor: "darkgray", color: "white", fontSize: 20, border: "none" }}
+        style={{ backgroundColor: "darkgray", color: "white", fontSize: 20, border: "none", textDecorationStyle: "none" }}
         mode={isInline ? "inline" : "horizontal"}
         items={[
           {
@@ -47,8 +46,8 @@ function AppMenu({ isInline = false }) {
             key: "home",
           },
           {
-            label: "Om os",
-            key: "omos",
+            label: "Billetter",
+            key: "billetter",
           },
           {
             label: "Program",

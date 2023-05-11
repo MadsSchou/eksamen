@@ -1,4 +1,4 @@
-import PersonalInfo from "../components/PersonalInfo";
+import PersonalInfo from "../Components/PersonalInfo";
 
 export default function Home() {
   return (

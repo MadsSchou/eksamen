@@ -11,11 +11,11 @@ const MENU_LIST = [
   },
   {
     text: "Program",
-    href: "/program",
+    href: "/schedule",
   },
   {
     text: "KØB BILLETTER",
-    href: "/billetter",
+    href: "/TicketsAndTents",
     isButton: true,
   },
 ];

@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import Header from "@/components/header";
+import landing_pic from "../assets/landing.jpeg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,7 +13,6 @@ export default function Home() {
         <title>Thunderstrike Metal Festival</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
 
       <div style={{ position: "relative" }}>
         <Image src="/assets/baggrund.jpg" alt="Background image" width={800} height={600} layout="responsive" />
@@ -28,9 +27,7 @@ export default function Home() {
           </h2>
 
           <div className={styles.buttons}>
-            <a href="/schedule" className={styles.button}>
-              View Schedule
-            </a>
+            <button className={styles.button}>View Schedule</button>
             <button className={styles.button}>Buy tickets</button>
           </div>
 

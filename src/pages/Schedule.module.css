@@ -40,3 +40,17 @@
   color: white;
   margin: 0; /* added to remove the default margin */
 }
+.filterSort {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.sortButton {
+  padding: 0.5rem;
+  background-color: #ccc;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}

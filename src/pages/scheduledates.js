@@ -1,71 +1,24 @@
-// import React from "react";
+import { useEffect, useState } from "react";
 
-// function ScheduleDates({ data }) {
-//   return (
-//     <div>
-//       <h1>Schedule</h1>
-//       {data.map((item, index) => (
-//         <div key={index}>
-//           <h2>{item.day}</h2>
-//           <ul>
-//             {item.schedule.map((event, index) => (
-//               <li key={index}>
-//                 <p>Start: {event.start}</p>
-//                 <p>End: {event.end}</p>
-//                 <p>Act: {event.act}</p>
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
+function SchedulePage() {
+  const [scheduleData, setScheduleData] = useState([]);
 
-// export async function getServerSideProps() {
-//   const res = await fetch("http://localhost:8080/schedule");
-//   const data = await res.json();
+  useEffect(() => {
+    const fetchScheduleData = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/schedule");
+        const data = await response.json();
+        setScheduleData(data);
+      } catch (error) {
+        console.error("Error fetching schedule data:", error);
+      }
+    };
 
-//   // convert the data to an array of objects
-//   const days = Object.keys(data);
-//   const schedule = days.map((day) => ({ day, schedule: data[day].mon }));
+    fetchScheduleData();
+  }, []);
+  console.log(scheduleData);
 
-//   return {
-//     props: {
-//       schedule,
-//     },
-//   };
-// }
-
-// export default ScheduleDates;
-import React from "react";
-
-function ScheduleDate({ data }) {
-  return (
-    <div>
-      <h1>Schedule</h1>
-      <ul>
-        {data.map((item) => (
-          <li key={item.id}>
-            <p>Start: {item.start}</p>
-            <p>End: {item.end}</p>
-            <p>Act: {item.act}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  return <div>{/* Render scheduleData here */}</div>;
 }
 
-export async function getServerSideProps() {
-  const res = await fetch("http://localhost:8080/schedule");
-  const data = await res.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
-}
-
-export default ScheduleDate;
+export default SchedulePage;

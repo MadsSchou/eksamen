@@ -1,6 +1,8 @@
+import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
 import NavItem from "./NavItem";
+import logo from "logo.svg";
 
 const MENU_LIST = [
   {
@@ -26,7 +28,7 @@ function Navbar() {
     <header>
       <nav className="nav">
         <Link onClick={() => setActiveIdx(0)} href={"/"}>
-          <h1 className="logo">ThunderStrike</h1>
+          <Image src={logo} alt="logo" width="150" height="100" />
         </Link>
 
         <div onClick={() => setNavActive(!navActive)} className="nav__menu-bar">

@@ -6,7 +6,7 @@
   margin-bottom: 0.5rem;
   line-height: 1.2;
   color: var(--orange);
-  margin-top: 10%;
+  margin-top: 15%;
 }
 .center {
   text-align: center;
@@ -23,6 +23,7 @@
   background-size: cover;
   background-position: center;
 }
+
 .buttons {
   display: flex;
   justify-content: center;

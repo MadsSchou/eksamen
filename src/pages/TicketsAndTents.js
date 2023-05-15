@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./TicketsAndTents.module.css";
 import { useState } from "react";
 import Ordreoversigt from "../Components/ordreoversigt/ordreoversigt";
+import Flow from "@/Components/steps";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,9 +39,10 @@ export default function Home() {
         <title>Thunderstrike Metal Festival</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.timeline} style={{ display: "flex", justifyContent: "center" }}>
+      {/* <div className={styles.timeline} style={{ display: "flex", justifyContent: "center" }}>
         <img src="assets/step1.png" />
-      </div>
+      </div> */}
+      <Flow />
 
       <div className={styles.container}>
         <div className={styles.column}>

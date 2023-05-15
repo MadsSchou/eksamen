@@ -1,0 +1,66 @@
+.select {
+  margin-bottom: 20px;
+}
+
+.schedule {
+  display: flex;
+  justify-content: center;
+}
+
+.schedulePlan {
+  width: 1500px;
+  margin: 0 auto;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.day-column {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.day {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.time-slots {
+  margin-top: 10px;
+}
+
+.time-slot {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.time-range {
+  font-weight: bold;
+}
+
+.act-details p {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .schedule {
+    display: flex;
+    justify-content: center;
+  }
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-gap: 20px;
+  }
+  .schedulePlan {
+    width: 1500px;
+    margin: 0 auto;
+  }
+}

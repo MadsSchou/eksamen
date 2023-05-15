@@ -38,17 +38,17 @@ function App() {
     return (
       <div className={styles["time-slots"]}>
         {timeSlots.map((timeSlot) => (
-          <div key={`${timeSlot.start}-${timeSlot.end}`} className={styles["time-slot"]}>
+          <div key={`${timeSlot.start}-${timeSlot.end}`} className={`${styles["time-slot"]} ${timeSlot.act === "break" ? styles["break-time-slot"] : ""}`}>
             <div className={styles["time-range"]}>{`${timeSlot.start} - ${timeSlot.end}`}</div>
             <div className={styles["act-details"]}>
               <p>{timeSlot.act}</p>
             </div>
+            {timeSlot.act === "break" && <div className={styles["break-indicator"]}>Break</div>}
           </div>
         ))}
       </div>
     );
   };
-
   return (
     <div>
       <select onChange={(e) => chooseStage(e.target.value)}>
@@ -63,62 +63,8 @@ function App() {
         <div>
           <div className={styles.schedulePlan}>
             <div>
-              <h1>{chosenSchedule[0]}</h1>
-              <div style={{ display: "flex", flexDirection: "row-reverse" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-evenly",
-                    width: "90%",
-                  }}
-                  className="days"
-                >
-                  {Object.entries(chosenSchedule[1])?.map((days) => {
-                    return (
-                      <div>
-                        <div>{days[0]}</div>
-                        <div className="acts">
-                          {days[1]?.map((act) => {
-                            console.log(act);
-                            return (
-                              <div>
-                                <p style={{ width: "200px", fontSize: ".5em" }}>{act?.act}</p>
-                                <br />
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div>
-                  <div className="time">00:00</div>
-                  <br />
-                  <div className="time">02:00</div>
-                  <br />
-                  <div className="time">04:00</div>
-                  <br />
-                  <div className="time">06:00</div>
-                  <br />
-                  <div className="time">08:00</div>
-                  <br />
-                  <div className="time">10:00</div>
-                  <br />
-                  <div className="time">12:00</div>
-                  <br />
-                  <div className="time">14:00</div>
-                  <br />
-                  <div className="time">16:00</div>
-                  <br />
-                  <div className="time">18:00</div>
-                  <br />
-                  <div className="time">20:00</div>
-                  <br />
-                  <div className="time">22:00</div>
-                  <br />
-                </div>
-              </div>
+              <h1>Stage:{chosenSchedule[0]}</h1>
+              <div className={styles.calendar}>{renderCalendar()}</div>
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [schedule, setSchedule] = useState([]);
-  var scheduleArray = Object.entries(schedule);
+  let scheduleArray = Object.entries(schedule);
   const [stages, setStages] = useState("Midgard");
   const [chosenSchedule, setChosenSchedule] = useState(["Vælg en scene", {}]);
   useEffect(() => {
@@ -19,7 +19,7 @@ function App() {
 
   async function chooseStage(stage) {
     setStages(stage);
-    var chosenSchedule = scheduleArray?.find((item) => item[0] === stage);
+    let chosenSchedule = scheduleArray?.find((item) => item[0] === stage);
     console.log(chosenSchedule);
     setChosenSchedule(chosenSchedule);
   }

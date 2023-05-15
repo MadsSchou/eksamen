@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Schedule.module.css";
+import { imgContext } from "@/context/ImgContext";
 
 function Schedule({ data }) {
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc"); // add state for sort order
   const genres = [...new Set(data.map((item) => item.genre))];
+
+  const { images } = useContext(imgContext);
+
+  console.log(images);
 
   const handleGenreSelect = (event) => {
     const selectedGenre = event.target.value;
@@ -16,7 +21,9 @@ function Schedule({ data }) {
     setSortOrder(newSortOrder);
   };
 
-  const filteredData = selectedGenre ? data.filter((item) => item.genre === selectedGenre) : data;
+  const filteredData = selectedGenre
+    ? data.filter((item) => item.genre === selectedGenre)
+    : data;
 
   const sortedData = filteredData.sort((a, b) => {
     const nameA = a.name.toLowerCase();
@@ -37,7 +44,11 @@ function Schedule({ data }) {
       <h1>Schedule</h1>
       <div className={styles.filterSort}>
         <label htmlFor="genre-select">Filter by Genre:</label>
-        <select id="genre-select" value={selectedGenre || "all"} onChange={handleGenreSelect}>
+        <select
+          id="genre-select"
+          value={selectedGenre || "all"}
+          onChange={handleGenreSelect}
+        >
           <option value="all">All Genres</option>
           {genres.map((genre) => (
             <option key={genre} value={genre}>

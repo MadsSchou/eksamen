@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./scheduledates.module.css";
+import { imgContext } from "@/context/ImgContext";
 
 function App() {
   const [schedule, setSchedule] = useState([]);
   const [stages, setStages] = useState("Midgard");
   const [chosenSchedule, setChosenSchedule] = useState(["Vælg en scene", {}]);
+
+  const { images } = useContext(imgContext);
 
   useEffect(() => {
     fetch("http://localhost:8080/schedule")
@@ -19,7 +22,9 @@ function App() {
 
   async function chooseStage(stage) {
     setStages(stage);
-    let chosenSchedule = Object.entries(schedule).find((item) => item[0] === stage);
+    let chosenSchedule = Object.entries(schedule).find(
+      (item) => item[0] === stage
+    );
     setChosenSchedule(chosenSchedule);
   }
 
@@ -37,15 +42,46 @@ function App() {
   const renderTimeSlots = (timeSlots) => {
     return (
       <div className={styles["time-slots"]}>
-        {timeSlots.map((timeSlot) => (
-          <div key={`${timeSlot.start}-${timeSlot.end}`} className={`${styles["time-slot"]} ${timeSlot.act === "break" ? styles["break-time-slot"] : ""}`}>
-            <div className={styles["time-range"]}>{`${timeSlot.start} - ${timeSlot.end}`}</div>
-            <div className={styles["act-details"]}>
-              <p>{timeSlot.act}</p>
+        {timeSlots?.map((timeSlot) => {
+          const imgForBand = images.filter(
+            (band) => band.name === timeSlot?.act
+          );
+
+          if (timeSlot.logoCredits) {
+            const logoCreditsImg = timeSlot.logoCredits.split(", ");
+            console.log(logoCreditsImg);
+          }
+
+          return (
+            <div
+              key={`${timeSlot.start}-${timeSlot.end}`}
+              className={`${styles["time-slot"]} ${
+                timeSlot.act === "break" ? styles["break-time-slot"] : ""
+              }`}
+            >
+              <div
+                className={styles["time-range"]}
+              >{`${timeSlot.start} - ${timeSlot.end}`}</div>
+              <div className={styles["act-details"]}>
+                <p>{timeSlot.act}</p>
+                <div>
+                  <img
+                    width={"100px"}
+                    height={"100px"}
+                    src={
+                      imgForBand[0]?.logo ||
+                      imgForBand[0]?.logoCredits.split(", ")[2]
+                    }
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              {timeSlot.act === "break" && (
+                <div className={styles["break-indicator"]}>Break</div>
+              )}
             </div>
-            {timeSlot.act === "break" && <div className={styles["break-indicator"]}>Break</div>}
-          </div>
-        ))}
+          );
+        })}
       </div>
     );
   };

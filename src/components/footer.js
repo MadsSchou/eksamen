@@ -5,6 +5,7 @@ import logo from "logo.svg";
 const Footer = () => {
   return (
     <footer>
+      <div className="footer_container"></div>
       <Image src={logo} alt="logo" width="150" height="100" />
       <div className="socials">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-facebook" viewBox="0 0 16 16">

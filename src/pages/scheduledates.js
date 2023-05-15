@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
+import styles from "./scheduledates.module.css";
 
 function App() {
   const [schedule, setSchedule] = useState([]);
-  let scheduleArray = Object.entries(schedule);
   const [stages, setStages] = useState("Midgard");
   const [chosenSchedule, setChosenSchedule] = useState(["Vælg en scene", {}]);
+
   useEffect(() => {
     fetch("http://localhost:8080/schedule")
       .then((response) => response.json())
       .then((data) => {
         setSchedule(data);
       })
-
       .catch((error) => {
         console.log(error);
       });
@@ -19,26 +19,49 @@ function App() {
 
   async function chooseStage(stage) {
     setStages(stage);
-    let chosenSchedule = scheduleArray?.find((item) => item[0] === stage);
-    console.log(chosenSchedule);
+    let chosenSchedule = Object.entries(schedule).find((item) => item[0] === stage);
     setChosenSchedule(chosenSchedule);
   }
-  console.log(chosenSchedule);
+
+  const renderCalendar = () => {
+    return Object.entries(chosenSchedule[1]).map(([day, timeSlots]) => {
+      return (
+        <div key={day} className={styles["day-column"]}>
+          <h3 className={styles.day}>{day}</h3>
+          {renderTimeSlots(timeSlots)}
+        </div>
+      );
+    });
+  };
+
+  const renderTimeSlots = (timeSlots) => {
+    return (
+      <div className={styles["time-slots"]}>
+        {timeSlots.map((timeSlot) => (
+          <div key={`${timeSlot.start}-${timeSlot.end}`} className={styles["time-slot"]}>
+            <div className={styles["time-range"]}>{`${timeSlot.start} - ${timeSlot.end}`}</div>
+            <div className={styles["act-details"]}>
+              <p>{timeSlot.act}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
-    <div className="App">
+    <div>
       <select onChange={(e) => chooseStage(e.target.value)}>
         <option value="Midgard">Vælg stage</option>
-        {scheduleArray?.map((item) => {
-          return (
-            <option key={item[0]} value={item[0]}>
-              {item[0]}
-            </option>
-          );
-        })}
+        {Object.entries(schedule).map(([stage]) => (
+          <option key={stage} value={stage}>
+            {stage}
+          </option>
+        ))}
       </select>
-      <div className="schedule">
+      <div className={styles.schedule}>
         <div>
-          <div className="schedulePlan">
+          <div className={styles.schedulePlan}>
             <div>
               <h1>{chosenSchedule[0]}</h1>
               <div style={{ display: "flex", flexDirection: "row-reverse" }}>

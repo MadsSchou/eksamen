@@ -85,7 +85,7 @@ a:hover {
   color: var(--orange);
 }
 header {
-  position: sticky;
+  /* position: sticky; */
   z-index: 30;
   top: 0;
 }

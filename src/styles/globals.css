@@ -114,7 +114,7 @@ nav {
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 136px;
+  top: 135.5px;
   width: 288px;
   row-gap: 24px;
   right: -320px;

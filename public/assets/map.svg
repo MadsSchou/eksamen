@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="889.81" height="704.65" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 889.81 704.65">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        letter-spacing: .02em;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6 {
+        fill: #7ac943;
+      }
+
+      .cls-7 {
+        letter-spacing: .01em;
+      }
+
+      .cls-8 {
+        letter-spacing: 0em;
+      }
+
+      .cls-9 {
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+        font-size: 20px;
+      }
+
+      .cls-10 {
+        letter-spacing: 0em;
+      }
+
+      .cls-11 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-12 {
+        clip-path: url(#clippath-4);
+      }
+
+      .cls-13 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-14 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-15 {
+        letter-spacing: 0em;
+      }
+
+      .cls-16 {
+        letter-spacing: 0em;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" x="106.47" y="22.17" width="186" height="195"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="301.47" y="251.17" width="186" height="195"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" x="669.47" y="22.17" width="186" height="195"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="cls-1" x="495.47" y="462.17" width="186" height="195"/>
+    </clipPath>
+    <clipPath id="clippath-4">
+      <rect class="cls-1" x="72.47" y="378.17" width="186" height="195"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <rect class="cls-6" x="50.18" y="35.26" width="699" height="538"/>
+    <rect class="cls-6" x="26.18" y="280.26" width="347" height="325.41" transform="translate(82 -28.46) rotate(10.25)"/>
+    <rect class="cls-6" x="243.97" y="319.97" width="347" height="325.41" transform="translate(92.54 -66.57) rotate(10.25)"/>
+    <rect class="cls-6" x="414.97" y="350.97" width="347" height="325.41" transform="translate(100.78 -96.5) rotate(10.25)"/>
+    <rect class="cls-6" x="458.97" y="106.97" width="347" height="325.41" transform="translate(58.07 -108.23) rotate(10.25)"/>
+    <rect class="cls-6" x="585.01" y="-39.38" width="205.41" height="365.68" transform="translate(662.52 -558.61) rotate(76.16)"/>
+    <rect class="cls-6" x="220.97" y="185.97" width="347" height="325.41" transform="translate(68.33 -64.62) rotate(10.25)"/>
+    <g id="Group_9" data-name="Group 9">
+      <g class="cls-4">
+        <g id="Group_6" data-name="Group 6">
+          <path id="Path_6" data-name="Path 6" d="m221.85,54.67h-46c-3.19.03-6.02,2.04-7.11,5.04l-45.94,112.29c-1.68,4.03.09,8.67,4.04,10.54.95.43,1.98.65,3.02.65h38.33v-40.16c-.2-4.23,3.07-7.83,7.3-8.03,4.23-.2,7.83,3.07,8.03,7.3.01.24.01.48,0,.72v40.16h84.33c4.33-.1,7.77-3.69,7.68-8.02,0-1.09-.21-2.16-.62-3.17l-46-112.45c-1.14-2.91-3.93-4.83-7.06-4.87"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_9-2" data-name="Group 9">
+      <g class="cls-11">
+        <g id="Group_6-2" data-name="Group 6">
+          <path id="Path_6-2" data-name="Path 6" d="m416.85,283.67h-46c-3.19.03-6.02,2.04-7.11,5.04l-45.94,112.29c-1.68,4.03.09,8.67,4.04,10.54.95.43,1.98.65,3.02.65h38.33v-40.16c-.2-4.23,3.07-7.83,7.3-8.03,4.23-.2,7.83,3.07,8.03,7.3.01.24.01.48,0,.72v40.16h84.33c4.33-.1,7.77-3.69,7.68-8.02,0-1.09-.21-2.16-.62-3.17l-46-112.45c-1.14-2.91-3.93-4.83-7.06-4.87"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_9-3" data-name="Group 9">
+      <g class="cls-14">
+        <g id="Group_6-3" data-name="Group 6">
+          <path id="Path_6-3" data-name="Path 6" d="m784.85,54.67h-46c-3.19.03-6.02,2.04-7.11,5.04l-45.94,112.29c-1.68,4.03.09,8.67,4.04,10.54.95.43,1.98.65,3.02.65h38.33v-40.16c-.2-4.23,3.07-7.83,7.3-8.03,4.23-.2,7.83,3.07,8.03,7.3.01.24.01.48,0,.72v40.16h84.33c4.33-.1,7.77-3.69,7.68-8.02,0-1.09-.21-2.16-.62-3.17l-46-112.45c-1.14-2.91-3.93-4.83-7.06-4.87"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_9-4" data-name="Group 9">
+      <g class="cls-13">
+        <g id="Group_6-4" data-name="Group 6">
+          <path id="Path_6-4" data-name="Path 6" d="m610.85,494.67h-46c-3.19.03-6.02,2.04-7.11,5.04l-45.94,112.29c-1.68,4.03.09,8.67,4.04,10.54.95.43,1.98.65,3.02.65h38.33v-40.16c-.2-4.23,3.07-7.83,7.3-8.03,4.23-.2,7.83,3.07,8.03,7.3.01.24.01.48,0,.72v40.16h84.33c4.33-.1,7.77-3.69,7.68-8.02,0-1.09-.21-2.16-.62-3.17l-46-112.45c-1.14-2.91-3.93-4.83-7.06-4.87"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_9-5" data-name="Group 9">
+      <g class="cls-12">
+        <g id="Group_6-5" data-name="Group 6">
+          <path id="Path_6-5" data-name="Path 6" d="m187.85,410.67h-46c-3.19.03-6.02,2.04-7.11,5.04l-45.94,112.29c-1.68,4.03.09,8.67,4.04,10.54.95.43,1.98.65,3.02.65h38.33v-40.16c-.2-4.23,3.07-7.83,7.3-8.03,4.23-.2,7.83,3.07,8.03,7.3.01.24.01.48,0,.72v40.16h84.33c4.33-.1,7.77-3.69,7.68-8.02,0-1.09-.21-2.16-.62-3.17l-46-112.45c-1.14-2.91-3.93-4.83-7.06-4.87"/>
+        </g>
+      </g>
+    </g>
+    <text class="cls-9" transform="translate(157.56 204.25)"><tspan class="cls-16" x="0" y="0">S</tspan><tspan class="cls-15" x="9.7" y="0">v</tspan><tspan class="cls-5" x="19.24" y="0">a</tspan><tspan class="cls-3" x="28.88" y="0">r</tspan><tspan class="cls-8" x="35.9" y="0">theim</tspan></text>
+    <text class="cls-9" transform="translate(358.13 442.54)"><tspan x="0" y="0">Helheim</tspan></text>
+    <text class="cls-9" transform="translate(124.13 566.54)"><tspan class="cls-2" x="0" y="0">M</tspan><tspan class="cls-8" x="16.14" y="0">uspelheim</tspan></text>
+    <text class="cls-9" transform="translate(546.13 645.54)"><tspan class="cls-10" x="0" y="0">A</tspan><tspan x="12.18" y="0">lfheim</tspan></text>
+    <text class="cls-9" transform="translate(721.13 204.54)"><tspan class="cls-7" x="0" y="0">N</tspan><tspan x="13.36" y="0">ilfheim</tspan></text>
+  </g>
+</svg>

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import styles from "./TicketsAndTents.module.css";
 import { useState } from "react";
+import Ordreoversigt from "../Components/ordreoversigt/ordreoversigt";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,20 +44,22 @@ export default function Home() {
 
       <div className={styles.container}>
         <div className={styles.column}>
-          <div className={styles.card}>
-            <img src="/assets/basic.png" alt="Basic Ticket" />
-            <div className={styles.counter}>
-              <button onClick={handleBasicMinus}>-</button>
-              <span>{basicCounter}</span>
-              <button onClick={handleBasicPlus}>+</button>
+          <div className={styles.container}>
+            <div className={styles.card}>
+              <img src="/assets/basic.png" alt="Basic Ticket" />
+              <div className={styles.counter}>
+                <button onClick={handleBasicMinus}>-</button>
+                <span>{basicCounter}</span>
+                <button onClick={handleBasicPlus}>+</button>
+              </div>
             </div>
-          </div>
-          <div className={styles.card}>
-            <img src="/assets/vip.png" alt="VIP Ticket" />
-            <div className={styles.counter}>
-              <button onClick={handleVipMinus}>-</button>
-              <span>{vipCounter}</span>
-              <button onClick={handleVipPlus}>+</button>
+            <div className={styles.card}>
+              <img src="/assets/vip.png" alt="VIP Ticket" />
+              <div className={styles.counter}>
+                <button onClick={handleVipMinus}>-</button>
+                <span>{vipCounter}</span>
+                <button onClick={handleVipPlus}>+</button>
+              </div>
             </div>
           </div>
           <button onClick={handleToggleTents} className={styles.showTentsButton}>
@@ -72,14 +75,12 @@ export default function Home() {
           ) : null}
         </div>
         <div className={styles.column}>
-          <h2>Ordreoversigt</h2>
-          <p>Billetype:</p>
-          <p>Telte:</p>
-          <p>Booking Fee:</p>
-          <p>Samlet Beløb: inkl Moms</p>
-          <Link href="/CampgroundForm">
-            <button>Reserver Biletter</button>
-          </Link>{" "}
+          <Ordreoversigt></Ordreoversigt>
+          <div className={styles.centerButton}>
+            <Link href="/CampgroundForm">
+              <button>Reserver Biletter</button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

@@ -1,0 +1,30 @@
+.image {
+  width: 70%;
+  height: auto;
+}
+
+.container {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+  margin: 10px;
+}
+
+.column:first-child {
+  border: 3px solid black;
+  gap: 10px; /* Add gap between child elements */
+  margin: 20px; /* Add margin around the column */
+  padding: 10px; /* Add padding inside the column */
+}
+
+.timeline {
+  display: flex;
+  justify-content: center;
+}
+.centerButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

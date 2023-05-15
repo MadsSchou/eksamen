@@ -55,6 +55,7 @@ function Schedule({ data }) {
           <div key={item.id} className={styles.card}>
             <img src={item.logo} alt={item.name} style={{ maxWidth: "100%" }} />
             <h2>{item.name}</h2>
+            {/* <Image src={item.logo} alt={item.name} width={500} height={300} priority style={{ maxWidth: "100%" }} /> */}
             {/* <p>Members: {item.members}</p> */}
             {/* <p>Genre: {item.genre}</p> */}
             {/* <p>Bio: {item.bio}</p>

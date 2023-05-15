@@ -59,9 +59,7 @@ function App() {
                             console.log(act);
                             return (
                               <div>
-                                <p style={{ width: "200px", fontSize: ".5em" }}>
-                                  {act?.act}
-                                </p>
+                                <p style={{ width: "200px", fontSize: ".5em" }}>{act?.act}</p>
                                 <br />
                               </div>
                             );

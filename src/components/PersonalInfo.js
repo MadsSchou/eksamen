@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 
 const countries = ["USA", "Canada", "Mexico", "United Kingdom", "France", "Germany", "Spain", "Italy", "China", "Japan", "South Korea", "Australia", "New Zealand"];
 
@@ -59,7 +60,13 @@ const PersonalInfo = () => {
           <input type="tel" id="phone" />
         </div>
         <div>
-          <button type="submit">Submit</button>
+          <div>
+            <Link href="/Checkout">
+              <p>
+                <button type="submit">Submit</button>
+              </p>
+            </Link>
+          </div>{" "}
         </div>
       </form>
     </div>

@@ -56,7 +56,7 @@ function Schedule({ data }) {
             <img src={item.logo} alt={item.name} style={{ maxWidth: "100%" }} />
             <h2>{item.name}</h2>
             {/* <p>Members: {item.members}</p> */}
-            <p>Genre: {item.genre}</p>
+            {/* <p>Genre: {item.genre}</p> */}
             {/* <p>Bio: {item.bio}</p>
             <p>Slug: {item.slug}</p>
             <p>Logo Credits: {item.logocredits}</p> */}

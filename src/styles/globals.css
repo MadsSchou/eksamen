@@ -185,3 +185,7 @@ footer img {
   color: var(--white);
   font-family: var(--font-sans);
 }
+
+.steps {
+  padding: 2% 20% 0% 20%;
+}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./TicketsAndTents.module.css";
 import { useState } from "react";
 import Ordreoversigt from "../Components/ordreoversigt/ordreoversigt";
-import Flow from "@/Components/steps";
+import Flow from "@/components/steps";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,6 +42,7 @@ export default function Home() {
       {/* <div className={styles.timeline} style={{ display: "flex", justifyContent: "center" }}>
         <img src="assets/step1.png" />
       </div> */}
+
       <Flow />
 
       <div className={styles.container}>

@@ -1,16 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Schedule.module.css";
-import { imgContext } from "@/context/ImgContext";
 
 function Schedule({ data }) {
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc"); // add state for sort order
   const genres = [...new Set(data.map((item) => item.genre))];
 
-  const { images } = useContext(imgContext);
-
-  console.log(images);
-
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
   const handleGenreSelect = (event) => {
     const selectedGenre = event.target.value;
     setSelectedGenre(selectedGenre === "all" ? null : selectedGenre);
@@ -20,10 +17,12 @@ function Schedule({ data }) {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     setSortOrder(newSortOrder);
   };
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+    setShowPopup(true);
+  };
 
-  const filteredData = selectedGenre
-    ? data.filter((item) => item.genre === selectedGenre)
-    : data;
+  const filteredData = selectedGenre ? data.filter((item) => item.genre === selectedGenre) : data;
 
   const sortedData = filteredData.sort((a, b) => {
     const nameA = a.name.toLowerCase();
@@ -44,11 +43,7 @@ function Schedule({ data }) {
       <h1>Schedule</h1>
       <div className={styles.filterSort}>
         <label htmlFor="genre-select">Filter by Genre:</label>
-        <select
-          id="genre-select"
-          value={selectedGenre || "all"}
-          onChange={handleGenreSelect}
-        >
+        <select id="genre-select" value={selectedGenre || "all"} onChange={handleGenreSelect}>
           <option value="all">All Genres</option>
           {genres.map((genre) => (
             <option key={genre} value={genre}>
@@ -64,14 +59,21 @@ function Schedule({ data }) {
       <div className={`${styles.grid} ${styles.bandGrid}`}>
         {sortedData.map((item) => (
           <div key={item.id} className={styles.card}>
-            <img src={item.logo} alt={item.name} style={{ maxWidth: "100%" }} />
+            <img src={item.logo} alt={item.name} style={{ maxWidth: "100%" }} onClick={() => handleImageClick(item.logo)} />
             <h2>{item.name}</h2>
-            {/* <Image src={item.logo} alt={item.name} width={500} height={300} priority style={{ maxWidth: "100%" }} /> */}
-            {/* <p>Members: {item.members}</p> */}
-            {/* <p>Genre: {item.genre}</p> */}
-            {/* <p>Bio: {item.bio}</p>
-            <p>Slug: {item.slug}</p>
-            <p>Logo Credits: {item.logocredits}</p> */}
+            {selectedImage && showPopup && (
+              <div className={styles.popup}>
+                <div className={styles.popupContent}>
+                  <img src={selectedImage} alt="Selected Image" />
+                  <p>Members: {item.members}</p>
+                  <p>Genre: {item.genre}</p>
+                  <p>Bio: {item.bio}</p>
+                  {/* <p>Slug: {item.slug}</p>
+                  <p>Logo Credits: {item.logocredits}</p> */}
+                  <button onClick={() => setShowPopup(false)}>Close</button>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>

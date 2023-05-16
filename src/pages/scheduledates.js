@@ -47,17 +47,27 @@ function App() {
             (band) => band.name === timeSlot?.act
           );
 
-          if (timeSlot.logoCredits) {
-            const logoCreditsImg = timeSlot.logoCredits.split(", ");
-            console.log(logoCreditsImg);
+          if (timeSlot.act === "break") {
+            return (
+              <div
+                key={`${timeSlot.start}-${timeSlot.end}`}
+                className={`${styles["time-slot"]} ${styles["break-time-slot"]}`}
+              >
+                <div
+                  className={styles["time-range"]}
+                >{`${timeSlot.start} - ${timeSlot.end}`}</div>
+                <div className={styles["act-details"]}>
+                  <p>{timeSlot.act}</p>
+                </div>
+                <div className={styles["break-indicator"]}>Break</div>
+              </div>
+            );
           }
 
           return (
             <div
               key={`${timeSlot.start}-${timeSlot.end}`}
-              className={`${styles["time-slot"]} ${
-                timeSlot.act === "break" ? styles["break-time-slot"] : ""
-              }`}
+              className={styles["time-slot"]}
             >
               <div
                 className={styles["time-range"]}
@@ -76,9 +86,6 @@ function App() {
                   />
                 </div>
               </div>
-              {timeSlot.act === "break" && (
-                <div className={styles["break-indicator"]}>Break</div>
-              )}
             </div>
           );
         })}
@@ -99,7 +106,7 @@ function App() {
         <div>
           <div className={styles.schedulePlan}>
             <div>
-              <h1>Stage:{chosenSchedule[0]}</h1>
+              <h1>Stage: {chosenSchedule[0]}</h1>
               <div className={styles.calendar}>{renderCalendar()}</div>
             </div>
           </div>

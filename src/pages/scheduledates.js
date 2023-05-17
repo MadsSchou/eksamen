@@ -10,7 +10,7 @@ function App() {
   const { images } = useContext(imgContext);
 
   useEffect(() => {
-    fetch("http://localhost:8080/schedule")
+    fetch("https://charm-pale-tub.glitch.me/schedule")
       .then((response) => response.json())
       .then((data) => {
         setSchedule(data);

@@ -4,7 +4,6 @@ import Link from "next/link";
 import NavItem from "./NavItem";
 import logo from "logo.svg";
 import { imgContext } from "@/context/ImgContext";
-import { getServerSideProps } from "@/pages/schedule";
 
 const MENU_LIST = [
   {
@@ -34,16 +33,8 @@ function Navbar() {
   }
 
   useEffect(() => {
-    fetch("/test")
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-
     if (images) {
       console.log("there is imgs");
-
-      const logoCreditThingy = images?.filter((e) => e.logoCredits);
-
-      console.log(logoCreditThingy);
     } else {
       console.log("there is no imgs");
       fetchImages();

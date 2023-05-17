@@ -5,7 +5,7 @@ export const imgContext = createContext(null);
 export default function Context({ children }) {
   const [images, setImages] = useState(null);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const fetchImages = async () => {
       try {
         const response = await fetch("http://localhost:8080/images");
@@ -19,7 +19,7 @@ export default function Context({ children }) {
     if (!images) {
       fetchImages();
     }
-  }, [images]);
+  }, [images]); */
 
   return (
     <imgContext.Provider value={{ images, setImages }}>

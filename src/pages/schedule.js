@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Schedule.module.css";
+import { imgContext } from "@/context/ImgContext";
 
-function Schedule({ data }) {
+function Schedule() {
+  const { images } = useContext(imgContext);
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc"); // add state for sort order
-  const genres = [...new Set(data.map((item) => item.genre))];
-
+  const genres = [...new Set(images?.map((item) => item.genre))];
+  console.log(images);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+
   const handleGenreSelect = (event) => {
     const selectedGenre = event.target.value;
     setSelectedGenre(selectedGenre === "all" ? null : selectedGenre);
   };
-
   const handleSortClick = () => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     setSortOrder(newSortOrder);
@@ -22,9 +24,11 @@ function Schedule({ data }) {
     setShowPopup(true);
   };
 
-  const filteredData = selectedGenre ? data.filter((item) => item.genre === selectedGenre) : data;
+  const filteredData = selectedGenre
+    ? images?.filter((item) => item.genre === selectedGenre)
+    : images;
 
-  const sortedData = filteredData.sort((a, b) => {
+  const sortedData = filteredData?.sort((a, b) => {
     const nameA = a.name.toLowerCase();
     const nameB = b.name.toLowerCase();
     if (sortOrder === "asc") {
@@ -43,7 +47,11 @@ function Schedule({ data }) {
       <h1>Schedule</h1>
       <div className={styles.filterSort}>
         <label htmlFor="genre-select">Filter by Genre:</label>
-        <select id="genre-select" value={selectedGenre || "all"} onChange={handleGenreSelect}>
+        <select
+          id="genre-select"
+          value={selectedGenre || "all"}
+          onChange={handleGenreSelect}
+        >
           <option value="all">All Genres</option>
           {genres.map((genre) => (
             <option key={genre} value={genre}>
@@ -57,10 +65,16 @@ function Schedule({ data }) {
       </div>
 
       <div className={`${styles.grid} ${styles.bandGrid}`}>
-        {sortedData.map((item) => (
+        {sortedData?.map((item) => (
           <div key={item.id} className={styles.card}>
-            <img src={item.logo} alt={item.name} style={{ maxWidth: "100%" }} onClick={() => handleImageClick(item.logo)} />
+            <img
+              src={item.logo}
+              alt={item.name}
+              style={{ maxWidth: "100%" }}
+              onClick={() => handleImageClick(item.logo)}
+            />
             <h2>{item.name}</h2>
+            <p>{item.logoCredits ? item.logoCredits : "Placeholder"}</p>
             {selectedImage && showPopup && (
               <div className={styles.popup}>
                 <div className={styles.popupContent}>
@@ -79,17 +93,6 @@ function Schedule({ data }) {
       </div>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  const res = await fetch("http://localhost:8080/bands");
-  const data = await res.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
 }
 
 export default Schedule;

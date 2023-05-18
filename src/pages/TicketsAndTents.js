@@ -103,7 +103,7 @@ export default function Home() {
                 {
                   addToBasket();
                 }
-                // router.push("/CampgroundForm", "vaelgcamp");
+                router.push("/CampgroundForm", "vaelgcamp");
               }}
             >
               Reserver Billetter

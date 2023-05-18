@@ -18,6 +18,7 @@ const myGlobalValue = {
   country: "",
   checkbox: false,
 };
+console.log(myGlobalValue);
 
 export function reducer(state, action) {
   switch (action.action) {
@@ -25,9 +26,8 @@ export function reducer(state, action) {
       const updatedTicketList = [
         ...state.ticketList,
         {
-          id: action.payload,
-          basicQuantity: action.payload.basicTicket,
-          vipQuantity: action.payload.vipTicket,
+          basicTicket: action.payload.basicTicket,
+          vipTicket: action.payload.vipTicket,
         },
       ];
       console.log(updatedTicketList); // Log the updated ticketList array

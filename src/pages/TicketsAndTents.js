@@ -2,9 +2,11 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import styles from "./TicketsAndTents.module.css";
-import { useState } from "react";
-import Ordreoversigt from "../Components/ordreoversigt/ordreoversigt";
-import Flow from "@/Components/steps";
+import { useContext, useState } from "react";
+import Ordreoversigt from "../components/ordreoversigt/ordreoversigt";
+import Flow from "@/components/steps";
+import { UpdateContext } from "@/context/ticketContext";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,6 +14,10 @@ export default function Home() {
   const [basicCounter, setBasicCounter] = useState(0);
   const [vipCounter, setVipCounter] = useState(0);
   const [showTents, setShowTents] = useState(false);
+  const router = useRouter();
+  // console.log(vipCounter);
+  // console.log(basicCounter);
+  //useContext
 
   const handleBasicPlus = () => {
     setBasicCounter(basicCounter + 1);
@@ -31,6 +37,19 @@ export default function Home() {
 
   const handleToggleTents = () => {
     setShowTents(!showTents);
+  };
+
+  const setTicketInfo = useContext(UpdateContext);
+
+  const addToBasket = () => {
+    setTicketInfo({
+      action: "ADD_TO_BASKET",
+      payload: {
+        basicTicket: basicCounter,
+        vipTicket: vipCounter,
+      },
+    });
+    console.log();
   };
 
   return (
@@ -77,11 +96,18 @@ export default function Home() {
           ) : null}
         </div>
         <div className={styles.column}>
-          <Ordreoversigt></Ordreoversigt>
+          <Ordreoversigt basicCounter={basicCounter} vipCounter={vipCounter} />
           <div className={styles.centerButton}>
-            <Link href="/CampgroundForm">
-              <button>Reserver Biletter</button>
-            </Link>
+            <button
+              onClick={() => {
+                {
+                  addToBasket();
+                }
+                // router.push("/CampgroundForm", "vaelgcamp");
+              }}
+            >
+              Reserver Billetter
+            </button>
           </div>
         </div>
       </div>

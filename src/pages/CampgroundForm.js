@@ -1,23 +1,3 @@
-// export async function getServerSideProps() {
-//   const res = await fetch("http://localhost:8080/available-spots");
-//   const data = await res.json();
-
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }
-
-//const response = await fetch("http://localhost:8080/reserve-spot", {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(payload),
-//   });
-// };
-
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import Link from "next/link";
@@ -27,7 +7,7 @@ import Flow from "@/components/steps";
 import React, { useState, useEffect } from "react";
 import Area from "@/components/Area";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data }) {
   const handleButtonClick = async (area) => {
@@ -117,22 +97,3 @@ export default function Home({ data }) {
     </>
   );
 }
-// export async function getServerSideProps() {
-//   const res = await fetch("http://localhost:8080/available-spots");
-//   const data = await res.json();
-
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }
-
-//const response = await fetch("http://localhost:8080/reserve-spot", {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(payload),
-//   });
-// };

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import { useContext } from "react";
 
 const Ordreoversigt = ({ basicCounter, vipCounter }) => {
   return (

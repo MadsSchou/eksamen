@@ -7,7 +7,7 @@ function flow() {
   const [current, setCurrent] = useState(0);
   return (
     <>
-      <Steps onChange={setCurrent} current={current}>
+      <Steps onChange={setCurrent} current={current} className="steps">
         <Steps.step title="Billettype" icon={<ShakeOutlined />} />
         <Steps.step title="Camp Område " icon={<HomeOutlined />} />
         <Steps.step title="Personlig Info" icon={<ProfileOutlined />} />

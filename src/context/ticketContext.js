@@ -4,19 +4,20 @@ export const TicketContext = createContext();
 export const UpdateContext = createContext();
 
 const myGlobalValue = {
-  ticketList: [],
-  vipTicket: "",
-  basicTicket: "",
-  tent2: "",
-  tent3: "",
-  area: "",
-  firstName: "",
-  lastName: "",
-  email: "",
-  phone: "",
-  zipCode: "",
-  country: "",
-  checkbox: false,
+  basket: [],
+  // ticketList: [],
+  // vipTicket: "",
+  // basicTicket: "",
+  // tent2: "",
+  // tent3: "",
+  // area: "",
+  // firstName: "",
+  // lastName: "",
+  // email: "",
+  // phone: "",
+  // zipCode: "",
+  // country: "",
+  // checkbox: false,
 };
 console.log(myGlobalValue);
 

@@ -8,16 +8,13 @@ import Flow from "@/components/steps";
 import { UpdateContext } from "@/context/ticketContext";
 import { useRouter } from "next/router";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [basicCounter, setBasicCounter] = useState(0);
   const [vipCounter, setVipCounter] = useState(0);
   const [showTents, setShowTents] = useState(false);
   const router = useRouter();
-  // console.log(vipCounter);
-  // console.log(basicCounter);
-  //useContext
 
   const handleBasicPlus = () => {
     setBasicCounter(basicCounter + 1);
@@ -39,17 +36,17 @@ export default function Home() {
     setShowTents(!showTents);
   };
 
-  const setTicketInfo = useContext(UpdateContext);
+  const dispatch = useContext(UpdateContext);
 
   const addToBasket = () => {
-    setTicketInfo({
+    dispatch({
       action: "ADD_TO_BASKET",
       payload: {
         basicTicket: basicCounter,
         vipTicket: vipCounter,
       },
     });
-    console.log();
+    console.log(action, state);
   };
 
   return (
@@ -103,7 +100,7 @@ export default function Home() {
                 {
                   addToBasket();
                 }
-                router.push("/CampgroundForm", "vaelgcamp");
+                // router.push("/CampgroundForm", "vaelgcamp");
               }}
             >
               Reserver Billetter

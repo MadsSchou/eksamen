@@ -185,3 +185,23 @@ footer img {
   color: var(--white);
   font-family: var(--font-sans);
 }
+
+.steps {
+  padding: 2% 15% 0% 15%;
+}
+
+.TicketsAndTents_column__lSOnv button {
+  background: var(--white);
+  box-shadow: 0px 0px 0px transparent;
+  border: 1px solid;
+  text-shadow: 0px 0px 0px transparent;
+  padding: 15px 30px 15px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.TicketsAndTents_column__lSOnv button:hover {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}

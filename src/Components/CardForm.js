@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Flow from "./steps";
 
 const CardForm = () => {
   const [cardNumber, setCardNumber] = useState("");
@@ -23,21 +24,23 @@ const CardForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Card Number:
-        <input type="text" value={cardNumber} onChange={handleCardNumberChange} />
-      </label>
-      <label>
-        Expiry Date:
-        <input type="text" value={expiryDate} onChange={handleExpiryDateChange} />
-      </label>
-      <label>
-        CVV:
-        <input type="text" value={cvv} onChange={handleCvvChange} />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Card Number:
+          <input type="text" value={cardNumber} onChange={handleCardNumberChange} />
+        </label>
+        <label>
+          Expiry Date:
+          <input type="text" value={expiryDate} onChange={handleExpiryDateChange} />
+        </label>
+        <label>
+          CVV:
+          <input type="text" value={cvv} onChange={handleCvvChange} />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+    </>
   );
 };
 

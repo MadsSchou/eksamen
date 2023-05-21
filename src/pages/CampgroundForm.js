@@ -5,7 +5,6 @@ import styles from "./CampgroundForm.module.css";
 import Ordreoversigt from "../components/ordreoversigt/ordreoversigt";
 import Flow from "@/components/steps";
 import React, { useState, useEffect } from "react";
-import Area from "@/components/Area";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -58,7 +57,7 @@ export default function Home({ data }) {
         <title>Thunderstrike Metal Festival</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Flow />
+      <Flow step={1} />
 
       <div className={styles.container}>
         <div className={styles.column}>

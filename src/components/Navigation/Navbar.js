@@ -4,7 +4,6 @@ import Link from "next/link";
 import NavItem from "./NavItem";
 import logo from "logo.svg";
 import { imgContext } from "@/context/ImgContext";
-import { getServerSideProps } from "@/pages/schedule";
 
 const MENU_LIST = [
   {
@@ -74,11 +73,7 @@ function Navbar() {
             >
               {menu.isButton ? (
                 <Link href={menu.href}>
-                  <button
-                    onClick={() => console.log(`${menu.text} button clicked`)}
-                  >
-                    {menu.text}
-                  </button>
+                  <button onClick={() => console.log(`${menu.text} button clicked`)}>{menu.text}</button>
                 </Link>
               ) : (
                 <NavItem active={activeIdx === idx} {...menu} />

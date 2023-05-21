@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { useContext } from "react";
-import { StoreContext } from "@/context/ticketContext";
+import { DispatchContext, StoreContext } from "@/context/ticketContext";
 
 export default function Basket() {
   const state = useContext(StoreContext);
+  const dispatch = useContext(DispatchContext);
 
   return (
     <div className={styles.card}>
@@ -13,10 +14,16 @@ export default function Basket() {
         <ul>
           {state.basket.map((item) => {
             return (
-              <li>
-                {item.vipCounter}
-                {"Vip Billet"} x {item.amount}
-              </li>
+              <>
+                <li>
+                  {item.vipCounter}
+                  {"Vip Billet"} x {item.amount}
+                </li>
+                <li>
+                  {item.basicCounter}
+                  {"Basic Billet"} x {item.amount}
+                </li>
+              </>
             );
           })}
         </ul>

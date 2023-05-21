@@ -1,6 +1,6 @@
 import React from "react";
-import { Steps, Form } from "antd";
-import { LoginOutlined, ShakeOutlined, ProfileOutlined, CreditCardOutlined, HomeOutlined } from "@ant-design/icons";
+import { Steps } from "antd";
+import { ShakeOutlined, ProfileOutlined, CreditCardOutlined, HomeOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
 function flow() {

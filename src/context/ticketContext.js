@@ -1,54 +1,51 @@
 import { createContext, useReducer } from "react";
 
-export const TicketContext = createContext();
-export const UpdateContext = createContext();
+export const StoreContext = createContext();
+export const DispatchContext = createContext();
 
 const myGlobalValue = {
   basket: [],
-  // ticketList: [],
-  // vipTicket: "",
-  // basicTicket: "",
-  // tent2: "",
-  // tent3: "",
-  // area: "",
-  // firstName: "",
-  // lastName: "",
-  // email: "",
-  // phone: "",
-  // zipCode: "",
-  // country: "",
-  // checkbox: false,
 };
+
 console.log(myGlobalValue);
 
 export function reducer(state, action) {
+  console.log(state, action);
   switch (action.action) {
     case "ADD_TO_BASKET":
-      const updatedTicketList = [
-        ...state.ticketList,
-        {
-          basicTicket: action.payload.basicTicket,
-          vipTicket: action.payload.vipTicket,
-        },
-      ];
-      console.log(updatedTicketList); // Log the updated ticketList array
-      return {
-        ...state,
-        ticketList: updatedTicketList,
-      };
-    default:
-      return state;
+      const exists = state.basket.find((item) => item.id === action.payload.id);
+      if (exists) {
+        //Map creates a new array
+        const nextBasket = state.basket.map((item) => {
+          if (item.id == action.payload.id) {
+            //found it
+            //take the original array and spead it
+            const copy = { ...item };
+            copy.amount++;
+            return copy;
+          } else {
+            return item;
+          }
+        });
+        //Efterligner min basket
+        return { ...state, basket: nextBasket };
+      } else {
+        const newItem = action.payload;
+        //Amount property
+        newItem.amount = 1;
+        return { ...state, basket: state.basket.concat(newItem) };
+      }
   }
+  // Hvad skal den her?
+  return [];
 }
 
 export const TicketProvider = ({ children }) => {
-  const [ticketInfo, setTicketInfo] = useReducer(reducer, myGlobalValue);
-
-  console.log(ticketInfo.ticketList);
+  const [data, dispatch] = useReducer(reducer, myGlobalValue);
 
   return (
-    <TicketContext.Provider value={ticketInfo.ticketList}>
-      <UpdateContext.Provider value={setTicketInfo}>{children}</UpdateContext.Provider>
-    </TicketContext.Provider>
+    <StoreContext.Provider value={data}>
+      <DispatchContext.Provider value={dispatch}>{children}</DispatchContext.Provider>
+    </StoreContext.Provider>
   );
 };

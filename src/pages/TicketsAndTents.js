@@ -1,14 +1,14 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import styles from "./TicketsAndTents.module.css";
 import { useContext, useState } from "react";
-import Ordreoversigt from "../components/ordreoversigt/ordreoversigt";
+import Basket from "../components/ordreoversigt/ordreoversigt";
 import Flow from "@/components/steps";
-import { UpdateContext } from "@/context/ticketContext";
+import { DispatchContext, StoreContext } from "@/context/ticketContext";
 import { useRouter } from "next/router";
 
-// const inter = Inter({ subsets: ["latin"] });
+//Bliver denne brugt?
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [basicCounter, setBasicCounter] = useState(0);
@@ -16,27 +16,21 @@ export default function Home() {
   const [showTents, setShowTents] = useState(false);
   const router = useRouter();
 
-  const handleBasicPlus = () => {
-    setBasicCounter(basicCounter + 1);
-  };
-
-  const handleBasicMinus = () => {
-    setBasicCounter(basicCounter - 1);
-  };
-
-  const handleVipPlus = () => {
-    setVipCounter(vipCounter + 1);
-  };
-
-  const handleVipMinus = () => {
-    setVipCounter(vipCounter - 1);
+  const handleCounterChange = (type, action) => {
+    if (type === "basic") {
+      setBasicCounter((Counter) => (action === "plus" ? Counter + 1 : Counter - 1));
+      addToBasket();
+    } else if (type === "vip") {
+      setVipCounter((Counter) => (action === "plus" ? Counter + 1 : Counter - 1));
+      addToBasket();
+    }
   };
 
   const handleToggleTents = () => {
     setShowTents(!showTents);
   };
 
-  const dispatch = useContext(UpdateContext);
+  const dispatch = useContext(DispatchContext);
 
   const addToBasket = () => {
     dispatch({
@@ -46,7 +40,6 @@ export default function Home() {
         vipTicket: vipCounter,
       },
     });
-    console.log(action, state);
   };
 
   return (
@@ -55,9 +48,7 @@ export default function Home() {
         <title>Thunderstrike Metal Festival</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <div className={styles.timeline} style={{ display: "flex", justifyContent: "center" }}>
-        <img src="assets/step1.png" />
-      </div> */}
+
       <Flow />
 
       <div className={styles.container}>
@@ -66,17 +57,17 @@ export default function Home() {
             <div className={styles.card}>
               <img src="/assets/basic.png" alt="Basic Ticket" />
               <div className={styles.counter}>
-                <button onClick={handleBasicMinus}>-</button>
+                <button onClick={() => handleCounterChange("basic", "minus")}>-</button>
                 <span>{basicCounter}</span>
-                <button onClick={handleBasicPlus}>+</button>
+                <button onClick={() => handleCounterChange("basic", "plus")}>+</button>
               </div>
             </div>
             <div className={styles.card}>
               <img src="/assets/vip.png" alt="VIP Ticket" />
               <div className={styles.counter}>
-                <button onClick={handleVipMinus}>-</button>
+                <button onClick={() => handleCounterChange("vip", "minus")}>-</button>
                 <span>{vipCounter}</span>
-                <button onClick={handleVipPlus}>+</button>
+                <button onClick={() => handleCounterChange("vip", "plus")}>+</button>
               </div>
             </div>
           </div>
@@ -93,12 +84,11 @@ export default function Home() {
           ) : null}
         </div>
         <div className={styles.column}>
-          <Ordreoversigt basicCounter={basicCounter} vipCounter={vipCounter} />
+          <Basket basicCounter={basicCounter} vipCounter={vipCounter} />
           <div className={styles.centerButton}>
             <button
               onClick={() => {
                 {
-                  addToBasket();
                 }
                 // router.push("/CampgroundForm", "vaelgcamp");
               }}

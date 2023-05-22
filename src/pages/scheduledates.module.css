@@ -1,6 +1,10 @@
 .select {
   margin-bottom: 20px;
 }
+.contentSchedule {
+  background-color: #1e1e1e;
+  margin: 0 auto;
+}
 
 .schedule {
   display: flex;
@@ -19,9 +23,8 @@
 }
 
 .day-column {
-  border: 1px solid #ccc;
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: #3e3e42;
 }
 
 .day {
@@ -29,22 +32,38 @@
   margin-bottom: 10px;
   text-transform: capitalize;
   text-align: center;
+  color: white;
 }
 
 .time-slots {
   margin-top: 10px;
 }
 
+.favorite {
+  fill: white;
+}
+
+.favorite.active {
+  fill: #c99844;
+}
+
+.svg-container {
+  align-self: flex-end;
+}
+
 .time-slot {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #fff;
+  margin-bottom: 2rem;
+  height: 180px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
 }
 
 .break-time-slot {
+  display: none;
   /* Styles for time slots with breaks */
   background-color: #ffcccc; /* Change to the desired color */
+  height: 50px;
 }
 
 .break-indicator {
@@ -60,10 +79,15 @@
 
 .time-range {
   font-weight: bold;
+  background-color: black;
+  color: white;
+  text-align: center;
 }
 
-.act-details p {
+.act-details {
   margin: 0;
+  background-color: black;
+  color: white;
 }
 
 @media (min-width: 768px) {

@@ -2,6 +2,11 @@
   padding: 2rem;
 }
 
+.bandContent {
+  background-color: #1e1e1e;
+  color: white;
+}
+
 .bandGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -17,7 +22,7 @@
 }
 
 .card {
-  position: relative; /* added to set the position of the .card container to relative */
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,7 +77,7 @@
   max-width: 1200px;
   max-height: 800px;
   overflow: auto;
-  background-color: black;
+  background-color: #3e3e42;
   color: white;
 }
 

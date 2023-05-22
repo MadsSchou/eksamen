@@ -45,8 +45,8 @@ function Schedule() {
     : filteredData;
 
   return (
-    <div className={`${styles.overskrift}`}>
-      <h1>Schedule</h1>
+    <div className={`${styles.bandContent}`}>
+      <h1 className={`${styles.overskrift}`}>Schedule</h1>
       <div className={styles.filterSort}>
         <label htmlFor="genre-select">Filter by Genre:</label>
         <select id="genre-select" value={selectedGenre || "all"} onChange={handleGenreSelect}>

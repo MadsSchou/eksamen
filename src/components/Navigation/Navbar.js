@@ -4,6 +4,7 @@ import Link from "next/link";
 import NavItem from "./NavItem";
 import logo from "logo.svg";
 import { imgContext } from "@/context/ImgContext";
+import { auth } from "@/firebase";
 
 const MENU_LIST = [
   {

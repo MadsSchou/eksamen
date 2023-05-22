@@ -103,7 +103,9 @@ export default function Home() {
           <div className={styles.container}>
             <div className={styles.card}>
               <img src="/assets/basic.svg" alt="Basic Ticket" />
+              <h3>Basic Partout</h3>
               <h3>799,-</h3>
+
               <div className={styles.counter}>
                 <button onClick={handleBasicMinus}>-</button>
                 <span>{basicCounter}</span>
@@ -112,6 +114,7 @@ export default function Home() {
             </div>
             <div className={styles.card}>
               <img src="/assets/vip.svg" alt="VIP Ticket" />
+              <h3>VIP Partout</h3>
               <h3>1299,-</h3>
               <div className={styles.counter}>
                 <button onClick={handleVipMinus}>-</button>

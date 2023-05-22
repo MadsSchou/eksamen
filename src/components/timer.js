@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 export default function Timer() {
-  const [timeLeft, setTimeLeft] = useState(10);
+  const [timeLeft, setTimeLeft] = useState(20);
   const router = useRouter();
 
   useEffect(() => {
@@ -24,11 +24,7 @@ export default function Timer() {
     router.push("/TicketsAndTents");
   };
 
-  //   if (timeLeft === 0) {
-  //     return <div className="Timer">Tid til at gennemføre ordren: 0:00</div>;
-  //   }
-
-  // Convert remaining time to minutes and seconds
+  // Konverter til minuter og sekunder
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 

@@ -43,8 +43,3 @@ export default function Flow(props) {
     </>
   );
 }
-
-// //Ændre farve
-// // .ant-steps-item-process .ant-steps-item-icon {
-// //     background: #46b3cb !important;
-// // }

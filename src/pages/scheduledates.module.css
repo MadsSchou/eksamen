@@ -1,5 +1,8 @@
 .select {
   margin-bottom: 20px;
+  border: none;
+  background-color: transparent;
+  color: #c99844;
 }
 .contentSchedule {
   background-color: #1e1e1e;

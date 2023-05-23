@@ -3,7 +3,7 @@ import { Steps, Form } from "antd";
 import { LoginOutlined, ShakeOutlined, ProfileOutlined, CreditCardOutlined, HomeOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
-function flow() {
+function Flow() {
   const [current, setCurrent] = useState(0);
   return (
     <>
@@ -17,7 +17,7 @@ function flow() {
   );
 }
 
-export default flow;
+export default Flow;
 
 //Ændre farve
 // .ant-steps-item-process .ant-steps-item-icon {

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import styles from "./CampgroundForm.module.js";
+import styles from "./CampgroundForm.module.css";
 import Ordreoversigt from "../components/ordreoversigt/ordreoversigt";
 import Flow from "@/components/steps";
 

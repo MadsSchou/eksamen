@@ -2,8 +2,8 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import styles from "./CampgroundForm.module.js";
-import Ordreoversigt from "../Components/ordreoversigt/ordreoversigt";
-import Flow from "@/Components/steps";
+import Ordreoversigt from "../components/ordreoversigt/ordreoversigt";
+import Flow from "@/components/steps";
 
 const inter = Inter({ subsets: ["latin"] });
 

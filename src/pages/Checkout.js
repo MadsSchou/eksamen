@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "./checkout.module.css";
-import CardForm from "../components/CardForm";
+import CardForm from "../Components/CardForm";
 import Ordreoversigt from "../Components/ordreoversigt/ordreoversigt";
 import Flow from "@/Components/steps";
 

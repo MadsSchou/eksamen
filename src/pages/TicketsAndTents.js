@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import styles from "./TicketsAndTents.module.css";
 import { useState } from "react";
-import Ordreoversigt from "../components/ordreoversigt/ordreoversigt";
+import Ordreoversigt from "@/components/ordreoversigt/ordreoversigt";
 import Flow from "@/components/steps";
 
 const inter = Inter({ subsets: ["latin"] });

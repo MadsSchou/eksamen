@@ -22,7 +22,7 @@
 //   );
 // }
 import React from "react";
-import MultiStepForm from "@/Components/MultiStepForm";
+import MultiStepForm from "@/components/MultiStepForm";
 
 const HomePage = () => {
   return (

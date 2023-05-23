@@ -1,55 +1,72 @@
+import React, { useState, useEffect, useContext } from "react";
+import { DispatchContext, StoreContext } from "@/context/ticketContext";
 import Head from "next/head";
-import { Inter } from "next/font/google";
-import Link from "next/link";
 import styles from "./CampgroundForm.module.css";
 import Ordreoversigt from "../components/ordreoversigt/ordreoversigt";
 import Flow from "@/components/steps";
-import React, { useState, useEffect } from "react";
-
-// const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data }) {
-  const handleButtonClick = async (area) => {
-    try {
-      const reservePayload = {
-        area: "",
-        amount: "",
-      };
-      console.log(area);
-      console.log(amount);
+  const [areaData, setAreaData] = useState(null);
+  const [selectedArea, setSelectedArea] = useState("");
+  const [availableAmount, setAvailableAmount] = useState(0);
+  const [greenCamping, setGreenCamping] = useState(0);
+  const dispatch = useContext(DispatchContext);
 
-      const reserveResponse = await fetch("http://localhost:8080/reserve-spot", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(reservePayload),
+  useEffect(() => {
+    fetchArea();
+  }, []);
+
+  const fetchArea = () => {
+    fetch("http://localhost:8080/available-spots")
+      .then((res) => res.json())
+      .then((data) => {
+        setAreaData(data);
+        console.log(data);
       });
+  };
 
-      // Process the reserve response as needed
-      const reserveData = await reserveResponse.json();
-      const reservationId = reserveData.id;
+  const addToBasket = (key) => {
+    dispatch({
+      action: "ADD_TO_BASKET",
+      payload: {
+        key: key,
+      },
+    });
+  };
 
-      const fulfillPayload = {
-        id: reservationId,
-      };
+  // const removeFromBasket = (key) => {
+  //   dispatch({
+  //     action: "REMOVE_FROM_BASKET",
+  //     payload: {
+  //       key: key,
+  //     },
+  //   });
+  // };
 
-      const fulfillResponse = await fetch("http://localhost:8080/fulfill-reservation", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(fulfillPayload),
-      });
+  const handleAreaChange = (event) => {
+    const selectedArea = event.target.value;
+    setSelectedArea(selectedArea);
 
-      // Process the fulfill response as needed
-      const fulfillData = await fulfillResponse.json();
-      console.log(fulfillData);
-    } catch (error) {
-      // Handle any errors that occur during the request
-      console.error(error);
+    if (selectedArea) {
+      const selectedSpot = areaData.find((area) => area.area === selectedArea);
+      if (selectedSpot) {
+        setAvailableAmount(selectedSpot.available);
+      }
+    } else {
+      setAvailableAmount(0);
     }
   };
+
+  // const handleGreenCampingChange = (event) => {
+  //   const selectedGreenCamping = event.target.value;
+  //   setGreenCamping(greenCamping);
+
+  //   if (selectedGreenCamping) {
+
+  //   }
+
+  //   }
+  // }
 
   return (
     <>
@@ -61,35 +78,40 @@ export default function Home({ data }) {
 
       <div className={styles.container}>
         <div className={styles.column}>
-          <button onClick={() => handleButtonClick("Svartheim")}>Svartheim</button>
-          <button onClick={() => handleButtonClick("Nilfheim")}>Nilfheim</button>
-          <button onClick={() => handleButtonClick("Helheim")}>Helheim</button>
-          <button onClick={() => handleButtonClick("Muspelheim")}>Muspelheim</button>
-          <button onClick={() => handleButtonClick("Alfheim")}>Alfheim</button>
-
-          {/* <img className={styles.image} src="/assets/map.svg" alt="Map" /> */}
-          {/* 
-          <div className="area">
-            {data.map((area) => (
-              <Area {...area} />
-            ))}
-          </div> */}
-
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-          <h1>Do you want to be a part of the green change?</h1>
-          <p>The climate crisis is no joke and a big festival like this puts a lot of strain on the ground it’s standing on. Be a part of a greener tomorrow by adding the green camping option, that will be used to compensate any damages to the environment and area caused during the festival.</p>
-          <label>
-            <input type="checkbox" />
-            Add green camping
-          </label>
+          <div>
+            <select id="areaSelect" value={selectedArea} onChange={handleAreaChange}>
+              <option value="">Vælg et område</option>
+              {areaData &&
+                areaData.map((area) => (
+                  <option key={area.area} value={area.area}>
+                    {area.area}
+                  </option>
+                ))}
+            </select>
+          </div>
+          <div>
+            <br></br>
+            {selectedArea && (
+              <p>
+                Der er {availableAmount} ledige pladser i {selectedArea}
+              </p>
+            )}
+          </div>
+          <br></br>
+          <h2>Vil du være med til at støtte den grønne omstilling? </h2>
+          <p>Ved at købe en billet til vores festival har du mulighed for at gøre endnu mere for den grønne omstilling! Udover at nyde fantastisk musik og en uforglemmelig oplevelse, kan du vælge at støtte vores grønne initiativer ved at tilføje et ekstra beløb til din billet.</p>
+          <br></br>
+          <p>249,-</p>
+          <br></br>
+          <input onDoubleClick={() => addToBasket(selectedGreenCamping)} type="checkbox" />
         </div>
         <div className={styles.column}>
           <Ordreoversigt />
 
           <div className={styles.centerButton}>
-            <Link href="/personalinfo">
-              <button>Reserver Biletter</button>
-            </Link>
+            {/* <Link href="/personalinfo"> */}
+            <button onClick={() => addToBasket(selectedArea)}>Reserver</button>
+            {/* </Link> */}
           </div>
         </div>
       </div>

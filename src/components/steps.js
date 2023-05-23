@@ -14,6 +14,7 @@ export default function Flow(props) {
   return (
     <>
       <Steps
+        style={{ paddingInline: 180, paddingTop: 50 }}
         size="small"
         direction="horizontal"
         responsive="true"

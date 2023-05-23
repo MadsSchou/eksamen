@@ -3,7 +3,7 @@ import styles from "./TicketsAndTents.module.css";
 import { useContext, useState } from "react";
 import Basket from "../components/ordreoversigt/ordreoversigt";
 import Flow from "@/components/steps";
-import { DispatchContext, StoreContext } from "@/context/ticketContext";
+import { DispatchContext } from "@/context/ticketContext";
 import { useRouter } from "next/router";
 
 export default function Home() {
@@ -13,78 +13,74 @@ export default function Home() {
   const [tentCounter3, setTents3] = useState(0);
   const router = useRouter();
 
+  //Basic billet
   const handleBasicPlus = () => {
     setBasicCounter(basicCounter + 1);
-    addToBasket();
+    addToBasket("basicTicket");
   };
 
   const handleBasicMinus = () => {
     if (basicCounter > 0) {
       setBasicCounter(basicCounter - 1);
-      removeFromBasket();
+      removeFromBasket("basicTicket");
     }
   };
 
+  // VIP billet
   const handleVipPlus = () => {
     setVipCounter(vipCounter + 1);
-    addToBasket();
+    addToBasket("vipTicket");
   };
 
   const handleVipMinus = () => {
     if (vipCounter > 0) {
       setVipCounter(vipCounter - 1);
-      removeFromBasket();
+      removeFromBasket("vipTicket");
     }
   };
 
   //Telt 2 pers.
   const handleTentPlus2 = () => {
     setTents2(tentCounter2 + 1);
-    addToBasket();
+    addToBasket("tent2");
   };
 
   const handleTentMinus2 = () => {
     if (tentCounter2 > 0) {
       setTents2(tentCounter2 - 1);
-      removeFromBasket();
+      removeFromBasket("tent2");
     }
   };
 
   //Telt 3 pers.
   const handleTentPlus3 = () => {
     setTents3(tentCounter3 + 1);
-    addToBasket();
+    addToBasket("tent3");
   };
 
   const handleTentMinus3 = () => {
     if (tentCounter3 > 0) {
       setTents3(tentCounter3 - 1);
-      removeFromBasket();
+      removeFromBasket("tent3");
     }
   };
 
   const dispatch = useContext(DispatchContext);
 
-  const addToBasket = () => {
+  const addToBasket = (key) => {
     dispatch({
       action: "ADD_TO_BASKET",
       payload: {
-        basicTicket: basicCounter,
-        vipTicket: vipCounter,
-        tent2: tentCounter2,
-        tent3: tentCounter3,
+        key: key,
       },
     });
   };
 
-  const removeFromBasket = () => {
+  const removeFromBasket = (key) => {
     dispatch({
       action: "REMOVE_ONE_FROM_BASKET",
       payload: {
-        basicTicket: basicCounter,
-        vipTicket: vipCounter,
-        tent2: tentCounter2,
-        tent3: tentCounter3,
+        key: key,
       },
     });
   };
@@ -149,10 +145,10 @@ export default function Home() {
           <div className={styles.centerButton}>
             <button
               onClick={() => {
-                router.push("/CampgroundForm", "vaelgcamp");
+                router.push("/CampgroundForm");
               }}
             >
-              Reserver Billetter
+              Næste
             </button>
           </div>
         </div>

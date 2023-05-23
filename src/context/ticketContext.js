@@ -5,43 +5,36 @@ export const StoreContext = createContext();
 export const DispatchContext = createContext();
 
 const myGlobalValue = {
-  basket: [],
+  vipTicket: 0,
+  basicTicket: 0,
+  tent2: 0,
+  tent3: 0,
+  svartheim: "",
+  nilfheim: "",
+  helheim: "",
+  muspelheim: "",
+  alfheim: "",
+  greenCamping: false,
+  bookingGebyr: 0,
 };
 
-// console.log(myGlobalValue);
-
 export function reducer(state, action) {
-  console.log(state, action);
   switch (action.action) {
     case "REMOVE_ONE_FROM_BASKET":
-      console.log(action);
-      return { ...state };
+      const copyRemove = { ...state };
+      copyRemove[action.payload.key]--;
+      console.log(state, action);
+      return copyRemove;
 
     case "ADD_TO_BASKET":
-      const exists = state.basket.find((item) => item.id === action.payload.id);
-      if (exists) {
-        //Map creates a new array
-        const nextBasket = state.basket.map((item) => {
-          if (item.id == action.payload.id) {
-            //take the original array and spead it
-            const copy = { ...item };
-            copy.amount++;
-            return copy;
-          } else {
-            return item;
-          }
-        });
-        //Efterligner min basket
-        return { ...state, basket: nextBasket };
-      } else {
-        const newItem = action.payload;
-        //Amount property
-        newItem.amount = 1;
-        return { ...state, basket: state.basket.concat(newItem) };
-      }
+      const copy = { ...state };
+      copy[action.payload.key]++;
+      console.log(state, action);
+      return copy;
+
+    default:
+      return state;
   }
-  // Hvad skal den her?
-  // return [];
 }
 
 export const TicketProvider = ({ children }) => {
@@ -49,7 +42,7 @@ export const TicketProvider = ({ children }) => {
 
   return (
     <StoreContext.Provider value={data}>
-      <Timer />
+      {/* <Timer /> */}
       <DispatchContext.Provider value={dispatch}>{children}</DispatchContext.Provider>
     </StoreContext.Provider>
   );

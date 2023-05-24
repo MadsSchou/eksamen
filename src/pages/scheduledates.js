@@ -4,6 +4,7 @@ import { imgContext } from "@/context/ImgContext";
 import FavIcon from "@/components/FavIcon";
 import { auth, db } from "@/firebase";
 import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/router";
 
 function App() {
   const [schedule, setSchedule] = useState([]);
@@ -12,6 +13,7 @@ function App() {
   const { currentUser } = useAuth();
   const { login } = useAuth();
   const { images } = useContext(imgContext);
+  const [currentFavList, setCurrentFavList] = useState([]);
 
   async function chooseStage(stage) {
     setStages(stage);
@@ -20,8 +22,17 @@ function App() {
     );
     setChosenSchedule(chosenSchedule);
   }
+
   useEffect(() => {
-    console.log(currentUser.uid);
+    if (currentUser) {
+      db.collection("users")
+        .doc(currentUser.uid)
+        .collection("favList")
+        .get()
+        .then((res) => {
+          setCurrentFavList(res.docs);
+        });
+    }
   }, []);
   useEffect(() => {
     fetch("https://charm-pale-tub.glitch.me/schedule")
@@ -55,6 +66,12 @@ function App() {
     return (
       <div className={styles["time-slots"]}>
         {timeSlots?.map((timeSlot) => {
+          let alreadyFavListed = false;
+          if (currentFavList.find((e) => e.data().act === timeSlot.act)) {
+            console.log("yasadasdasdasdas");
+            alreadyFavListed = true;
+          }
+
           const imgForBand = images.filter(
             (band) => band.name === timeSlot?.act
           );
@@ -79,7 +96,11 @@ function App() {
               key={`${timeSlot.start}-${timeSlot.end}`}
               className={styles["time-slot"]}
             >
-              <FavIcon data={timeSlot} stage={stages} />
+              <FavIcon
+                data={timeSlot}
+                stage={stages}
+                alreadyFav={alreadyFavListed}
+              />
               <div
                 className={styles["time-range"]}
               >{`${timeSlot.start} - ${timeSlot.end}`}</div>

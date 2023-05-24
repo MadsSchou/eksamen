@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../pages/scheduledates.module.css";
 import { useAuth } from "@/context/AuthContext";
 import { db } from "@/firebase";
 
-export default function FavIcon({ data, stage }) {
-  const [favorite, setFavorite] = useState(false);
+export default function FavIcon({ data, stage, alreadyFav }) {
+  const [favorite, setFavorite] = useState(alreadyFav);
   const { currentUser } = useAuth();
+
   function handleFavClick() {
     const bandName = data.act.replaceAll(" ", "+");
-    console.log(data);
+
     const fancyId = bandName + "_" + data.start + "_" + data.end + "_" + stage;
-    console.log(fancyId);
+
     if (currentUser) {
       if (favorite) {
         console.log("it now removed");

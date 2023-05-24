@@ -110,7 +110,7 @@ export default function Home({ data }) {
 
           <div className={styles.centerButton}>
             {/* <Link href="/personalinfo"> */}
-            <button onClick={() => addToBasket(selectedArea)}>Reserver</button>
+            <button onClick={() => addToBasket("area")}>Reserver</button>
             {/* </Link> */}
           </div>
         </div>

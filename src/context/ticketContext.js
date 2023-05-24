@@ -9,11 +9,7 @@ const myGlobalValue = {
   basicTicket: 0,
   tent2: 0,
   tent3: 0,
-  svartheim: "",
-  nilfheim: "",
-  helheim: "",
-  muspelheim: "",
-  alfheim: "",
+  area: "",
   greenCamping: false,
   bookingGebyr: 0,
 };

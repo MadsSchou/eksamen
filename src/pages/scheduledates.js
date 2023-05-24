@@ -3,12 +3,14 @@ import styles from "./scheduledates.module.css";
 import { imgContext } from "@/context/ImgContext";
 import FavIcon from "@/components/FavIcon";
 import { auth, db } from "@/firebase";
+import { useAuth } from "@/context/AuthContext";
 
 function App() {
   const [schedule, setSchedule] = useState([]);
   const [stages, setStages] = useState("Midgard");
   const [chosenSchedule, setChosenSchedule] = useState(["Midgard", []]);
-
+  const { currentUser } = useAuth();
+  const { login } = useAuth();
   const { images } = useContext(imgContext);
 
   async function chooseStage(stage) {
@@ -19,12 +21,7 @@ function App() {
     setChosenSchedule(chosenSchedule);
   }
   useEffect(() => {
-    console.log(auth.currentUser);
-    if (auth.currentUser) {
-      db.collection(auth.currentUser.uid)
-        .get()
-        .then((data) => console.log(data));
-    }
+    console.log(currentUser.uid);
   }, []);
   useEffect(() => {
     fetch("https://charm-pale-tub.glitch.me/schedule")

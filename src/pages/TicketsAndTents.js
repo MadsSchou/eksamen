@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "./TicketsAndTents.module.css";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Basket from "../components/ordreoversigt/ordreoversigt";
 import Flow from "@/components/steps";
 import { DispatchContext } from "@/context/ticketContext";
@@ -11,7 +11,27 @@ export default function Home() {
   const [vipCounter, setVipCounter] = useState(0);
   const [tentCounter2, setTents2] = useState(0);
   const [tentCounter3, setTents3] = useState(0);
+  const [canProceed, setCanProceed] = useState(false);
+  const [isTentButtonDisabled, setIsTentButtonDisabled] = useState(false);
+
   const router = useRouter();
+
+  useEffect(() => {
+    // Tjekker om der er billetter valgt
+    const hasSelectedTickets = basicCounter > 0 || vipCounter > 0;
+
+    // Udregner det totale antal personer
+    const totalPeople = basicCounter + vipCounter;
+
+    // Beregner antallet af ledige teltpladser
+    const availableSpaces = tentCounter2 * 2 + tentCounter3 * 3;
+
+    // Tjekker om antallet af telte matcher antallet af personer
+    const tentCountMatches = (totalPeople === 1 && availableSpaces >= 1) || (totalPeople > 1 && availableSpaces >= totalPeople);
+
+    setCanProceed(hasSelectedTickets && tentCountMatches);
+    setIsTentButtonDisabled(totalPeople > availableSpaces);
+  }, [basicCounter, vipCounter, tentCounter2, tentCounter3]);
 
   //Basic billet
   const handleBasicPlus = () => {
@@ -118,6 +138,7 @@ export default function Home() {
                 <button onClick={handleVipPlus}>+</button>
               </div>
             </div>
+
             <div className={styles.card}>
               <img src="/assets/tent2.jpg" alt="Tent" width={300} />
               <h3>2 pers. Telt (inkl. opsætning)</h3>
@@ -147,6 +168,7 @@ export default function Home() {
               onClick={() => {
                 router.push("/CampgroundForm");
               }}
+              disabled={!canProceed}
             >
               Næste
             </button>

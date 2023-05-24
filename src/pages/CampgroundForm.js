@@ -9,7 +9,7 @@ export default function Home({ data }) {
   const [areaData, setAreaData] = useState(null);
   const [selectedArea, setSelectedArea] = useState("");
   const [availableAmount, setAvailableAmount] = useState(0);
-  const [greenCamping, setGreenCamping] = useState(0);
+  const [greenCamping, setGreenCamping] = useState(false);
   const dispatch = useContext(DispatchContext);
 
   useEffect(() => {
@@ -32,16 +32,16 @@ export default function Home({ data }) {
         key: key,
       },
     });
-  };
 
-  // const removeFromBasket = (key) => {
-  //   dispatch({
-  //     action: "REMOVE_FROM_BASKET",
-  //     payload: {
-  //       key: key,
-  //     },
-  //   });
-  // };
+    // if (greenCamping) {
+    //   dispatch({
+    //     action: "ADD_TO_BASKET",
+    //     payload: {
+    //       key: "greenCamping",
+    //     },
+    //   });
+    // }
+  };
 
   const handleAreaChange = (event) => {
     const selectedArea = event.target.value;
@@ -57,17 +57,6 @@ export default function Home({ data }) {
     }
   };
 
-  // const handleGreenCampingChange = (event) => {
-  //   const selectedGreenCamping = event.target.value;
-  //   setGreenCamping(greenCamping);
-
-  //   if (selectedGreenCamping) {
-
-  //   }
-
-  //   }
-  // }
-
   return (
     <>
       <Head>
@@ -78,7 +67,9 @@ export default function Home({ data }) {
 
       <div className={styles.container}>
         <div className={styles.column}>
-          <div>
+          <h2>Vælg det område du/i ønsker at bo i</h2>
+          <br></br>
+          <div className={styles.dropDown}>
             <select id="areaSelect" value={selectedArea} onChange={handleAreaChange}>
               <option value="">Vælg et område</option>
               {areaData &&
@@ -93,7 +84,9 @@ export default function Home({ data }) {
             <br></br>
             {selectedArea && (
               <p>
-                Der er {availableAmount} ledige pladser i {selectedArea}
+                <b>
+                  Der er {availableAmount} ledige pladser i {selectedArea}
+                </b>
               </p>
             )}
           </div>
@@ -103,7 +96,7 @@ export default function Home({ data }) {
           <br></br>
           <p>249,-</p>
           <br></br>
-          <input onDoubleClick={() => addToBasket(selectedGreenCamping)} type="checkbox" />
+          <input type="checkbox" onChange={() => setGreenCamping(!greenCamping)} />
         </div>
         <div className={styles.column}>
           <Ordreoversigt />

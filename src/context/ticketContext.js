@@ -11,7 +11,6 @@ const myGlobalValue = {
   tent3: 0,
   area: "",
   greenCamping: false,
-  bookingGebyr: 0,
 };
 
 export function reducer(state, action) {

@@ -35,8 +35,10 @@ export default function FavIcon({ data, stage, alreadyFav }) {
             stage: stage,
           });
       }
+      setFavorite(!favorite);
+    } else {
+      console.log("not sinijodfjdvjo");
     }
-    setFavorite(!favorite);
   }
 
   return (

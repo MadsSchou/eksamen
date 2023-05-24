@@ -1,32 +1,58 @@
+import { useAuth } from "@/context/AuthContext";
 import { auth, db } from "@/firebase";
 import React, { useEffect, useState } from "react";
 
 export default function dashboard() {
-  const [loggedUser, setLoggedUser] = useState({});
+  const [loggedUserDb, setLoggedUserDb] = useState({});
+  const { currentUser } = useAuth();
+  const [myFav, setMyFav] = useState([]);
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        console.log(user.uid);
-        //db er firestore databasen
-        db.collection("users")
-          .doc(user.uid)
-          .get()
-          .then((res) => {
-            setLoggedUser(res.data());
-          });
-      } else {
-        console.log("no user");
-      }
-    });
-  }, []);
+    db.collection("users")
+      .doc(currentUser.uid)
+      .get()
+      .then((res) => {
+        setLoggedUserDb(res.data());
+      });
+  }, [setLoggedUserDb]);
 
-  console.log(loggedUser);
+  useEffect(() => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .collection("favList")
+      .get()
+      .then((res) => {
+        setMyFav(res.docs);
+      });
+  }, [setMyFav]);
 
   return (
     <div>
       <h1>Dashboard</h1>
-      <p>Hej {loggedUser?.name}</p>
+      <p>Hej {loggedUserDb?.name}</p>
+
+      <div>
+        <h2>Your favs</h2>
+        {myFav?.map((fav) => {
+          let band = fav.data();
+
+          console.log(fav.data());
+          return (
+            <>
+              <p>{band?.act}</p>
+            </>
+          );
+        })}
+      </div>
+
+      <button
+        onClick={() => {
+          auth.signOut();
+          window.location.href = "/";
+        }}
+      >
+        Log Out
+      </button>
     </div>
   );
 }

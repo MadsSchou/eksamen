@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./MultiStepForm.module.css";
+import Link from "next/link";
 
 const MultistepForm = () => {
   const [currentStep, setCurrentStep] = useState(1); // Current step state
@@ -85,7 +86,9 @@ const MultistepForm = () => {
               <button type="button" onClick={handleAddStep}>
                 Tilføj Person
               </button>
-              <button type="submit">Submit</button>
+              <Link href="/Checkout">
+                <button type="submit">Submit</button>
+              </Link>
             </div>
           );
         } else {

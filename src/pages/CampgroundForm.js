@@ -4,6 +4,7 @@ import Head from "next/head";
 import styles from "./CampgroundForm.module.css";
 import Ordreoversigt from "@/components/ordreoversigt/ordreoversigt";
 import Flow from "@/components/steps";
+import Link from "next/link";
 
 export default function Home({ data }) {
   const [areaData, setAreaData] = useState(null);
@@ -17,7 +18,7 @@ export default function Home({ data }) {
   }, []);
 
   const fetchArea = () => {
-    fetch("http://localhost:8080/available-spots")
+    fetch("https://charm-pale-tub.glitch.me/available-spots")
       .then((res) => res.json())
       .then((data) => {
         setAreaData(data);
@@ -103,9 +104,9 @@ export default function Home({ data }) {
           <Ordreoversigt />
 
           <div className={styles.centerButton}>
-            {/* <Link href="/personalinfo"> */}
-            <button onClick={addToBasket}>Reserver</button>
-            {/* </Link> */}
+            <Link href="/personalinfo">
+              <button onClick={addToBasket}>Reserver</button>
+            </Link>
           </div>
         </div>
       </div>

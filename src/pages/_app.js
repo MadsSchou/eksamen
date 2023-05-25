@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
           <Context>
             <Navbar />
             <Component {...pageProps} />
-            <Footer />/
+            <Footer />
           </Context>
         </TicketProvider>
       </AuthProvider>

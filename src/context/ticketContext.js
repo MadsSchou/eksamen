@@ -27,6 +27,13 @@ export function reducer(state, action) {
       console.log(state, action);
       return copy;
 
+    case "SET_AREA":
+      const copy2 = { ...state };
+      copy2.area = action.payload.area;
+      copy2.greenCamping = action.payload.greenCamping;
+      console.log(state, action);
+      return copy2;
+
     default:
       return state;
   }

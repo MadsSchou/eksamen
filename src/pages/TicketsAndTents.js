@@ -12,7 +12,6 @@ export default function Home() {
   const [tentCounter2, setTents2] = useState(0);
   const [tentCounter3, setTents3] = useState(0);
   const [canProceed, setCanProceed] = useState(false);
-  const [isTentButtonDisabled, setIsTentButtonDisabled] = useState(false);
 
   const router = useRouter();
 
@@ -20,17 +19,20 @@ export default function Home() {
     // Tjekker om der er billetter valgt
     const hasSelectedTickets = basicCounter > 0 || vipCounter > 0;
 
-    // Udregner det totale antal personer
+    // Udregner det totale antal personer/billetter
     const totalPeople = basicCounter + vipCounter;
 
-    // Beregner antallet af ledige teltpladser
+    // Beregner antallet af teltpladser
     const availableSpaces = tentCounter2 * 2 + tentCounter3 * 3;
 
-    // Tjekker om antallet af telte matcher antallet af personer
-    const tentCountMatches = (totalPeople === 1 && availableSpaces >= 1) || (totalPeople > 1 && availableSpaces >= totalPeople);
+    // Tjekker om antallet af telte matcher antallet af personer, og om der kun er en billet valgt
+    const tentCountMatches = (totalPeople === 1 && availableSpaces >= 1) || (totalPeople > 1 && availableSpaces >= totalPeople && availableSpaces <= totalPeople + 1);
 
-    setCanProceed(hasSelectedTickets && tentCountMatches);
-    setIsTentButtonDisabled(totalPeople > availableSpaces);
+    if (hasSelectedTickets && tentCountMatches) {
+      setCanProceed(true);
+    } else {
+      setCanProceed(false);
+    }
   }, [basicCounter, vipCounter, tentCounter2, tentCounter3]);
 
   //Basic billet

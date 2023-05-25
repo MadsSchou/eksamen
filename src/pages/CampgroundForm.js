@@ -25,11 +25,12 @@ export default function Home({ data }) {
       });
   };
 
-  const addToBasket = (key) => {
+  const addToBasket = () => {
     dispatch({
-      action: "ADD_TO_BASKET",
+      action: "SET_AREA",
       payload: {
-        key: key,
+        area: selectedArea,
+        greenCamping,
       },
     });
 
@@ -103,7 +104,7 @@ export default function Home({ data }) {
 
           <div className={styles.centerButton}>
             {/* <Link href="/personalinfo"> */}
-            <button onClick={() => addToBasket("area")}>Reserver</button>
+            <button onClick={addToBasket}>Reserver</button>
             {/* </Link> */}
           </div>
         </div>

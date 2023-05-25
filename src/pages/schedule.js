@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Schedule.module.css";
 import { imgContext } from "@/context/ImgContext";
 
@@ -6,11 +6,10 @@ function Schedule() {
   const { images } = useContext(imgContext);
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
-  const [applySorting, setApplySorting] = useState(false); // new state for sorting
+  const [applySorting, setApplySorting] = useState(false);
   const genres = [...new Set(images?.map((item) => item.genre))];
   console.log(images);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [showPopup, setShowPopup] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null); // New state for selected image
 
   const handleGenreSelect = (event) => {
     const selectedGenre = event.target.value;
@@ -18,12 +17,15 @@ function Schedule() {
   };
 
   const handleSortClick = () => {
-    setApplySorting(!applySorting); // toggle applySorting state
+    setApplySorting(!applySorting);
   };
 
   const handleImageClick = (image) => {
-    setSelectedImage(image);
-    setShowPopup(true);
+    setSelectedImage(image); // Set the selected image
+  };
+
+  const handleClosePopup = () => {
+    setSelectedImage(null); // Reset the selected image
   };
 
   const filteredData = selectedGenre ? images?.filter((item) => item.genre === selectedGenre) : images;
@@ -67,22 +69,18 @@ function Schedule() {
           <div key={item.id} className={styles.card}>
             <img src={item.logo} alt={item.name} style={{ maxWidth: "100%" }} onClick={() => handleImageClick(item.logo)} />
             <h2>{item.name}</h2>
-            {/* <p>{item.logoCredits ? item.logoCredits : "Placeholder"}</p> */}
-            {selectedImage && showPopup && (
-              <div className={styles.popup}>
+            {selectedImage === item.logo && (
+              <div className={styles.popup} style={{ zIndex: 9999 }}>
+                {" "}
                 <div className={styles.popupContent}>
                   <img src={selectedImage} alt="Selected Image" />
                   <div>
                     <h3>{item.name}</h3>
-
                     <p>Members: {item.members}</p>
                     <p>Genre: {item.genre}</p>
                     <p>Bio: {item.bio}</p>
                     <p>{item.logoCredits ? item.logoCredits : "Placeholder"}</p>
-
-                    {/* <p>Slug: {item.slug}</p>
-        <p>Logo Credits: {item.logocredits}</p> */}
-                    <button onClick={() => setShowPopup(false)}>Close</button>
+                    <button onClick={handleClosePopup}>Close</button>
                   </div>
                 </div>
               </div>

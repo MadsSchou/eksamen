@@ -22,14 +22,24 @@
 //   );
 // }
 import React from "react";
-import MultiStepForm from "@/components/MultiStepForm";
+import MultiStepForm from "@/components/multistep/MultiStepForm";
+import Head from "next/head";
+import Flow from "@/Components/steps";
+// import { Inter } from "next/font/google";
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Multi-Step Form Example</h1>
-      <MultiStepForm />
-    </div>
+    <>
+      <Head>
+        <title>Thunderstrike Metal Festival</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Flow />
+      <div>
+        <h1>Multi-Step Form </h1>
+        <MultiStepForm />
+      </div>
+    </>
   );
 };
 

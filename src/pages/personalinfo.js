@@ -10,7 +10,8 @@ const HomePage = () => {
         <title>Thunderstrike Metal Festival</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Flow />
+      <Flow step={2} />
+
       <div>
         <h1>Multi-Step Form </h1>
         <MultiStepForm />

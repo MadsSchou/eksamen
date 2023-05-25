@@ -1,37 +1,111 @@
+import React, { useState, useEffect, useContext } from "react";
+import { DispatchContext, StoreContext } from "@/context/ticketContext";
 import Head from "next/head";
-import { Inter } from "next/font/google";
-import Link from "next/link";
 import styles from "./CampgroundForm.module.css";
 import Ordreoversigt from "@/components/ordreoversigt/ordreoversigt";
 import Flow from "@/components/steps";
 
-const inter = Inter({ subsets: ["latin"] });
+export default function Home({ data }) {
+  const [areaData, setAreaData] = useState(null);
+  const [selectedArea, setSelectedArea] = useState("");
+  const [availableAmount, setAvailableAmount] = useState(0);
+  const [greenCamping, setGreenCamping] = useState(false);
+  const dispatch = useContext(DispatchContext);
 
-export default function Home() {
+  useEffect(() => {
+    fetchArea();
+  }, []);
+
+  const fetchArea = () => {
+    fetch("http://localhost:8080/available-spots")
+      .then((res) => res.json())
+      .then((data) => {
+        setAreaData(data);
+        console.log(data);
+      });
+  };
+
+  const addToBasket = () => {
+    dispatch({
+      action: "SET_AREA",
+      payload: {
+        area: selectedArea,
+        greenCamping,
+      },
+    });
+
+    // if (greenCamping) {
+    //   dispatch({
+    //     action: "ADD_TO_BASKET",
+    //     payload: {
+    //       key: "greenCamping",
+    //     },
+    //   });
+    // }
+  };
+
+  const handleAreaChange = (event) => {
+    const selectedArea = event.target.value;
+    setSelectedArea(selectedArea);
+
+    if (selectedArea) {
+      const selectedSpot = areaData.find((area) => area.area === selectedArea);
+      if (selectedSpot) {
+        setAvailableAmount(selectedSpot.available);
+      }
+    } else {
+      setAvailableAmount(0);
+    }
+  };
+
   return (
     <>
       <Head>
         <title>Thunderstrike Metal Festival</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Flow />
+      <Flow step={1} />
 
       <div className={styles.container}>
         <div className={styles.column}>
-          <img className={styles.image} src="/assets/map.svg" alt="Map" />
-          <h1>Do you want to be a part of the green change?</h1>
-          <p>The climate crisis is no joke and a big festival like this puts a lot of strain on the ground it’s standing on. Be a part of a greener tomorrow by adding the green camping option, that will be used to compensate any damages to the environment and area caused during the festival.</p>
-          <label>
-            <input type="checkbox" />
-            Add green camping
-          </label>
+          <h2>Vælg det område du/i ønsker at bo i</h2>
+          <br></br>
+          <div className={styles.dropDown}>
+            <select id="areaSelect" value={selectedArea} onChange={handleAreaChange}>
+              <option value="">Vælg et område</option>
+              {areaData &&
+                areaData.map((area) => (
+                  <option key={area.area} value={area.area}>
+                    {area.area}
+                  </option>
+                ))}
+            </select>
+          </div>
+          <div>
+            <br></br>
+            {selectedArea && (
+              <p>
+                <b>
+                  Der er {availableAmount} ledige pladser i {selectedArea}
+                </b>
+              </p>
+            )}
+          </div>
+          <br></br>
+          <h2>Vil du være med til at støtte den grønne omstilling? </h2>
+          <p>Ved at købe en billet til vores festival har du mulighed for at gøre endnu mere for den grønne omstilling! Udover at nyde fantastisk musik og en uforglemmelig oplevelse, kan du vælge at støtte vores grønne initiativer ved at tilføje et ekstra beløb til din billet.</p>
+          <br></br>
+          <p>249,-</p>
+          <br></br>
+          <input type="checkbox" onChange={() => setGreenCamping(!greenCamping)} />
         </div>
         <div className={styles.column}>
-          <Ordreoversigt></Ordreoversigt>
+          <Ordreoversigt />
+
           <div className={styles.centerButton}>
-            <Link href="/personalinfo">
-              <button>Reserver Biletter</button>
-            </Link>
+            {/* <Link href="/personalinfo"> */}
+            <button onClick={addToBasket}>Reserver</button>
+            {/* </Link> */}
           </div>
         </div>
       </div>

@@ -1,25 +1,46 @@
-import React from "react";
-import { Steps, Form } from "antd";
-import { LoginOutlined, ShakeOutlined, ProfileOutlined, CreditCardOutlined, HomeOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import { Steps } from "antd";
+import { ShakeOutlined, HomeOutlined, ProfileOutlined, CreditCardOutlined } from "@ant-design/icons";
 
-function flow() {
-  const [current, setCurrent] = useState(0);
+export default function Flow(props) {
+  function checkStatus(val) {
+    if (val < props.step) {
+      return "finish";
+    } else if (val === props.step) {
+      return "process";
+    } else if (val > props.step) {
+      return "wait";
+    }
+  }
   return (
     <>
-      <Steps onChange={setCurrent} current={current}>
-        <Steps.step title="Billettype" icon={<ShakeOutlined />} />
-        <Steps.step title="Camp Område " icon={<HomeOutlined />} />
-        <Steps.step title="Personlig Info" icon={<ProfileOutlined />} />
-        <Steps.step title="CheckOut" icon={<CreditCardOutlined />} />
-      </Steps>
+      <Steps
+        style={{ paddingInline: 180, paddingTop: 50 }}
+        size="small"
+        direction="horizontal"
+        responsive="true"
+        items={[
+          {
+            title: "Billettype",
+            status: checkStatus(0),
+            icon: <ShakeOutlined />,
+          },
+          {
+            title: "Camp Område",
+            status: checkStatus(1),
+            icon: <HomeOutlined />,
+          },
+          {
+            title: "Personlig info",
+            status: checkStatus(2),
+            icon: <ProfileOutlined />,
+          },
+          {
+            title: "Checkout",
+            status: checkStatus(3),
+            icon: <CreditCardOutlined />,
+          },
+        ]}
+      />
     </>
   );
 }
-
-export default flow;
-
-//Ændre farve
-// .ant-steps-item-process .ant-steps-item-icon {
-//     background: #46b3cb !important;
-// }

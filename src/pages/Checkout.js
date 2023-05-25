@@ -14,7 +14,7 @@ export default function Home() {
         <title>Thunderstrike Metal Festival</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Flow />
+      <Flow step={3} />
 
       <div className={styles.container}>
         <div className={styles.column}>

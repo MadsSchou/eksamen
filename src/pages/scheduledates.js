@@ -15,6 +15,14 @@ function App() {
   const { images } = useContext(imgContext);
   const [currentFavList, setCurrentFavList] = useState([]);
 
+  function handleNotLoggedIn() {
+    if (currentUser) {
+      return;
+    } else {
+      alert("Du skal oprette dig, for at kunne tilføje til huskelisten");
+    }
+  }
+
   async function chooseStage(stage) {
     setStages(stage);
     let chosenSchedule = Object.entries(schedule).find(
@@ -96,11 +104,13 @@ function App() {
               key={`${timeSlot.start}-${timeSlot.end}`}
               className={styles["time-slot"]}
             >
-              <FavIcon
-                data={timeSlot}
-                stage={stages}
-                alreadyFav={alreadyFavListed}
-              />
+              <div onClick={() => handleNotLoggedIn()}>
+                <FavIcon
+                  data={timeSlot}
+                  stage={stages}
+                  alreadyFav={alreadyFavListed}
+                />
+              </div>
               <div
                 className={styles["time-range"]}
               >{`${timeSlot.start} - ${timeSlot.end}`}</div>

@@ -1,0 +1,48 @@
+.content {
+  background-color: #1e1e1e;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+.white {
+  color: white;
+}
+.welcome {
+  text-align: center;
+  color: white;
+}
+.make_user {
+  text-align: center;
+}
+
+.login_form {
+  background-color: #3e3e42;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.signUp_form {
+  background-color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.button {
+  background-color: #f5c065;
+  border: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .grid_1-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}

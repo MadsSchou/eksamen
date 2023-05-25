@@ -6,15 +6,8 @@
 }
 
 * {
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
-}
-
-html {
-  width: 100%;
-  height: 100%;
-  /* background-color: var(--primary-black); */
+  padding: 0;
+  margin: 0 auto;
 }
 
 :root {
@@ -26,16 +19,6 @@ html {
   /* Fonts */
   --font-sans: "Lato", sans-serif;
   --font-serif: "Metal Mania", serif;
-}
-
-body {
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
-}
-
-.Overskrift {
-  color: rgb(5, 67, 255);
 }
 
 * {
@@ -154,13 +137,12 @@ nav {
 
 footer {
   background: var(--primary-black);
-  padding: 0;
-  height: 30vh;
+  /* height: 30vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5vh;
+  /* margin-top: 5vh; */
 }
 
 /* .footer_container {

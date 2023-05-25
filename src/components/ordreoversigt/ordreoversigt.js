@@ -9,8 +9,8 @@ export default function Basket() {
   // Checker om der er noget i kurven
   const itemInBasket = state.vipTicket > 0 || state.basicTicket > 0 || state.tent3 > 0 || state.tent2 > 0 || state.grenCamping > 0;
 
-  // Udregner valgte billet pris
-  const chosenTicketAmount = (dispatch.state?.basicCounter ?? 0) + (dispatch.state?.vipCounter ?? 0) + (dispatch.state?.tent2 ?? 0) + (dispatch.state?.tent3 ?? 0);
+  // // Udregner valgte billet pris
+  // const chosenTicketAmount = (dispatch.state?.basicCounter ?? 0) + (dispatch.state?.vipCounter ?? 0) + (dispatch.state?.tent2 ?? 0) + (dispatch.state?.tent3 ?? 0);
 
   // Definere priser
   const vipTicketPrice = 1299;

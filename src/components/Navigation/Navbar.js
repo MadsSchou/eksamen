@@ -35,13 +35,11 @@ function Navbar() {
 
   useEffect(() => {
     if (images) {
-      console.log("there is imgs");
+      return;
     } else {
-      console.log("there is no imgs");
       fetchImages();
     }
   }, [images, setImages]);
-  console.log(images);
   return (
     <header>
       <nav className="nav">

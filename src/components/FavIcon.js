@@ -1,11 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../pages/scheduledates.module.css";
-import { auth, db } from "@/firebase";
+import { useAuth } from "@/context/AuthContext";
+import { db } from "@/firebase";
 
-export default function FavIcon({ data, stage }) {
-  const [favorite, setFavorite] = useState(false);
-  console.log(data, stage);
+export default function FavIcon({ data, stage, alreadyFav }) {
+  const [favorite, setFavorite] = useState(alreadyFav);
+  const { currentUser } = useAuth();
+
   function handleFavClick() {
+    const bandName = data.act.replaceAll(" ", "+");
+
+    const fancyId = bandName + "_" + data.start + "_" + data.end + "_" + stage;
+
+    if (currentUser) {
+      if (favorite) {
+        console.log("it now removed");
+        db.collection("users")
+          .doc(currentUser.uid)
+          .collection("favList")
+          .doc(fancyId)
+          .delete();
+      } else {
+        console.log("it now added");
+
+        db.collection("users")
+          .doc(currentUser?.uid)
+          .collection("favList")
+          .doc(fancyId)
+          .set({
+            id: fancyId,
+            act: data.act,
+            start: data.start,
+            end: data.end,
+            stage: stage,
+          });
+      }
+    }
     setFavorite(!favorite);
   }
 

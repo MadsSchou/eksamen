@@ -1,5 +1,5 @@
 import { Steps } from "antd";
-import { ShakeOutlined, HomeOutlined, ProfileOutlined, CreditCardOutlined } from "@ant-design/icons";
+import { ShakeOutlined, HomeOutlined, ProfileOutlined, CreditCardOutlined, CheckCircleOutlined } from "@ant-design/icons";
 
 export default function Flow(props) {
   function checkStatus(val) {
@@ -38,6 +38,11 @@ export default function Flow(props) {
             title: "Checkout",
             status: checkStatus(3),
             icon: <CreditCardOutlined />,
+          },
+          {
+            title: "Confirmation",
+            status: checkStatus(4),
+            icon: <CheckCircleOutlined />,
           },
         ]}
       />

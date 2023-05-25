@@ -5,7 +5,7 @@ export const StoreContext = createContext();
 export const DispatchContext = createContext();
 
 const myGlobalValue = {
-  vipTicket: 2,
+  vipTicket: 0,
   basicTicket: 0,
   tent2: 0,
   tent3: 0,

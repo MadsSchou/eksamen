@@ -1,13 +1,12 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
 import styles from "./checkout.module.css";
 import CardForm from "@/components/CardForm";
 import Ordreoversigt from "@/components/ordreoversigt/ordreoversigt";
 import Flow from "@/components/steps";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -26,6 +25,13 @@ export default function Home() {
           <Ordreoversigt></Ordreoversigt>
         </div>
       </div>
+      <button
+        onClick={() => {
+          router.push("./confirmation");
+        }}
+      >
+        Gennemfør køb
+      </button>
     </>
   );
 }

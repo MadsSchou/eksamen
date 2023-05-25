@@ -56,11 +56,3 @@ export default function dashboard() {
     </div>
   );
 }
-
-/* Start på set Fave - lav en component med ikon.
-
-db.collection("users")
-  .doc(user.uid)
-  .update({
-    fav: [...loggedUser.fav, "new fav"],
-  }); */

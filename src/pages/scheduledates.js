@@ -1,14 +1,31 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./scheduledates.module.css";
 import { imgContext } from "@/context/ImgContext";
+import FavIcon from "@/components/FavIcon";
+import { auth, db } from "@/firebase";
 
 function App() {
   const [schedule, setSchedule] = useState([]);
   const [stages, setStages] = useState("Midgard");
-  const [chosenSchedule, setChosenSchedule] = useState(["Vælg en scene", {}]);
+  const [chosenSchedule, setChosenSchedule] = useState(["Midgard", []]);
 
   const { images } = useContext(imgContext);
 
+  async function chooseStage(stage) {
+    setStages(stage);
+    let chosenSchedule = Object.entries(schedule).find(
+      (item) => item[0] === stage
+    );
+    setChosenSchedule(chosenSchedule);
+  }
+  useEffect(() => {
+    console.log(auth.currentUser);
+    if (auth.currentUser) {
+      db.collection(auth.currentUser.uid)
+        .get()
+        .then((data) => console.log(data));
+    }
+  }, []);
   useEffect(() => {
     fetch("https://charm-pale-tub.glitch.me/schedule")
       .then((response) => response.json())
@@ -20,20 +37,18 @@ function App() {
       });
   }, []);
 
-  async function chooseStage(stage) {
-    setStages(stage);
-    let chosenSchedule = Object.entries(schedule).find(
-      (item) => item[0] === stage
-    );
-    setChosenSchedule(chosenSchedule);
-  }
-
+  useEffect(() => {
+    chooseStage("Midgard");
+  }, [schedule]);
   const renderCalendar = () => {
+    if (!chosenSchedule) {
+      return <div>Loading...</div>;
+    }
     return Object.entries(chosenSchedule[1]).map(([day, timeSlots]) => {
       return (
         <div key={day} className={styles["day-column"]}>
           <h3 className={styles.day}>{day}</h3>
-          {renderTimeSlots(timeSlots)}
+          {images && renderTimeSlots(timeSlots)}
         </div>
       );
     });
@@ -56,9 +71,7 @@ function App() {
                 <div
                   className={styles["time-range"]}
                 >{`${timeSlot.start} - ${timeSlot.end}`}</div>
-                <div className={styles["act-details"]}>
-                  <p>{timeSlot.act}</p>
-                </div>
+                <div className={styles["act-details"]}></div>
                 <div className={styles["break-indicator"]}>Break</div>
               </div>
             );
@@ -69,21 +82,22 @@ function App() {
               key={`${timeSlot.start}-${timeSlot.end}`}
               className={styles["time-slot"]}
             >
+              <FavIcon data={timeSlot} stage={stages} />
               <div
                 className={styles["time-range"]}
               >{`${timeSlot.start} - ${timeSlot.end}`}</div>
               <div className={styles["act-details"]}>
-                <p>{timeSlot.act}</p>
                 <div>
                   <img
-                    width={"100px"}
-                    height={"100px"}
+                    width={"100%"}
+                    height={"150px"}
                     src={
                       imgForBand[0]?.logo ||
                       imgForBand[0]?.logoCredits.split(", ")[2]
                     }
                     loading="lazy"
                   />
+                  <p>{timeSlot.act}</p>
                 </div>
               </div>
             </div>
@@ -93,20 +107,24 @@ function App() {
     );
   };
   return (
-    <div>
-      <select onChange={(e) => chooseStage(e.target.value)}>
-        <option value="Midgard">Vælg stage</option>
-        {Object.entries(schedule).map(([stage]) => (
-          <option key={stage} value={stage}>
-            {stage}
-          </option>
-        ))}
-      </select>
+    <div className={styles.contentSchedule}>
       <div className={styles.schedule}>
         <div>
           <div className={styles.schedulePlan}>
+            <h1>Tidsplan</h1>
+            <select
+              className={styles.select}
+              onChange={(e) => chooseStage(e.target.value)}
+            >
+              <option value="">Vælg scene</option>
+              {Object.entries(schedule).map(([stage]) => (
+                <option key={stage} value={stage}>
+                  {stage}
+                </option>
+              ))}
+            </select>
             <div>
-              <h1>Stage: {chosenSchedule[0]}</h1>
+              {/* <h1>Stage: {chosenSchedule[0]}</h1> */}
               <div className={styles.calendar}>{renderCalendar()}</div>
             </div>
           </div>

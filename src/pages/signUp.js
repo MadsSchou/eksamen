@@ -19,7 +19,7 @@ export default function signUp() {
   }
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h1>Opret bruger</h1>
 
       <form onSubmit={(e) => handleSignUp(e)}>
         <div>

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./MultiStepForm.module.css";
-import Link from "next/link";
-
+import { DispatchContext, StoreContext } from "@/context/ticketContext";
+import { useRouter } from "next/router";
 const MultistepForm = () => {
-  const [currentStep, setCurrentStep] = useState(1); // Current step state
+  const state = useContext(StoreContext);
+  const [currentStep, setCurrentStep] = useState(1);
+  const router = useRouter();
+
   const [steps, setSteps] = useState([
     {
       firstname: "",
@@ -14,7 +17,7 @@ const MultistepForm = () => {
       address: "",
       phone: "",
     },
-  ]); // Initial form state
+  ]);
 
   const handleChange = (index, event) => {
     const { name, value } = event.target;
@@ -44,10 +47,12 @@ const MultistepForm = () => {
     console.log(steps);
   };
 
+  const totalSteps = state.basicTicket + state.vipTicket;
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.counter}>
-        {currentStep}/{steps.length}
+        {currentStep}/{totalSteps}
       </div>
       {steps.map((step, index) => {
         if (index === steps.length - 1) {
@@ -83,12 +88,19 @@ const MultistepForm = () => {
                 Telefon nr.:
                 <input type="phone" name="phone" value={step.phone} onChange={(event) => handleChange(index, event)} />
               </label>
-              <button type="button" onClick={handleAddStep}>
-                Tilføj Person
-              </button>
-              <Link href="/Checkout">
-                <button type="submit">Submit</button>
-              </Link>
+              {totalSteps === steps.length ? (
+                <button
+                  onClick={() => {
+                    router.push("/Checkout");
+                  }}
+                >
+                  Gå Til Betaling
+                </button>
+              ) : (
+                <button type="button" onClick={handleAddStep}>
+                  Næste
+                </button>
+              )}
             </div>
           );
         } else {

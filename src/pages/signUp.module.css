@@ -2,19 +2,6 @@
   background-color: #1e1e1e;
 }
 
-.focused {
-  border-color: blue; /* Example: change the border color to blue */
-}
-
-/* Additional styles for the focused class */
-.focused label {
-  color: blue; /* Example: change the label color to blue */
-}
-
-.focused input {
-  color: blue; /* Example: change the text color to blue */
-}
-
 .login_form input {
   height: 2.5em;
   width: 18em;
@@ -63,12 +50,14 @@
   padding-top: 2em;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .signup_col {
   background-color: white;
   padding-top: 2em;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .login_form {

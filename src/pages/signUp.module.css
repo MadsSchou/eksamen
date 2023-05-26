@@ -50,12 +50,14 @@
   padding-top: 2em;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .signup_col {
   background-color: white;
   padding-top: 2em;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .login_form {

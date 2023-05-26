@@ -2,14 +2,54 @@
   background-color: #1e1e1e;
 }
 
+.focused {
+  border-color: blue; /* Example: change the border color to blue */
+}
+
+/* Additional styles for the focused class */
+.focused label {
+  color: blue; /* Example: change the label color to blue */
+}
+
+.focused input {
+  color: blue; /* Example: change the text color to blue */
+}
+
+.login_form input {
+  height: 2.5em;
+  width: 18em;
+  padding-inline: 0.5em;
+  border: none;
+}
+.signUp_form input {
+  height: 2.5em;
+  width: 18em;
+  padding-inline: 0.5em;
+  border: none;
+}
+
 .input-container {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 1rem;
+  background-color: white;
+  border: 1px solid lightgray;
 }
-.white {
-  color: white;
+.field {
+  margin-block: 1.5em;
+  width: 22em;
 }
+
+.login_form label {
+  border: 1px solid lightgray;
+  border-bottom: none;
+  background-color: white;
+  padding: 5px 10px 0px 8px;
+}
+.signUp_form label {
+  border: 1px solid lightgray;
+  border-bottom: none;
+  background-color: white;
+  padding: 5px 10px 0px 8px;
+}
+
 .welcome {
   text-align: center;
   color: white;
@@ -18,20 +58,27 @@
   text-align: center;
 }
 
-.login_form {
+.login_col {
   background-color: #3e3e42;
-  padding: 2rem;
+  padding-top: 2em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center; /* Add this line to vertically center the button */
+}
+.signup_col {
+  background-color: white;
+  padding-top: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.login_form {
+  padding: 2rem;
+  margin: 0 auto;
 }
 
 .signUp_form {
-  background-color: white;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
+  margin: 0 auto;
 }
 .button {
   background-color: #f5c065;
@@ -39,7 +86,10 @@
   color: black;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0 auto;
+  width: 6em;
+  height: 2.5em;
 }
 
 @media (min-width: 768px) {

@@ -37,20 +37,30 @@ export default function signUp() {
   return (
     <div className={styles["content"]}>
       <div className={styles["grid_1-1"]}>
-        <div className={styles["login_form"]}>
+        <div className={styles["login_col"]}>
           <h1 className={styles["welcome"]}>Velkommen tilbage!</h1>
-          <form onSubmit={(e) => handleLogIn(e)}>
+          <form
+            className={styles["login_form"]}
+            onSubmit={(e) => handleLogIn(e)}
+          >
             <div className={styles[["input-container"]]}>
               <label className={styles["white"]} htmlFor="email">
                 Email
               </label>
-              <input type="email" name="email" id="email" placeholder="Email" />
+              <input
+                className={styles["input_field"]}
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+              />
             </div>
             <div className={styles[["input-container"]]}>
               <label className={styles["white"]} htmlFor="password">
                 Password
               </label>
               <input
+                className={styles["input_field"]}
                 type="password"
                 name="password"
                 id="password"
@@ -63,20 +73,36 @@ export default function signUp() {
           </form>
         </div>
 
-        <div className={styles["signUp_form"]}>
-          <form onSubmit={(e) => handleSignUp(e)}>
+        <div className={styles["signup_col"]}>
+          <h1 className={styles[["make_user"]]}>Opret bruger</h1>
+          <form
+            className={styles["signUp_form"]}
+            onSubmit={(e) => handleSignUp(e)}
+          >
             <div className={styles["input-container"]}>
-              <h1 className={styles[["make_user"]]}>Opret bruger</h1>
               <label htmlFor="name">Name: </label>
-              <input type="text" id="name" name="name" placeholder="Navn" />
+              <input
+                className={styles["input_field"]}
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Navn"
+              />
             </div>
             <div className={styles["input-container"]}>
               <label htmlFor="email">Email: </label>
-              <input type="email" id="email" name="email" placeholder="Email" />
+              <input
+                className={styles["input_field"]}
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+              />
             </div>
             <div className={styles["input-container"]}>
               <label htmlFor="password">Password: </label>
               <input
+                className={styles["input_field"]}
                 type="password"
                 id="password"
                 name="password"
@@ -88,6 +114,7 @@ export default function signUp() {
                 Password Confirmation:{" "}
               </label>
               <input
+                className={styles["input_field"]}
                 type="password"
                 id="password_confirmation"
                 name="password_confirmation"
@@ -95,7 +122,9 @@ export default function signUp() {
               />
             </div>
 
-            <input className={styles["button"]} type="submit" value={"opret"} />
+            <button className={styles["button"]} type="submit">
+              Opret
+            </button>
           </form>
         </div>
       </div>

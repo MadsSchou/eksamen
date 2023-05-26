@@ -2,6 +2,11 @@
   background-color: #1e1e1e;
 }
 
+.input_field {
+  height: 2.5em;
+  width: 18em;
+  padding-inline: 0.5em;
+}
 .input-container {
   display: flex;
   flex-direction: column;
@@ -18,8 +23,14 @@
   text-align: center;
 }
 
-.login_form {
+.login_col {
   background-color: #3e3e42;
+}
+.signup_col {
+  background-color: white;
+}
+
+.login_form {
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -28,10 +39,11 @@
 }
 
 .signUp_form {
-  background-color: white;
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Add this line to vertically center the button */
 }
 .button {
   background-color: #f5c065;
@@ -39,7 +51,10 @@
   color: black;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0 auto;
+  width: 6em;
+  height: 2.5em;
 }
 
 @media (min-width: 768px) {

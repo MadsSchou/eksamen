@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import styles from "./Schedule.module.css";
+import styles from "./Bands.module.css";
 import { imgContext } from "@/context/ImgContext";
 
 function Schedule() {
@@ -17,7 +17,12 @@ function Schedule() {
   };
 
   const handleSortClick = () => {
-    setApplySorting(!applySorting);
+    if (applySorting) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortOrder("asc");
+      setApplySorting(true);
+    }
   };
 
   const handleImageClick = (image) => {
@@ -48,19 +53,24 @@ function Schedule() {
 
   return (
     <div className={`${styles.overskrift}`}>
-      <h1>Schedule</h1>
+      <h1>Bands</h1>
       <div className={styles.filterSort}>
-        <label htmlFor="genre-select">Filter by Genre:</label>
-        <select id="genre-select" value={selectedGenre || "all"} onChange={handleGenreSelect}>
-          <option value="all">All Genres</option>
-          {genres.map((genre) => (
-            <option key={genre} value={genre}>
-              {genre}
-            </option>
-          ))}
-        </select>
-        <div className={styles.sortButton} onClick={handleSortClick}>
-          {sortOrder === "asc" ? "Sort A-Z" : "Sort Z-A"}
+        <label htmlFor="genre-select">
+          Filtrer genrer:
+          <select id="genre-select" value={selectedGenre || "all"} onChange={handleGenreSelect}>
+            <option value="all">Alle genrer</option>
+            {genres.map((genre) => (
+              <option key={genre} value={genre}>
+                {genre}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div className={styles.sortButton} onClick={handleSortClick}>
+            {sortOrder === "asc" ? "Sorter A-Z" : "Sorter Z-A"}
+          </div>
         </div>
       </div>
 
@@ -76,7 +86,7 @@ function Schedule() {
                   <img src={selectedImage} alt="Selected Image" />
                   <div>
                     <h3>{item.name}</h3>
-                    <p>Members: {item.members}</p>
+                    <p>Medlemmer: {item.members}</p>
                     <p>Genre: {item.genre}</p>
                     <p>Bio: {item.bio}</p>
                     <p>{item.logoCredits ? item.logoCredits : "Placeholder"}</p>

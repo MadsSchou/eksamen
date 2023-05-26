@@ -11,9 +11,7 @@ const HomePage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flow step={2} />
-
       <div>
-        <h1>Multi-Step Form </h1>
         <MultiStepForm />
       </div>
     </>

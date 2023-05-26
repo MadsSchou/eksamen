@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import styles from "./MultiStepForm.module.css";
 import { DispatchContext, StoreContext } from "@/context/ticketContext";
 import { useRouter } from "next/router";
+
 const MultistepForm = () => {
   const state = useContext(StoreContext);
   const [currentStep, setCurrentStep] = useState(1);
@@ -13,6 +14,7 @@ const MultistepForm = () => {
       lastname: "",
       email: "",
       zipcode: "",
+      city: "",
       country: "",
       address: "",
       phone: "",
@@ -34,6 +36,7 @@ const MultistepForm = () => {
         lastname: "",
         email: "",
         zipcode: "",
+        city: "",
         country: "",
         address: "",
         phone: "",
@@ -58,32 +61,36 @@ const MultistepForm = () => {
         if (index === steps.length - 1) {
           return (
             <div className={styles.stepContainer} key={index}>
-              <h2>Step {index + 1}</h2>
+              <h2>Person {index + 1}</h2>
               <label className={styles.formLabel}>
                 Navn:
                 <input type="text" name="firstname" value={step.firstname} onChange={(event) => handleChange(index, event)} />
               </label>
               <br />
               <label className={styles.formLabel}>
-                Efternavn: <input type="text" name="lastname" value={step.lastname} onChange={(event) => handleChange(index, event)} />{" "}
+                Efternavn: <input type="text" name="lastname" value={step.lastname} onChange={(event) => handleChange(index, event)} />
               </label>
-              <hr />{" "}
+              <div className={styles.formRow}>
+                <label className={styles.formLabel}>
+                  PostNr: <input type="text" name="zipcode" value={step.zipcode} onChange={(event) => handleChange(index, event)} />
+                </label>
+                <label className={styles.formLabel}>
+                  City: <input type="text" name="city" value={step.city} onChange={(event) => handleChange(index, event)} />
+                </label>
+              </div>
+
               <label className={styles.formLabel}>
-                Email: <input type="email" name="email" value={step.email} onChange={(event) => handleChange(index, event)} />{" "}
+                Email: <input type="email" name="email" value={step.email} onChange={(event) => handleChange(index, event)} />
               </label>
-              <hr />{" "}
+
               <label className={styles.formLabel}>
-                PostNr: <input type="text" name="zipcode" value={step.zipcode} onChange={(event) => handleChange(index, event)} />{" "}
+                Land: <input type="text" name="country" value={step.country} onChange={(event) => handleChange(index, event)} />
               </label>
-              <hr />{" "}
+
               <label className={styles.formLabel}>
-                Land: <input type="text" name="country" value={step.country} onChange={(event) => handleChange(index, event)} />{" "}
+                Adresse: <input type="text" name="address" value={step.address} onChange={(event) => handleChange(index, event)} />
               </label>
-              <hr />{" "}
-              <label className={styles.formLabel}>
-                Adresse: <input type="text" name="address" value={step.address} onChange={(event) => handleChange(index, event)} />{" "}
-              </label>
-              <hr />{" "}
+
               <label className={styles.formLabel}>
                 Telefon nr.:
                 <input type="phone" name="phone" value={step.phone} onChange={(event) => handleChange(index, event)} />

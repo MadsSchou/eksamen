@@ -1,0 +1,183 @@
+.grid {
+  padding: 2rem;
+}
+
+.bandGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+  margin: 20px auto;
+  max-width: 1110px;
+  padding: 0 20px;
+}
+
+.overskrift {
+  text-align: center;
+  font-family: displayFont;
+  background-color: white;
+  color: black;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 350px;
+  height: 250px; /* Set a fixed height for the cards */
+  border: 1px solid black;
+  display: block;
+}
+
+.card img {
+  display: block;
+  object-fit: cover; /* Ensure the image covers the entire container */
+  width: 100%;
+  height: 100%;
+}
+
+.card h2 {
+  position: absolute;
+  top: 94.8%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  color: white;
+  margin: 0;
+  font-family: none;
+}
+
+.filterSort {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.filterSort label {
+  margin-right: 10rem;
+}
+
+.filterSort select {
+  margin-right: 40rem;
+}
+
+.sortButton {
+  padding: 0.5rem;
+  background-color: #f5c065;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popupContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 80%;
+  height: 80%;
+  max-width: 1100px;
+  max-height: 600px;
+  overflow: auto;
+  background-color: #3e3e42;
+  color: white;
+}
+
+.popupContent img {
+  width: 600px; /* Set a fixed width for the image */
+  height: auto; /* Allow the height to adjust based on the image's aspect ratio */
+  margin-right: 20px; /* Add some spacing between the image and text */
+}
+
+.popupContent p {
+  flex-grow: 1; /* Allow the text section to take up remaining space */
+  font-family: none;
+  margin-bottom: 10px;
+}
+.popupContent h3 {
+  font-size: 1cm;
+  margin-bottom: 10px; /* Add some spacing below the heading */
+}
+
+.popupContent button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px; /* Add some spacing above the button */
+}
+
+.popupContent button:hover {
+  background-color: white;
+}
+@media (max-width: 767px) {
+  .bandGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .card {
+    max-width: 100%;
+    height: auto;
+  }
+  .filterSort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .filterSort label {
+    margin-right: 10px;
+  }
+
+  .filterSort select {
+    margin-right: 10px;
+  }
+  .popupContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+  }
+
+  .popupContent img {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+  }
+
+  .popupContent p {
+    font-family: none;
+    margin-bottom: 10px;
+  }
+
+  .popupContent h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .popupContent button {
+    margin-top: 10px;
+  }
+}

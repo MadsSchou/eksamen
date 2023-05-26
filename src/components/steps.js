@@ -1,6 +1,5 @@
 import { Steps } from "antd";
 import { ShakeOutlined, HomeOutlined, ProfileOutlined, CreditCardOutlined, CheckCircleOutlined } from "@ant-design/icons";
-
 export default function Flow(props) {
   function checkStatus(val) {
     if (val < props.step) {
@@ -11,6 +10,9 @@ export default function Flow(props) {
       return "wait";
     }
   }
+
+  const iconStyle = { color: "#F5C065" };
+
   return (
     <>
       <Steps

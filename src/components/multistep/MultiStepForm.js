@@ -72,10 +72,12 @@ const MultistepForm = () => {
               </label>
               <div className={styles.formRow}>
                 <label className={styles.formLabel}>
-                  PostNr: <input type="text" name="zipcode" value={step.zipcode} onChange={(event) => handleChange(index, event)} />
+                  PostNr:
+                  <input type="text" name="zipcode" value={step.zipcode} onChange={(event) => handleChange(index, event)} />
                 </label>
                 <label className={styles.formLabel}>
-                  City: <input type="text" name="city" value={step.city} onChange={(event) => handleChange(index, event)} />
+                  City:
+                  <input type="text" name="city" value={step.city} onChange={(event) => handleChange(index, event)} />
                 </label>
               </div>
 

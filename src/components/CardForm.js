@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 
 const CardForm = () => {
   const [cardNumber, setCardNumber] = useState("");
-  const [expiryDate, setExpiryDate] = useState("");
+  const [expiryMonth, setExpiryMonth] = useState("");
+  const [expiryYear, setExpiryYear] = useState("");
   const [cvv, setCVV] = useState("");
   const router = useRouter();
 
@@ -13,9 +14,14 @@ const CardForm = () => {
     setCardNumber(input);
   };
 
-  const handleExpiryDateChange = (e) => {
-    const input = e.target.value.slice(0, 5); // Limit to 4 characters
-    setExpiryDate(input);
+  const handleExpiryMonthChange = (e) => {
+    const input = e.target.value.slice(0, 2); // Limit to 2 characters
+    setExpiryMonth(input);
+  };
+
+  const handleExpiryYearChange = (e) => {
+    const input = e.target.value.slice(0, 2); // Limit to 2 characters
+    setExpiryYear(input);
   };
 
   const handleCVVChange = (e) => {
@@ -28,28 +34,39 @@ const CardForm = () => {
 
     // Do something with the form data (e.g., send it to a server)
     console.log("Card Number:", cardNumber);
-    console.log("Expiry Date:", expiryDate);
+    console.log("Expiry Date:", `${expiryMonth}/${expiryYear}`);
     console.log("CVV:", cvv);
 
     // Clear the form fields
     setCardNumber("");
-    setExpiryDate("");
+    setExpiryMonth("");
+    setExpiryYear("");
     setCVV("");
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles["card-form"]}>
       <div className={styles["form-group"]}>
+        <label htmlFor="name" className={styles["label"]}>
+          Kortholders Fulder Navn:
+        </label>
+        <input type="text" id="name" value={cardNumber} onChange={handleCardNumberChange} className={styles["input"]} />
+      </div>
+      <div className={styles["form-group"]}>
         <label htmlFor="cardNumber" className={styles["label"]}>
-          Card Number:
+          Kortnummer:
         </label>
         <input type="text" id="cardNumber" value={cardNumber} onChange={handleCardNumberChange} className={styles["input"]} />
       </div>
       <div className={styles["form-group"]}>
         <label htmlFor="expiryDate" className={styles["label"]}>
-          ExpiryDate Date/Year:
+          UdløbsDato:
         </label>
-        <input type="text" id="expiryDate" value={expiryDate} onChange={handleExpiryDateChange} className={styles["input"]} />
+        <div className={styles["expiry-date-input"]}>
+          <input type="text" id="expiryMonth" value={expiryMonth} onChange={handleExpiryMonthChange} className={styles["input"]} maxLength={2} placeholder="MM" />
+          <span className={styles["separator"]}>/</span>
+          <input type="text" id="expiryYear" value={expiryYear} onChange={handleExpiryYearChange} className={styles["input"]} maxLength={2} placeholder="YY" />
+        </div>
       </div>
       <div className={styles["form-group"]}>
         <label htmlFor="cvv" className={styles["label"]}>
@@ -61,7 +78,7 @@ const CardForm = () => {
         onClick={() => {
           router.push("./confirmation");
         }}
-        className={styles["submitButton"]} // Apply the submitButton class
+        className={styles["submitButton"]}
       >
         Gennemfør køb
       </button>

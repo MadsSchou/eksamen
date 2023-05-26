@@ -116,56 +116,75 @@ export default function Home() {
 
       <Flow step={0} />
 
-      <div className={styles.container}>
-        <div className={styles.column}>
-          <div className={styles.container}>
-            <div className={styles.card}>
-              <img src="/assets/basic.svg" alt="Basic Ticket" />
-              <h3>Basic Partout</h3>
-              <h3>799,-</h3>
+      <div className={styles.basketContainerMobile}>
+        <div className={styles.basket}>
+          <Basket basicCounter={basicCounter} vipCounter={vipCounter} />
+        </div>
+        <div className={styles.centerButton}>
+          <button
+            onClick={() => {
+              router.push("/CampgroundForm");
+            }}
+            disabled={!canProceed}
+          >
+            Næste
+          </button>
+        </div>
+      </div>
 
-              <div className={styles.counter}>
-                <button onClick={handleBasicMinus}>-</button>
-                <span>{basicCounter}</span>
-                <button onClick={handleBasicPlus}>+</button>
-              </div>
+      <div className={styles.containerGrid}>
+        <div className={styles.counterContainer}>
+          <div className={styles.card}>
+            <img src="/assets/basic.svg" alt="Basic Ticket" />
+            <h3>Basic Partout</h3>
+            <h3>799,-</h3>
+            <div className={styles.counter}>
+              <button onClick={handleBasicMinus}>-</button>
+              <span>{basicCounter}</span>
+              <button onClick={handleBasicPlus}>+</button>
             </div>
-            <div className={styles.card}>
-              <img src="/assets/vip.svg" alt="VIP Ticket" />
-              <h3>VIP Partout</h3>
-              <h3>1299,-</h3>
-              <div className={styles.counter}>
-                <button onClick={handleVipMinus}>-</button>
-                <span>{vipCounter}</span>
-                <button onClick={handleVipPlus}>+</button>
-              </div>
-            </div>
+          </div>
 
-            <div className={styles.card}>
-              <img src="/assets/tent2.jpg" alt="Tent" width={300} />
-              <h3>2 pers. Telt (inkl. opsætning)</h3>
-              <h3>299,-</h3>
-              <div className={styles.counter}>
-                <button onClick={handleTentMinus2}>-</button>
-                <span>{tentCounter2}</span>
-                <button onClick={handleTentPlus2}>+</button>
-              </div>
+          <div className={styles.card}>
+            <img src="/assets/vip.svg" alt="VIP Ticket" />
+            <h3>VIP Partout</h3>
+            <h3>1299,-</h3>
+            <div className={styles.counter}>
+              <button onClick={handleVipMinus}>-</button>
+              <span>{vipCounter}</span>
+              <button onClick={handleVipPlus}>+</button>
             </div>
-            <div className={styles.card}>
-              <img src="/assets/tent3.jpg" alt="Tent" width={300} />
-              <h3>3 pers. Telt (inkl. opsætning)</h3>
-              <h3>399,-</h3>
-              <div className={styles.counter}>
-                <button onClick={handleTentMinus3}>-</button>
-                <span>{tentCounter3}</span>
-                <button onClick={handleTentPlus3}>+</button>
-              </div>
+          </div>
+
+          <div className={styles.card}>
+            <img src="/assets/tent2.jpg" alt="Tent" />
+            <h3>2 pers. Telt (inkl. opsætning)</h3>
+            <h3>299,-</h3>
+            <div className={styles.counter}>
+              <button onClick={handleTentMinus2}>-</button>
+              <span>{tentCounter2}</span>
+              <button onClick={handleTentPlus2}>+</button>
+            </div>
+          </div>
+
+          <div className={styles.card}>
+            <img src="/assets/tent3.jpg" alt="Tent" />
+            <h3>3 pers. Telt (inkl. opsætning)</h3>
+            <h3>399,-</h3>
+            <div className={styles.counter}>
+              <button onClick={handleTentMinus3}>-</button>
+              <span>{tentCounter3}</span>
+              <button onClick={handleTentPlus3}>+</button>
             </div>
           </div>
         </div>
-        <div className={styles.column}>
-          <Basket basicCounter={basicCounter} vipCounter={vipCounter} />
-          <div className={styles.centerButton}>
+
+        <div className={styles.basketContainer}>
+          <div className={styles.basket}>
+            <Basket basicCounter={basicCounter} vipCounter={vipCounter} />
+          </div>
+
+          <div className={styles.centerButtonMobile}>
             <button
               onClick={() => {
                 router.push("/CampgroundForm");

@@ -14,9 +14,9 @@
 
 .column:first-child {
   border: 1px solid black;
-  gap: 10px; /* Add gap between child elements */
-  margin: 20px; /* Add margin around the column */
-  padding: 10px; /* Add padding inside the column */
+  gap: 10px;
+  margin: 20px;
+  padding: 10px;
 }
 
 .timeline {

@@ -24,39 +24,37 @@ export default function Basket() {
 
   return (
     <div className={styles.card}>
-      <div className="basket">
-        <h2>Kurv</h2>
-        <ul>
-          {state.vipTicket > 0 && (
-            <li>
-              {"Vip Billet"} {state.vipTicket * vipTicketPrice}
-            </li>
-          )}
-          {state.basicTicket > 0 && (
-            <li>
-              {"Basic Billet"} {state.basicTicket * basicTicketPrice}
-            </li>
-          )}
-          {state.tent3 > 0 && (
-            <li>
-              {"Telt 3 personer"} {state.tent3 * tent3Price}
-            </li>
-          )}
-          {state.tent2 > 0 && (
-            <li>
-              {"Tent 2 personer"} {state.tent2 * tent2Price}
-            </li>
-          )}
-          {state.greenCamping > 0 && (
-            <li>
-              {"Green Camping"} {state.greenCamping * greenCamingPrice}
-            </li>
-          )}
-          {itemInBasket && <li>Booking gebyr: 99,-</li>}
-          {!itemInBasket && <li></li>}
-          <li>I alt: {totalPrice} DKK</li> {/* Viser total pris*/}
-        </ul>
-      </div>
+      <h2>Kurv</h2>
+      <ul>
+        {state.vipTicket > 0 && (
+          <li>
+            {"Vip Billet"} {state.vipTicket * vipTicketPrice}
+          </li>
+        )}
+        {state.basicTicket > 0 && (
+          <li>
+            {"Basic Billet"} {state.basicTicket * basicTicketPrice}
+          </li>
+        )}
+        {state.tent3 > 0 && (
+          <li>
+            {"Telt 3 personer"} {state.tent3 * tent3Price}
+          </li>
+        )}
+        {state.tent2 > 0 && (
+          <li>
+            {"Tent 2 personer"} {state.tent2 * tent2Price}
+          </li>
+        )}
+        {state.greenCamping > 0 && (
+          <li>
+            {"Green Camping"} {state.greenCamping * greenCamingPrice}
+          </li>
+        )}
+        {itemInBasket && <li>Booking gebyr: 99,-</li>}
+        {!itemInBasket && <li></li>}
+        <li>I alt: {totalPrice} DKK</li> {/* Viser total pris*/}
+      </ul>
     </div>
   );
 }

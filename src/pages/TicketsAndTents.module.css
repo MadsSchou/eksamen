@@ -53,11 +53,11 @@
     margin-top: 20%;
     display: grid;
   }
-  .centerButton {
-    display: none;
-  }
 
-  .centerButtonMobile button {
+  .centerButton button {
+    display: grid;
+  }
+  .centerButtonMobile {
     display: grid;
   }
 }
@@ -100,7 +100,7 @@
   cursor: pointer;
   border: 2px solid black;
 }
-.centerButton button {
+/* .centerButton button {
   display: flex;
   justify-content: center;
   background: var(--white);
@@ -111,7 +111,7 @@
   font-size: 1rem;
   cursor: pointer;
   margin-bottom: 2vh;
-}
+} */
 
 .centerButtonMobile button {
   display: grid;

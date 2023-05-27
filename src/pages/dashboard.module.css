@@ -2,3 +2,73 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
 }
+.grid_7x1 p {
+  background-color: white;
+  width: 50%;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.background_color {
+  background-color: #222222;
+}
+.content {
+  max-width: 1200px;
+}
+.empty_schedule {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding-block: 2rem;
+}
+.line {
+  background-color: #707070;
+  height: 1px;
+  width: 70%;
+  margin-bottom: 1rem;
+}
+.empty_schedule svg {
+  padding-block: 1rem;
+}
+.empty_schedule a {
+  display: flex;
+  justify-content: center;
+  border: 1px solid white;
+  padding-block: 0.5rem;
+  margin-block: 1rem;
+}
+
+.user {
+  display: flex;
+}
+
+.divider {
+  background-color: #707070;
+  height: 1px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.hi_user {
+  color: #f5c065;
+  padding-inline: 1rem;
+}
+.logout {
+  border: none;
+  margin-inline: 1rem;
+  padding-inline: 1rem;
+}
+.user_content {
+  flex: 1;
+}
+.user_container {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .line {
+    background-color: #707070;
+    height: 1px;
+    width: 20%;
+    margin-bottom: 1rem;
+  }
+}

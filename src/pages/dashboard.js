@@ -2,8 +2,10 @@ import { useAuth } from "@/context/AuthContext";
 import { auth, db } from "@/firebase";
 import React, { useEffect, useState } from "react";
 import styles from "./dashboard.module.css";
+import FavIcon from "@/components/FavIcon";
 
 export default function Dashboard() {
+  const allDay = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
   const [loggedUserDb, setLoggedUserDb] = useState({});
   const { currentUser } = useAuth();
   const [myFav, setMyFav] = useState([]);
@@ -27,6 +29,22 @@ export default function Dashboard() {
       });
   }, [setMyFav, currentUser]);
 
+  function handleDelete(band) {
+    console.log(band);
+    db.collection("users")
+      .doc(currentUser.uid)
+      .collection("favList")
+      .doc(band.id)
+      .delete()
+      .then(() => {
+        const removeDeletedBand = myFav.filter(
+          (e) => e.data().act !== band.act
+        );
+
+        setMyFav(removeDeletedBand);
+      });
+  }
+
   if (myFav.length === 0) {
     // Render layout when no favorites are chosen
     return (
@@ -43,14 +61,11 @@ export default function Dashboard() {
         <h2>Din tidsplan</h2>
         <h3>Alt på et sted</h3>
         <div>line</div>
+
         <div className={styles["grid_7x1"]}>
-          <p>MON</p>
-          <p>TUE</p>
-          <p>WED</p>
-          <p>THU</p>
-          <p>FRI</p>
-          <p>SAT</p>
-          <p>SUN</p>
+          {allDay?.map((day) => {
+            return <p>{day}</p>;
+          })}
         </div>
 
         <p>No favorites chosen</p>
@@ -72,30 +87,32 @@ export default function Dashboard() {
         <h2>Din tidsplan</h2>
         <h3>Alt på et sted</h3>
         <div>line</div>
+
         <div className={styles["grid_7x1"]}>
-          <p>MON</p>
-          <p>TUE</p>
-          <p>WED</p>
-          <p>THU</p>
-          <p>FRI</p>
-          <p>SAT</p>
-          <p>SUN</p>
+          {allDay?.map((day) => {
+            const test = myFav.filter((e) => e.data().day === day);
+
+            console.log(test);
+            return (
+              <div>
+                <h2>{day}</h2>
+                {test?.map((band) => {
+                  return (
+                    <div>
+                      <button onClick={() => handleDelete(band.data())}>
+                        Slet
+                      </button>
+                      <p>{band.data().act}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
         </div>
 
         <div>
           <h2>Your favs</h2>
-          {myFav?.map((fav) => {
-            let band = fav.data();
-
-            console.log(fav.data());
-            return (
-              <React.Fragment key={fav.id}>
-                <p>{band?.act}</p>
-                <p>{`${band?.start} - ${band?.end}`}</p>
-                <p>Scene: {band?.stage}</p>
-              </React.Fragment>
-            );
-          })}
         </div>
       </div>
     );

@@ -3,10 +3,10 @@ import styles from "../pages/scheduledates.module.css";
 import { useAuth } from "@/context/AuthContext";
 import { db } from "@/firebase";
 
-export default function FavIcon({ data, stage, alreadyFav }) {
+export default function FavIcon({ data, stage, alreadyFav, day }) {
   const [favorite, setFavorite] = useState(alreadyFav);
   const { currentUser } = useAuth();
-
+  console.log(day);
   function handleFavClick() {
     const bandName = data.act.replaceAll(" ", "+");
 
@@ -33,6 +33,7 @@ export default function FavIcon({ data, stage, alreadyFav }) {
             start: data.start,
             end: data.end,
             stage: stage,
+            day: day,
           });
       }
       setFavorite(!favorite);

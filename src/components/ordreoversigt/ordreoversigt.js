@@ -24,36 +24,50 @@ export default function Basket() {
 
   return (
     <div className={styles.card}>
-      <h2>Kurv</h2>
+      <h3>Ordreoversigt</h3>
       <ul>
         {state.vipTicket > 0 && (
           <li>
-            {"Vip Billet"} {state.vipTicket * vipTicketPrice}
+            <span>Vip Billet</span>
+            <span className={styles.divide}>{state.vipTicket * vipTicketPrice}</span>
           </li>
         )}
         {state.basicTicket > 0 && (
           <li>
-            {"Basic Billet"} {state.basicTicket * basicTicketPrice}
+            <span>Basic Billet</span>
+            <span className={styles.divide}>{state.basicTicket * basicTicketPrice}</span>
           </li>
         )}
         {state.tent3 > 0 && (
           <li>
-            {"Telt 3 personer"} {state.tent3 * tent3Price}
+            <span>Telt 3 personer</span>
+            <span className={styles.divide}>{state.tent3 * tent3Price}</span>
           </li>
         )}
         {state.tent2 > 0 && (
           <li>
-            {"Tent 2 personer"} {state.tent2 * tent2Price}
+            <span>Telt 2 personer</span>
+            <span className={styles.divide}>{state.tent2 * tent2Price}</span>
           </li>
         )}
         {state.greenCamping > 0 && (
           <li>
-            {"Green Camping"} {state.greenCamping * greenCamingPrice}
+            <span>Green Camping</span>
+            <span className={styles.divide}>{state.greenCamping * greenCamingPrice}</span>
           </li>
         )}
-        {itemInBasket && <li>Booking gebyr: 99,-</li>}
+        {itemInBasket && (
+          <li>
+            <span>Booking gebyr</span>
+            <span className={styles.divide}>99</span>
+          </li>
+        )}
         {!itemInBasket && <li></li>}
-        <li>I alt: {totalPrice} DKK</li> {/* Viser total pris*/}
+        <li className={styles.bold}>
+          <br></br>
+          <span>I alt:</span>
+          <span className={styles.divide}>{totalPrice} DKK</span>
+        </li>
       </ul>
     </div>
   );

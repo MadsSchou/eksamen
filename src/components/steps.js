@@ -11,13 +11,10 @@ export default function Flow(props) {
     }
   }
 
-  const iconStyle = { color: "#F5C065" };
-
   return (
     <>
       <Steps
-        style={{ paddingInline: 180, paddingTop: 50 }}
-        size="small"
+        size="default"
         direction="horizontal"
         responsive="true"
         items={[

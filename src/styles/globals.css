@@ -174,10 +174,33 @@ footer img {
   border-color: var(--orange);
 }
 
-/* login icon */
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var(--orange);
+  border-color: var(--orange);
+}
 
-/* .login {
-  margin-inline: 2vw;
-} */
+.PopupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-/* Basket */
+.Popup {
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.Popup p {
+  margin-bottom: 10px;
+}
+
+.Popup button {
+  padding: 10px 20px;
+}

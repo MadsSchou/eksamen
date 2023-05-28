@@ -114,23 +114,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Flow step={0} />
+      <div className={styles.flow}>
+        <Flow step={0} />
+      </div>
 
-      <div className={styles.basketContainerMobile}>
+      {/* <div className={styles.basketContainerMobile}>
         <div className={styles.basket}>
           <Basket basicCounter={basicCounter} vipCounter={vipCounter} />
         </div>
-        <div className={styles.centerButton}>
-          <button
-            onClick={() => {
-              router.push("/CampgroundForm");
-            }}
-            disabled={!canProceed}
-          >
-            Næste
-          </button>
-        </div>
-      </div>
+      </div> */}
 
       <div className={styles.containerGrid}>
         <div className={styles.counterContainer}>
@@ -184,7 +176,7 @@ export default function Home() {
             <Basket basicCounter={basicCounter} vipCounter={vipCounter} />
           </div>
 
-          <div className={styles.centerButtonMobile}>
+          <div className={styles.nextButton}>
             <button
               onClick={() => {
                 router.push("/CampgroundForm");

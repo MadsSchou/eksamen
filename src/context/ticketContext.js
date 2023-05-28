@@ -11,6 +11,7 @@ const myGlobalValue = {
   tent3: 0,
   area: "",
   greenCamping: false,
+  people: [],
 };
 
 export function reducer(state, action) {
@@ -20,6 +21,12 @@ export function reducer(state, action) {
       copyRemove[action.payload.key]--;
       console.log(state, action);
       return copyRemove;
+
+    case "ADD_PEOPLE":
+      return {
+        ...state,
+        people: action.payload,
+      };
 
     case "ADD_TO_BASKET":
       const copy = { ...state };

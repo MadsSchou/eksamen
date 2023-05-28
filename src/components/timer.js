@@ -2,23 +2,23 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 export default function Timer() {
-  const [timeLeft, setTimeLeft] = useState(300);
+  const [timeLeft, setTimeLeft] = useState(3);
   const router = useRouter();
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      if (timeLeft === 0) {
-        clearTimeout(timer);
-        backToStart();
-      } else {
-        setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
-      }
+    const interval = setInterval(() => {
+      setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
     }, 1000);
 
+    if (timeLeft === 0) {
+      clearInterval(interval);
+      backToStart();
+    }
+
     return () => {
-      clearTimeout(timer);
+      clearInterval(interval);
     };
-  }, []);
+  }, [timeLeft]);
 
   const backToStart = () => {
     router.push("/TicketsAndTents");

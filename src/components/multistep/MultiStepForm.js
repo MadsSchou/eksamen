@@ -7,7 +7,7 @@ const MultistepForm = () => {
   const state = useContext(StoreContext);
   const [currentStep, setCurrentStep] = useState(1);
   const router = useRouter();
-
+  const dispatch = useContext(DispatchContext);
   const [steps, setSteps] = useState([
     {
       firstname: "",
@@ -47,7 +47,12 @@ const MultistepForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(steps);
+    dispatch({
+      action: "ADD_PEOPLE",
+      payload: steps,
+    });
+
+    router.push("/Checkout");
   };
 
   const totalSteps = state.basicTicket + state.vipTicket;
@@ -98,13 +103,7 @@ const MultistepForm = () => {
                 <input type="phone" name="phone" value={step.phone} onChange={(event) => handleChange(index, event)} />
               </label>
               {totalSteps === steps.length ? (
-                <button
-                  onClick={() => {
-                    router.push("/Checkout");
-                  }}
-                >
-                  Gå Til Betaling
-                </button>
+                <button onClick={handleSubmit}>Gå Til Betaling</button>
               ) : (
                 <button type="button" onClick={handleAddStep}>
                   Næste

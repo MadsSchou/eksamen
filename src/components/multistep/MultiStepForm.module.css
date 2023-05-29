@@ -15,6 +15,7 @@
   border-radius: 5px;
   width: 400px;
   max-width: 100%;
+  font-family: var(--font-sans);
 }
 
 .formLabel {

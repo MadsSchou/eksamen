@@ -61,7 +61,6 @@ a:hover {
   color: var(--orange);
 }
 header {
-  /* position: sticky; */
   z-index: 30;
   top: 0;
 }
@@ -130,6 +129,18 @@ nav {
   }
 }
 
+/* Flytter login i mobile */
+@media screen and (max-width: 800px) {
+  .login {
+    order: -1;
+  }
+}
+
+.login {
+  width: 30px;
+  height: 30px;
+}
+
 /* Footer */
 
 footer {
@@ -185,7 +196,7 @@ footer img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;

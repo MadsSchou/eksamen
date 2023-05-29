@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import styles from "./MultiStepForm.module.css";
 import { DispatchContext, StoreContext } from "@/context/ticketContext";
 import { useRouter } from "next/router";
+import Timer from "../Timer/timer";
 
 const MultistepForm = () => {
   const state = useContext(StoreContext);

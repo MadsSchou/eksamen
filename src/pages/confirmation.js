@@ -8,9 +8,6 @@ export default function Confirmation() {
   const router = useRouter();
   let data = useContext(StoreContext);
 
-  console.log(data);
-
-  console.log(data);
   useEffect(() => {
     db.collection("allReservations").add(data);
   }, []);

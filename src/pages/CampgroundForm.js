@@ -39,20 +39,22 @@ export default function Home({ data }) {
         greenCamping,
       },
     });
-  };
 
-  // fetch("https://charm-pale-tub.glitch.me/reserve-spot", {
-  //   method: "PUT",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(payload),
-  // })
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     const reservationId = data.id;
-  //     console.log("Reservation id:", reservationId);
-  //   });
+    const body = {
+      area: selectedArea,
+      amount: availableAmount,
+    };
+
+    fetch("https://charm-pale-tub.glitch.me/available-spots", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then((response) => console.log(response))
+      .catch((err) => console.error(err));
+  };
 
   const handleAreaChange = (event) => {
     const selectedArea = event.target.value;
@@ -147,11 +149,11 @@ export default function Home({ data }) {
             )}
             <br></br>
             <div className={styles.centerButton}>
-              <Link href="/personalinfo">
-                <button onClick={addToBasket} disabled={isButtonDisabled}>
-                  Reserver
-                </button>
-              </Link>
+              {/* <Link href="/personalinfo"> */}
+              <button onClick={addToBasket} disabled={isButtonDisabled}>
+                Reserver
+              </button>
+              {/* </Link> */}
             </div>
           </div>
         </div>

@@ -20,8 +20,8 @@ export default function Home() {
         <div className={styles.container}>
           <h1 className={styles.headline}>Thunderstrike Metal Festival</h1>
 
-          <h2 className={styles.center}>
-            1-7 AUGUST 2023 <br></br> REFSHALEØEN - KØBENHAVN
+          <h2 className={`${styles.center} ${styles.subtitle}`}>
+            1-7 AUGUST 2023 <br /> REFSHALEØEN - KØBENHAVN
           </h2>
         </div>
       </div>

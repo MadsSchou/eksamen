@@ -1,4 +1,4 @@
-import { ConfigProvider, Steps } from "antd";
+import { Steps } from "antd";
 import { ShakeOutlined, HomeOutlined, ProfileOutlined, CreditCardOutlined, CheckCircleOutlined } from "@ant-design/icons";
 
 export default function Flow(props) {
@@ -15,9 +15,9 @@ export default function Flow(props) {
   return (
     <>
       <Steps
-        size="default"
+        size="small"
         direction="horizontal"
-        responsive="true"
+        responsive="false"
         items={[
           {
             title: "Billettype",

@@ -66,20 +66,18 @@ const MultistepForm = () => {
                 Navn:
                 <input type="text" name="firstname" value={step.firstname} onChange={(event) => handleChange(index, event)} />
               </label>
-              <br />
+
               <label className={styles.formLabel}>
                 Efternavn: <input type="text" name="lastname" value={step.lastname} onChange={(event) => handleChange(index, event)} />
               </label>
-              <div className={styles.formRow}>
-                <label className={styles.formLabel}>
-                  PostNr:
-                  <input type="text" name="zipcode" value={step.zipcode} onChange={(event) => handleChange(index, event)} />
-                </label>
-                <label className={styles.formLabel}>
-                  City:
-                  <input type="text" name="city" value={step.city} onChange={(event) => handleChange(index, event)} />
-                </label>
-              </div>
+              <label className={styles.formLabel}>
+                PostNr:
+                <input type="text" name="zipcode" value={step.zipcode} onChange={(event) => handleChange(index, event)} />
+              </label>
+              <label className={styles.formLabel}>
+                City:
+                <input type="text" name="city" value={step.city} onChange={(event) => handleChange(index, event)} />
+              </label>
 
               <label className={styles.formLabel}>
                 Email: <input type="email" name="email" value={step.email} onChange={(event) => handleChange(index, event)} />

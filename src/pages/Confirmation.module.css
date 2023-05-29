@@ -1,0 +1,25 @@
+.confirmationPage {
+  text-align: center;
+  margin: 50px auto;
+  max-width: 400px;
+}
+
+.confirmationPage h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.confirmationPage p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.confirmationPage button {
+  padding: 10px 20px;
+  background-color: #f5c065;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}

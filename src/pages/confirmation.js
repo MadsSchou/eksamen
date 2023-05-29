@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Flow from "@/components/steps";
+import styles from "./Confirmation.module.css"; // Import custom CSS file
 
 export default function Confirmation() {
   const router = useRouter();
@@ -14,7 +15,11 @@ export default function Confirmation() {
       </Head>
 
       <Flow step={4} />
-      <div>Tak</div>
+      <div className={styles.confirmationPage}>
+        <h1>Tak for dit køb!</h1>
+        <p>Dit køb er bekræftet, find dine biletter på mail</p>
+        <button onClick={() => router.push("/")}>Gå tilbage til forsiden</button>
+      </div>
     </>
   );
 }

@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import { ShakeOutlined, HomeOutlined, ProfileOutlined, CreditCardOutlined, CheckCircleOutlined } from "@ant-design/icons";
-=======
 import { ConfigProvider, Steps } from "antd";
 import {
   ShakeOutlined,
@@ -9,7 +6,6 @@ import {
   CreditCardOutlined,
   CheckCircleOutlined,
 } from "@ant-design/icons";
->>>>>>> working-color-in-step-nav
 
 export default function Flow(props) {
   function checkStatus(val) {
@@ -24,14 +20,13 @@ export default function Flow(props) {
 
   return (
     <>
-   <ConfigProvider
-    theme={{
-      token: {
-        colorPrimary: '#F5C065',
-      },
-    }}
-  >
-
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: "#F5C065",
+          },
+        }}
+      >
         <Steps
           size="default"
           direction="horizontal"

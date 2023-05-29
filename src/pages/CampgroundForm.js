@@ -4,8 +4,8 @@ import Head from "next/head";
 import styles from "./CampgroundForm.module.css";
 import Ordreoversigt from "@/components/ordreoversigt/ordreoversigt";
 import Flow from "@/components/steps";
-import Link from "next/link";
 import { Checkbox } from "antd";
+import Link from "next/link";
 
 export default function Home({ data }) {
   const [areaData, setAreaData] = useState(null);
@@ -13,7 +13,9 @@ export default function Home({ data }) {
   const [availableAmount, setAvailableAmount] = useState(0);
   const [greenCamping, setGreenCamping] = useState(false);
   const dispatch = useContext(DispatchContext);
+  // Disabler reserver knappen, hvis antallet af pladser er 0
   const isButtonDisabled = !selectedArea || availableAmount === 0;
+  // Error besked, hvis der ikke er flere pladser i det valgte område
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -30,7 +32,6 @@ export default function Home({ data }) {
   };
 
   const addToBasket = () => {
-    // if (availableAmount > 0) {
     dispatch({
       action: "SET_AREA",
       payload: {
@@ -38,9 +39,6 @@ export default function Home({ data }) {
         greenCamping,
       },
     });
-    // } else {
-    //   console.log("Ingen ledige pladser");
-    // }
   };
 
   // fetch("https://charm-pale-tub.glitch.me/reserve-spot", {
@@ -133,11 +131,11 @@ export default function Home({ data }) {
             {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
             <br></br>
             <div className={styles.centerButton}>
-              {/* <Link href="/personalinfo"> */}
-              <button onClick={addToBasket} disabled={isButtonDisabled}>
-                Reserver
-              </button>
-              {/* </Link> */}
+              <Link href="/personalinfo">
+                <button onClick={addToBasket} disabled={isButtonDisabled}>
+                  Reserver
+                </button>
+              </Link>
             </div>
           </div>
         </div>

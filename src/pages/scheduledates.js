@@ -2,16 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import styles from "./scheduledates.module.css";
 import { imgContext } from "@/context/ImgContext";
 import FavIcon from "@/components/FavIcon";
-import { auth, db } from "@/firebase";
+import { db } from "@/firebase";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/router";
 
 function App() {
   const [schedule, setSchedule] = useState([]);
   const [stages, setStages] = useState("Midgard");
   const [chosenSchedule, setChosenSchedule] = useState(["Midgard", []]);
   const { currentUser } = useAuth();
-  const { login } = useAuth();
   const { images } = useContext(imgContext);
   const [currentFavList, setCurrentFavList] = useState([]);
 
@@ -28,6 +26,21 @@ function App() {
     let chosenSchedule = Object.entries(schedule).find(
       (item) => item[0] === stage
     );
+
+    /* 
+      const test2 = chosenSchedule[1];
+      const test = Object.keys(
+        chosenSchedule[1].map((day) => {
+        return {
+          day,
+          items: chosenSchedule[day],
+        };
+      })
+    ); 
+    
+    console.log(test2);
+    */
+
     setChosenSchedule(chosenSchedule);
   }
 
@@ -42,6 +55,7 @@ function App() {
         });
     }
   }, []);
+
   useEffect(() => {
     fetch("https://charm-pale-tub.glitch.me/schedule")
       .then((response) => response.json())
@@ -56,6 +70,7 @@ function App() {
   useEffect(() => {
     chooseStage("Midgard");
   }, [schedule]);
+
   const renderCalendar = () => {
     if (!chosenSchedule) {
       return <div>Loading...</div>;
@@ -64,19 +79,21 @@ function App() {
       return (
         <div key={day} className={styles["day-column"]}>
           <h3 className={styles.day}>{day}</h3>
-          {images && renderTimeSlots(timeSlots)}
+          {images && renderTimeSlots(timeSlots, day)}
         </div>
       );
     });
   };
 
-  const renderTimeSlots = (timeSlots) => {
+  const renderTimeSlots = (timeSlotsDays, day) => {
+    let timeSlots = timeSlotsDays;
+    console.log(day);
     return (
       <div className={styles["time-slots"]}>
         {timeSlots?.map((timeSlot) => {
           let alreadyFavListed = false;
+
           if (currentFavList.find((e) => e.data().act === timeSlot.act)) {
-            console.log("yasadasdasdasdas");
             alreadyFavListed = true;
           }
 
@@ -109,6 +126,7 @@ function App() {
                   data={timeSlot}
                   stage={stages}
                   alreadyFav={alreadyFavListed}
+                  day={day}
                 />
               </div>
               <div

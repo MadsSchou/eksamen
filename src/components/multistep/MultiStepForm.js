@@ -9,6 +9,7 @@ const MultistepForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const router = useRouter();
   const dispatch = useContext(DispatchContext);
+  const [city, setCity] = useState("");
   const [steps, setSteps] = useState([
     {
       firstname: "",
@@ -16,7 +17,7 @@ const MultistepForm = () => {
       email: "",
       zipcode: "",
       city: "",
-      country: "",
+      country: "Danmark",
       address: "",
       phone: "",
     },
@@ -38,7 +39,7 @@ const MultistepForm = () => {
         email: "",
         zipcode: "",
         city: "",
-        country: "",
+        country: "Danmark",
         address: "",
         phone: "",
       },
@@ -58,6 +59,21 @@ const MultistepForm = () => {
 
   const totalSteps = state.basicTicket + state.vipTicket;
 
+  function handleZipCode(e) {
+    console.log(e);
+    if (e.length === 4) {
+      console.log("heeeey");
+
+      fetch("https://api.dataforsyningen.dk/postnumre")
+        .then((res) => res.json())
+        .then((data) => {
+          const findZip = data?.find((zip) => parseInt(zip.nr) === parseInt(e));
+
+          setCity(findZip.navn);
+        });
+    }
+  }
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.counter}>
@@ -70,37 +86,80 @@ const MultistepForm = () => {
               <h2>Person {index + 1}</h2>
               <label className={styles.formLabel}>
                 Navn:
-                <input type="text" name="firstname" value={step.firstname} onChange={(event) => handleChange(index, event)} />
+                <input
+                  type="text"
+                  name="firstname"
+                  defaultValue={step.firstname}
+                  onBlur={(event) => handleChange(index, event)}
+                />
               </label>
 
               <label className={styles.formLabel}>
-                Efternavn: <input type="text" name="lastname" value={step.lastname} onChange={(event) => handleChange(index, event)} />
+                Efternavn:{" "}
+                <input
+                  type="text"
+                  name="lastname"
+                  value={step.lastname}
+                  onBlur={(event) => handleChange(index, event)}
+                />
+              </label>
+              <label className={styles.formLabel}>
+                Email:{" "}
+                <input
+                  type="email"
+                  name="email"
+                  value={step.email}
+                  onBlur={(event) => handleChange(index, event)}
+                />
+              </label>
+              <label className={styles.formLabel}>
+                Telefon nr.:
+                <input
+                  type="phone"
+                  name="phone"
+                  value={step.phone}
+                  onBlur={(event) => handleChange(index, event)}
+                />
+              </label>
+
+              <label className={styles.formLabel}>
+                Adresse:{" "}
+                <input
+                  type="text"
+                  name="address"
+                  value={step.address}
+                  onBlur={(event) => handleChange(index, event)}
+                />
               </label>
               <label className={styles.formLabel}>
                 PostNr:
-                <input type="text" name="zipcode" value={step.zipcode} onChange={(event) => handleChange(index, event)} />
+                <input
+                  type="number"
+                  name="zipcode"
+                  onChange={(e) => handleZipCode(e.target.value)}
+                  onBlur={(event) => handleChange(index, event)}
+                />
               </label>
               <label className={styles.formLabel}>
                 City:
-                <input type="text" name="city" value={step.city} onChange={(event) => handleChange(index, event)} />
+                <input
+                  defaultValue={city}
+                  type="text"
+                  name="city"
+                  onBlur={(event) => handleChange(index, event)}
+                />
               </label>
 
               <label className={styles.formLabel}>
-                Email: <input type="email" name="email" value={step.email} onChange={(event) => handleChange(index, event)} />
+                Land:{" "}
+                <input
+                  type="text"
+                  name="country"
+                  defaultValue={step.country}
+                  onBlur={(event) => handleChange(index, event)}
+                />
               </label>
 
-              <label className={styles.formLabel}>
-                Land: <input type="text" name="country" value={step.country} onChange={(event) => handleChange(index, event)} />
-              </label>
-
-              <label className={styles.formLabel}>
-                Adresse: <input type="text" name="address" value={step.address} onChange={(event) => handleChange(index, event)} />
-              </label>
-
-              <label className={styles.formLabel}>
-                Telefon nr.:
-                <input type="phone" name="phone" value={step.phone} onChange={(event) => handleChange(index, event)} />
-              </label>
               {totalSteps === steps.length ? (
                 <button onClick={handleSubmit}>Gå Til Betaling</button>
               ) : (

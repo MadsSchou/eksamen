@@ -32,14 +32,13 @@ export default function Home({ data }) {
   };
 
   const addToBasket = () => {
-    if (selectedArea === 0)
-      dispatch({
-        action: "SET_AREA",
-        payload: {
-          area: selectedArea,
-          greenCamping,
-        },
-      });
+    dispatch({
+      action: "SET_AREA",
+      payload: {
+        area: selectedArea,
+        greenCamping,
+      },
+    });
 
     const body = {
       area: selectedArea,

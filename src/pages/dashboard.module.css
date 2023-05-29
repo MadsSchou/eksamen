@@ -2,9 +2,9 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
 }
-.grid_7x1 p {
+.grid_7x1 h3 {
   background-color: white;
-  width: 50%;
+  padding: 0.3em 1.5em 0.3em 1.5em;
   text-align: center;
   text-transform: capitalize;
 }

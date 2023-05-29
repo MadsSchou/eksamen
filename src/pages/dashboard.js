@@ -68,7 +68,7 @@ export default function Dashboard() {
           <div className={styles["divider"]}></div>
           <div className={styles["grid_7x1"]}>
             {allDay?.map((day) => {
-              return <p>{day}</p>;
+              return <h3>{day}</h3>;
             })}
           </div>
           <div className={styles["empty_schedule"]}>
@@ -95,45 +95,52 @@ export default function Dashboard() {
   } else {
     // Render layout when favorites are chosen
     return (
-      <div>
-        <h1>Hej {loggedUserDb?.name}</h1>
-        <button
-          onClick={() => {
-            auth.signOut();
-            window.location.href = "/";
-          }}
-        >
-          Log Out
-        </button>
-        <h2>Din tidsplan</h2>
-        <h3>Alt på et sted</h3>
-        <div>line</div>
+      <div className={styles[["background_color"]]}>
+        <div className={styles["content"]}>
+          <div className={styles["user_container"]}>
+            <div className={styles["user_content"]}>
+              <h1 className={styles["hi_user"]}>Hej {loggedUserDb?.name}</h1>{" "}
+            </div>
+            <button
+              className={styles["logout"]}
+              onClick={() => {
+                auth.signOut();
+                window.location.href = "/";
+              }}
+            >
+              Log Out
+            </button>
+          </div>
+          <div className={styles["divider"]}></div>
+          <h2>Din tidsplan</h2>
+          <h3>Alt på et sted</h3>
 
-        <div className={styles["grid_7x1"]}>
-          {allDay?.map((day) => {
-            const test = myFav.filter((e) => e.data().day === day);
+          <div className={styles["grid_7x1"]}>
+            {allDay?.map((day) => {
+              const test = myFav.filter((e) => e.data().day === day);
 
-            console.log(test);
-            return (
-              <div>
-                <h2>{day}</h2>
-                {test?.map((band) => {
-                  return (
-                    <div>
-                      <button onClick={() => handleDelete(band.data())}>
-                        Slet
-                      </button>
-                      <p>{band.data().act}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
-        </div>
-
-        <div>
-          <h2>Your favs</h2>
+              console.log(test);
+              return (
+                <div>
+                  <h3>{day}</h3>
+                  {test?.map((band) => {
+                    return (
+                      <div>
+                        <button onClick={() => handleDelete(band.data())}>
+                          Slet
+                        </button>
+                        <p>{band.data().act}</p>
+                        <p>
+                          {band.data().start} - {band.data().end}
+                        </p>
+                        <p>{band.data().stage}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );

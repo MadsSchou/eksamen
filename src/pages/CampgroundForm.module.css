@@ -9,6 +9,7 @@
   width: 85%;
   max-width: 1200px;
   padding: 5%;
+  padding-top: 2%;
 }
 
 .column {
@@ -56,7 +57,7 @@
 
 /* Ordreoversigt */
 
-@media (max-width: 767px) {
+@media (max-width: 950px) {
   .container {
     flex-direction: column;
     padding: 0;
@@ -75,6 +76,17 @@
     margin: 0;
     padding: 20px;
   }
+  .ordreWeb {
+    margin-top: 1.2rem;
+    padding-inline: 0;
+    display: grid;
+    justify-content: center;
+  }
+}
+
+.ordreWeb {
+  margin-top: 1.2rem;
+  margin-inline: 5%;
 }
 
 .greenPrice {
@@ -104,16 +116,36 @@
   background: lightgray;
 }
 
-.flow {
-  padding: 30px 200px 30px 200px;
-}
-
-.ordreWeb {
-  margin-top: 1.2rem;
-  padding-inline: 5%;
-}
-
 .errorMessage {
   color: red;
   text-align: center;
+}
+
+/* flow */
+
+.flow {
+  padding: 30px 200px 30px 200px;
+  max-width: 768px;
+  margin-inline: auto;
+  margin-block: 2em;
+}
+
+@media (max-width: 700px) {
+  .flow {
+    display: grid;
+
+    padding: 30px 100px 0px 100px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .flow {
+    padding: 30px 100px 0px 100px;
+  }
+}
+
+@media (max-width: 970px) {
+  .flow {
+    padding: 30px 20px 0px 20px;
+  }
 }

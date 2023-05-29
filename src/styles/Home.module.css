@@ -1,5 +1,4 @@
 .headline {
-  /* font-size: 5rem; */
   font-family: "displayFont";
   text-align: center;
   font-weight: 700;
@@ -8,21 +7,20 @@
   color: var(--orange);
   margin-top: 15%;
   font-size: clamp(0.4rem, 8vw, 4.5rem);
-  position: relative;
-  z-index: 1;
+  /* position: relative; */
+  /* z-index: 1; */
 }
 
 .center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  text-align: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* text-align: center; */
   color: var(--white);
   margin-bottom: 10%;
   font-family: var(--font-sans);
   font-size: clamp(0.4rem, 5vw, 2.5rem);
-  position: relative;
+  /* position: relative; */
   z-index: 1;
 }
 

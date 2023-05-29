@@ -13,6 +13,8 @@ export default function Home({ data }) {
   const [availableAmount, setAvailableAmount] = useState(0);
   const [greenCamping, setGreenCamping] = useState(false);
   const dispatch = useContext(DispatchContext);
+  const [resId, setResID] = useState(null);
+  const bucketdata = useContext(StoreContext);
   // Disabler reserver knappen, hvis antallet af pladser er 0
   const isButtonDisabled = !selectedArea || availableAmount === 0;
   // Error besked, hvis der ikke er flere pladser i det valgte område
@@ -39,23 +41,43 @@ export default function Home({ data }) {
         greenCamping,
       },
     });
-  };
 
-  // fetch("https://charm-pale-tub.glitch.me/reserve-spot", {
-  //   method: "PUT",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(payload),
-  // })
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     const reservationId = data.id;
-  //     console.log("Reservation id:", reservationId);
-  //   });
+    const body = {
+      area: selectedArea,
+      amount: availableAmount,
+    };
+
+    fetch("https://charm-pale-tub.glitch.me/available-spots", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then((response) => console.log(response))
+      .catch((err) => console.error(err));
+  };
 
   const handleAreaChange = (event) => {
     const selectedArea = event.target.value;
+
+    const reservationDetails = {
+      area: selectedArea,
+      amount: 3,
+    };
+
+    fetch("https://charm-pale-tub.glitch.me/reserve-spot", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reservationDetails),
+    })
+      .then((data) => data.json())
+      .then((res) => {
+        bucketdata.reservationId = res.id;
+      });
+
     setSelectedArea(selectedArea);
 
     if (selectedArea) {
@@ -139,7 +161,7 @@ export default function Home({ data }) {
         </div>
 
         <div className={styles.ordreWeb}>
-          <Ordreoversigt />
+          <Ordreoversigt resId={resId} />
 
           <div className={styles.column}>
             {errorMessage && (

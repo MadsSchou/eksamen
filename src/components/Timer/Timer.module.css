@@ -1,1 +1,11 @@
-
+.timer {
+  display: grid;
+  width: 200px;
+  height: 80px;
+  background-color: var(--secundary-black);
+  color: var(--white);
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  font-family: var(--font-sans);
+}

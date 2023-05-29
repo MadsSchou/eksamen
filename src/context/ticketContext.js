@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import Timer from "@/components/timer";
+import Timer from "@/components/Timer/timer";
 
 export const StoreContext = createContext();
 export const DispatchContext = createContext();

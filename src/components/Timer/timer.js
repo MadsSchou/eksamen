@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import styles from "@/components/Timer/Timer.module.css";
 
 export default function Timer() {
-  const [timeLeft, setTimeLeft] = useState(3);
+  const [timeLeft, setTimeLeft] = useState(1000);
   const router = useRouter();
 
   useEffect(() => {
@@ -29,8 +30,12 @@ export default function Timer() {
   const seconds = timeLeft % 60;
 
   return (
-    <div className="Timer">
-      Tid til at gennemføre ordren: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+    //Laver det om til en string
+    <div className={styles.timer}>
+      Tid til at gennemføre ordren <br></br>
+      {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
     </div>
   );
 }
+
+// Tid til at gennemføre ordren:

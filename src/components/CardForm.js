@@ -50,7 +50,7 @@ const CardForm = () => {
         <label htmlFor="name" className={styles["label"]}>
           Kortholders Fulder Navn:
         </label>
-        <input type="text" id="name" value={cardNumber} onChange={handleCardNumberChange} className={styles["input"]} />
+        <input type="text" id="name" className={styles["input"]} />
       </div>
       <div className={styles["form-group"]}>
         <label htmlFor="cardNumber" className={styles["label"]}>

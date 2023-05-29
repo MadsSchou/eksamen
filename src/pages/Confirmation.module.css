@@ -2,6 +2,10 @@
   text-align: center;
   margin: 50px auto;
   max-width: 400px;
+  min-height: 365px; /* Adjust the height as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-family: var(--font-sans);
 }
 

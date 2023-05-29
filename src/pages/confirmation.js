@@ -1,15 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Flow from "@/components/steps";
 import styles from "./Confirmation.module.css"; // Import custom CSS file
-import { StoreContext } from "@/context/ticketContext";
 
 export default function Confirmation() {
   const router = useRouter();
-  const data = useContext(StoreContext);
+  let data = useContext(StoreContext);
 
   console.log(data);
+
+  console.log(data);
+  useEffect(() => {
+    db.collection("allReservations").add(data);
+  }, []);
 
   return (
     <>

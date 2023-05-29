@@ -118,12 +118,6 @@ export default function Home() {
         <Flow step={0} />
       </div>
 
-      {/* <div className={styles.basketContainerMobile}>
-        <div className={styles.basket}>
-          <Basket basicCounter={basicCounter} vipCounter={vipCounter} />
-        </div>
-      </div> */}
-
       <div className={styles.containerGrid}>
         <div className={styles.counterContainer}>
           <div className={styles.card}>

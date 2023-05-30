@@ -43,14 +43,11 @@ export default function Home({ data }) {
     });
   };
 
-  const handleAreaChange = (event) => {
-    const selectedArea = event.target.value;
-
+  const reserveSpot = () => {
     const reservationDetails = {
       area: "Muspelheim", //TODO: amount from state,
       amount: 3,
     };
-
     fetch("https://charm-pale-tub.glitch.me/reserve-spot", {
       method: "PUT",
       headers: {
@@ -65,6 +62,10 @@ export default function Home({ data }) {
           payload: res.id,
         });
       });
+  };
+
+  const handleAreaChange = (event) => {
+    const selectedArea = event.target.value;
 
     setSelectedArea(selectedArea);
 
@@ -82,6 +83,11 @@ export default function Home({ data }) {
       setAvailableAmount(0);
       setErrorMessage("");
     }
+  };
+
+  const handleButtonClick = () => {
+    addToBasket();
+    reserveSpot();
   };
 
   return (
@@ -158,7 +164,7 @@ export default function Home({ data }) {
             <br></br>
             <div className={styles.centerButton}>
               <Link href="/personalinfo">
-                <button onClick={addToBasket} disabled={isButtonDisabled}>
+                <button onClick={handleButtonClick} disabled={isButtonDisabled}>
                   Reserver
                 </button>
               </Link>

@@ -12,6 +12,7 @@ export default function Home({ data }) {
   const [selectedArea, setSelectedArea] = useState("");
   const [availableAmount, setAvailableAmount] = useState(0);
   const [greenCamping, setGreenCamping] = useState(false);
+  const state = useContext(StoreContext);
 
   const [resId, setResID] = useState(null);
   const dispatch = useContext(DispatchContext);
@@ -45,8 +46,8 @@ export default function Home({ data }) {
 
   const reserveSpot = () => {
     const reservationDetails = {
-      area: "Muspelheim", //TODO: amount from state,
-      amount: 3,
+      area: selectedArea, //TODO: amount from state,
+      amount: state.vipTicket + state.basicTicket,
     };
     fetch("https://charm-pale-tub.glitch.me/reserve-spot", {
       method: "PUT",

@@ -4,6 +4,7 @@ import Head from "next/head";
 import Flow from "@/components/steps";
 import styles from "./personalinfo.module.css";
 import Timer from "@/components/Timer/timer";
+import Basket from "../components/ordreoversigt/ordreoversigt";
 
 const HomePage = () => {
   return (
@@ -15,9 +16,7 @@ const HomePage = () => {
       <div className={styles.flow}>
         <Flow step={2} />
       </div>
-      <div className={styles.timer}>
-        <Timer />
-      </div>
+      <div className={styles.timer}></div>
       <div>
         <MultiStepForm />
       </div>

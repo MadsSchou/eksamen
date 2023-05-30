@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import styles from "@/components/Timer/Timer.module.css";
+import { DispatchContext } from "@/context/ticketContext";
 
-export default function Timer() {
-  const [timeLeft, setTimeLeft] = useState(1000);
+const Timer = () => {
+  const [timeLeft, setTimeLeft] = useState(3);
+  const [showPopup, setShowPopup] = useState(false); // State for controlling the popup visibility
   const router = useRouter();
+  const dispatch = useContext(DispatchContext);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -13,7 +16,7 @@ export default function Timer() {
 
     if (timeLeft === 0) {
       clearInterval(interval);
-      backToStart();
+      setShowPopup(true); // Show the popup when the timer reaches 0
     }
 
     return () => {
@@ -22,20 +25,28 @@ export default function Timer() {
   }, [timeLeft]);
 
   const backToStart = () => {
-    router.push("/TicketsAndTents");
+    dispatch({ action: "SET_TIMER", payload: timeLeft });
+    router.push("/");
   };
 
-  // Konverter til minuter og sekunder
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 
   return (
-    //Laver det om til en string
-    <div className={styles.timer}>
+    <div className={styles.timerContainer}>
+      {showPopup && (
+        <div className={styles.overlay}>
+          <div className={styles.popup}>
+            <h2>Ups!</h2>
+            <p>Reservationen er udløbet, gå tibage til start for vælge dine billetter igen </p>
+            <button onClick={backToStart}>Forside</button>
+          </div>
+        </div>
+      )}
       Tid til at gennemføre ordren <br></br>
       {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
     </div>
   );
-}
+};
 
-// Tid til at gennemføre ordren:
+export default Timer;

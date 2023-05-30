@@ -12,6 +12,7 @@ const myGlobalValue = {
   area: "",
   greenCamping: false,
   people: [],
+  timer: 0,
 };
 
 export function reducer(state, action) {
@@ -45,6 +46,12 @@ export function reducer(state, action) {
       console.log(state, action);
       return copy2;
 
+    case "SET_TIMER":
+      return {
+        ...state,
+        timer: action.payload,
+      };
+
     default:
       return state;
   }
@@ -55,10 +62,7 @@ export const TicketProvider = ({ children }) => {
 
   return (
     <StoreContext.Provider value={data}>
-      {/* <Timer /> */}
-      <DispatchContext.Provider value={dispatch}>
-        {children}
-      </DispatchContext.Provider>
+      <DispatchContext.Provider value={dispatch}>{children}</DispatchContext.Provider>
     </StoreContext.Provider>
   );
 };

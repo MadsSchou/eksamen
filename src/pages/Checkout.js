@@ -23,9 +23,7 @@ export default function Home() {
           </div>{" "}
         </div>
         <div className={styles.column}>
-          <div className={styles.timer}>
-            <Timer />
-          </div>
+          <div className={styles.timer}></div>
           <Ordreoversigt></Ordreoversigt>
         </div>
       </div>

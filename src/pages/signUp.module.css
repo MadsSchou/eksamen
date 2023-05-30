@@ -24,19 +24,6 @@
   width: 22em;
 }
 
-.login_form label {
-  border: 1px solid lightgray;
-  border-bottom: none;
-  background-color: white;
-  padding: 5px 10px 0px 8px;
-}
-.signUp_form label {
-  border: 1px solid lightgray;
-  border-bottom: none;
-  background-color: white;
-  padding: 5px 10px 0px 8px;
-}
-
 .welcome {
   text-align: center;
   color: white;
@@ -87,5 +74,21 @@
     grid-template-columns: 1fr 1fr;
     max-width: 1200px;
     margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .login_form {
+    padding: 2rem;
+    margin: 0;
+  }
+
+  .signUp_form {
+    padding: 2rem;
+    margin: 0;
+  }
+  .field {
+    margin-block: 1.5em;
+    width: 20em;
   }
 }

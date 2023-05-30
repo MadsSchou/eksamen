@@ -41,22 +41,6 @@ export default function Home({ data }) {
         greenCamping,
       },
     });
-
-    /* const body = {
-      area: selectedArea,
-      amount: availableAmount,
-    };
-
-    fetch("https://charm-pale-tub.glitch.me/available-spots", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    })
-      .then((response) => console.log(response))
-      .catch((err) => console.error(err));
-      */
   };
 
   const handleAreaChange = (event) => {

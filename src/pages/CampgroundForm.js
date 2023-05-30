@@ -45,8 +45,8 @@ export default function Home({ data }) {
 
   const reserveSpot = () => {
     const reservationDetails = {
-      area: "Muspelheim", //TODO: amount from state,
-      amount: 3,
+      area: selectedArea, //TODO: amount from state,
+      amount: 1,
     };
     fetch("https://charm-pale-tub.glitch.me/reserve-spot", {
       method: "PUT",

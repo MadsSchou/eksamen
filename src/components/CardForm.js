@@ -13,7 +13,13 @@ const CardForm = () => {
   const state = useContext(StoreContext);
 
   const handleCardNumberChange = (e) => {
-    const input = e.target.value.slice(0, 16); // Limit to 16 characters
+    let input = e.target.value.slice(0, 19); // 19 tegn - 16 tal og 3 mellemrum
+
+    input = input.replace(/\D/g, "");
+
+    // Inindsætter et mellemrum efter hver 4 tal
+    input = input.replace(/(\d{4})(?=\d)/g, "$1 ");
+
     setCardNumber(input);
   };
 
@@ -82,51 +88,23 @@ const CardForm = () => {
         <label htmlFor="cardNumber" className={styles["label"]}>
           Kortnummer:
         </label>
-        <input
-          type="text"
-          id="cardNumber"
-          value={cardNumber}
-          onChange={handleCardNumberChange}
-          className={styles["input"]}
-        />
+        <input type="text" id="cardNumber" value={cardNumber} onChange={handleCardNumberChange} className={styles["input"]} placeholder="XXXX-XXXX-XXXX-XXXX" />
       </div>
       <div className={styles["form-group"]}>
         <label htmlFor="expiryDate" className={styles["label"]}>
           UdløbsDato:
         </label>
         <div className={styles["expiry-date-input"]}>
-          <input
-            type="text"
-            id="expiryMonth"
-            value={expiryMonth}
-            onChange={handleExpiryMonthChange}
-            className={styles["input"]}
-            maxLength={2}
-            placeholder="MM"
-          />
+          <input type="text" id="expiryMonth" value={expiryMonth} onChange={handleExpiryMonthChange} className={styles["input"]} maxLength={2} placeholder="MM" />
           <span className={styles["separator"]}>/</span>
-          <input
-            type="text"
-            id="expiryYear"
-            value={expiryYear}
-            onChange={handleExpiryYearChange}
-            className={styles["input"]}
-            maxLength={2}
-            placeholder="YY"
-          />
+          <input type="text" id="expiryYear" value={expiryYear} onChange={handleExpiryYearChange} className={styles["input"]} maxLength={2} placeholder="YY" />
         </div>
       </div>
       <div className={styles["form-group"]}>
         <label htmlFor="cvv" className={styles["label"]}>
           CVV:
         </label>
-        <input
-          type="text"
-          id="cvv"
-          value={cvv}
-          onChange={handleCVVChange}
-          className={styles["input"]}
-        />
+        <input type="text" id="cvv" value={cvv} onChange={handleCVVChange} className={styles["input"]} />
       </div>
       <button
         onClick={() => {

@@ -106,9 +106,10 @@
 }
 
 .popupContent img {
-  width: 600px;
-  height: auto;
-  margin-right: 20px;
+  width: 450px;
+  height: 350px;
+  object-fit: cover;
+  margin-right: 2rem;
 }
 
 .popupContent p {

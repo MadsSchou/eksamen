@@ -76,8 +76,7 @@
 
 .sortButton {
   padding: 0.5rem;
-  background-color: #f5c065;
-  border-radius: 0.25rem;
+  color: #c99844;
   cursor: pointer;
 }
 

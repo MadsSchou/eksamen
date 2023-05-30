@@ -85,7 +85,7 @@ const MultistepForm = () => {
             <div className={styles.stepContainer} key={index}>
               <h2>Person {index + 1}</h2>
               <label className={styles.formLabel}>
-                Navn:
+                Navn{" "}
                 <input
                   type="text"
                   name="firstname"
@@ -95,11 +95,11 @@ const MultistepForm = () => {
               </label>
 
               <label className={styles.formLabel}>
-                Efternavn:{" "}
+                Efternavn{" "}
                 <input
                   type="text"
                   name="lastname"
-                  value={step.lastname}
+                  defaultvalue={step.lastname}
                   onBlur={(event) => handleChange(index, event)}
                 />
               </label>
@@ -108,7 +108,7 @@ const MultistepForm = () => {
                 <input
                   type="email"
                   name="email"
-                  value={step.email}
+                  defaultvalue={step.email}
                   onBlur={(event) => handleChange(index, event)}
                 />
               </label>
@@ -117,7 +117,7 @@ const MultistepForm = () => {
                 <input
                   type="phone"
                   name="phone"
-                  value={step.phone}
+                  defaultvalue={step.phone}
                   onBlur={(event) => handleChange(index, event)}
                 />
               </label>
@@ -127,7 +127,7 @@ const MultistepForm = () => {
                 <input
                   type="text"
                   name="address"
-                  value={step.address}
+                  defaultvalue={step.address}
                   onBlur={(event) => handleChange(index, event)}
                 />
               </label>

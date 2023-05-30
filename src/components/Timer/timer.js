@@ -4,14 +4,14 @@ import styles from "@/components/Timer/Timer.module.css";
 import { DispatchContext } from "@/context/ticketContext";
 
 const Timer = () => {
-  const [timeLeft, setTimeLeft] = useState(3);
-  const [showPopup, setShowPopup] = useState(false); // State for controlling the popup visibility
+  const [timeLeft, setTimeLeft] = useState(3); //sætter tiden i sekunder
+  const [showPopup, setShowPopup] = useState(false); //Viser popup hvis den er true
   const router = useRouter();
   const dispatch = useContext(DispatchContext);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
+      setTimeLeft((prevTimeLeft) => prevTimeLeft - 1); //Tæller ned
     }, 1000);
 
     if (timeLeft === 0) {
@@ -25,11 +25,11 @@ const Timer = () => {
   }, [timeLeft]);
 
   const backToStart = () => {
-    dispatch({ action: "SET_TIMER", payload: timeLeft });
+    dispatch({ action: "SET_TIMER", payload: timeLeft }); //Gemmer timer i useContext
     router.push("/");
   };
 
-  // Laver det om til minutter
+  // Laver det om til minutter/sekunder
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 

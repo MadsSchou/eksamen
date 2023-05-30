@@ -99,7 +99,7 @@ const MultistepForm = () => {
                 <input
                   type="text"
                   name="lastname"
-                  defaultvalue={step.lastname}
+                  defaultValue={step.lastname}
                   onBlur={(event) => handleChange(index, event)}
                 />
               </label>
@@ -108,7 +108,7 @@ const MultistepForm = () => {
                 <input
                   type="email"
                   name="email"
-                  defaultvalue={step.email}
+                  defaultValue={step.email}
                   onBlur={(event) => handleChange(index, event)}
                 />
               </label>
@@ -117,7 +117,7 @@ const MultistepForm = () => {
                 <input
                   type="phone"
                   name="phone"
-                  defaultvalue={step.phone}
+                  defaultValue={step.phone}
                   onBlur={(event) => handleChange(index, event)}
                 />
               </label>
@@ -127,7 +127,7 @@ const MultistepForm = () => {
                 <input
                   type="text"
                   name="address"
-                  defaultvalue={step.address}
+                  defaultValue={step.address}
                   onBlur={(event) => handleChange(index, event)}
                 />
               </label>

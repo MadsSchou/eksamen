@@ -16,7 +16,7 @@ const Timer = () => {
 
     if (timeLeft === 0) {
       clearInterval(interval);
-      setShowPopup(true); // Show the popup when the timer reaches 0
+      setShowPopup(true); //vis popup timer er 0
     }
 
     return () => {

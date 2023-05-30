@@ -9,7 +9,7 @@ function Schedule() {
   const [applySorting, setApplySorting] = useState(false);
   const genres = [...new Set(images?.map((item) => item.genre))];
   console.log(images);
-  const [selectedImage, setSelectedImage] = useState(null); // New state for selected image
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleGenreSelect = (event) => {
     const selectedGenre = event.target.value;
@@ -26,11 +26,11 @@ function Schedule() {
   };
 
   const handleImageClick = (image) => {
-    setSelectedImage(image); // Set the selected image
+    setSelectedImage(image);
   };
 
   const handleClosePopup = () => {
-    setSelectedImage(null); // Reset the selected image
+    setSelectedImage(null);
   };
 
   const filteredData = selectedGenre ? images?.filter((item) => item.genre === selectedGenre) : images;

@@ -3,6 +3,7 @@ import styles from "./checkout.module.css";
 import CardForm from "@/components/CardForm";
 import Ordreoversigt from "@/components/ordreoversigt/ordreoversigt";
 import Flow from "@/components/steps";
+import Timer from "@/components/Timer/timer";
 
 export default function Home() {
   return (
@@ -22,6 +23,9 @@ export default function Home() {
           </div>{" "}
         </div>
         <div className={styles.column}>
+          <div className={styles.timer}>
+            <Timer />
+          </div>
           <Ordreoversigt></Ordreoversigt>
         </div>
       </div>

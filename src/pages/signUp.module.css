@@ -8,6 +8,9 @@
   padding-inline: 0.5em;
   border: none;
 }
+.signUp_form {
+  height: 42vh;
+}
 .signUp_form input {
   height: 2.5em;
   width: 18em;

@@ -1,5 +1,8 @@
 .content {
   background-color: #1e1e1e;
+  height: 80vh;
+  padding-top: 7rem;
+  font-family: "Lato", sans-serif;
 }
 
 .login_form input {
@@ -7,6 +10,7 @@
   width: 18em;
   padding-inline: 0.5em;
   border: none;
+  font-family: "Lato", sans-serif;
 }
 .signUp_form {
   height: 42vh;

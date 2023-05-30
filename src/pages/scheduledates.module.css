@@ -101,10 +101,26 @@
   .calendar {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    grid-gap: 20px;
+    grid-gap: 10px;
   }
   .schedulePlan {
-    width: 1500px;
+    padding-block: 4rem;
+    width: 1200px;
     margin: 0 auto;
+  }
+  .band-images {
+    width: 150px;
+    height: 100px;
+  }
+  .day-column {
+    padding: 0;
+    background-color: #3e3e42;
+  }
+  .day {
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    text-align: center;
+    color: white;
   }
 }

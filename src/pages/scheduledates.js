@@ -135,8 +135,7 @@ function App() {
               <div className={styles["act-details"]}>
                 <div>
                   <img
-                    width={"100%"}
-                    height={"150px"}
+                    className={styles["band-images"]}
                     src={
                       imgForBand[0]?.logo ||
                       imgForBand[0]?.logoCredits.split(", ")[2]

@@ -1,16 +1,18 @@
 import { useAuth } from "@/context/AuthContext";
 import { auth, db } from "@/firebase";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./dashboard.module.css";
-import FavIcon from "@/components/FavIcon";
+import { imgContext } from "@/context/ImgContext";
 
 export default function Dashboard() {
+  const { images } = useContext(imgContext);
   const allDay = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
   const [loggedUserDb, setLoggedUserDb] = useState({});
   const { currentUser } = useAuth();
   const [myFav, setMyFav] = useState([]);
 
   useEffect(() => {
+    console.log(images);
     db.collection("users")
       .doc(currentUser.uid)
       .get()
@@ -124,6 +126,13 @@ export default function Dashboard() {
                 <div>
                   <h3>{day}</h3>
                   {test?.map((band) => {
+                    console.log(band.data());
+                    const bandImg = images?.find(
+                      (e) => e.name === band.data().act
+                    );
+
+                    console.log(bandImg);
+
                     return (
                       <div>
                         <button onClick={() => handleDelete(band.data())}>
@@ -134,6 +143,7 @@ export default function Dashboard() {
                           {band.data().start} - {band.data().end}
                         </p>
                         <p>{band.data().stage}</p>
+                        <img src={bandImg?.logo} />
                       </div>
                     );
                   })}

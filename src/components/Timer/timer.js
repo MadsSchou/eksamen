@@ -29,6 +29,7 @@ const Timer = () => {
     router.push("/");
   };
 
+  // Laver det om til minutter
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 

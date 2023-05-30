@@ -11,9 +11,10 @@ export default function Home() {
         <title>Thunderstrike Metal Festival</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Betaling</h1>
+      <div className={styles.flow}>
+        <Flow step={3} />
+      </div>
 
-      <Flow step={3} />
       <div className={styles.container}>
         <div className={styles.column}>
           <div className={styles.cardForm}>

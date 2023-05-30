@@ -28,3 +28,31 @@
   cursor: pointer;
   font-size: 16px;
 }
+/* flow */
+
+.flow {
+  padding: 30px 200px 30px 200px;
+  max-width: 768px;
+  margin-inline: auto;
+  margin-block: 2em;
+}
+
+@media (max-width: 700px) {
+  .flow {
+    display: grid;
+
+    padding: 30px 100px 0px 100px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .flow {
+    padding: 30px 100px 0px 100px;
+  }
+}
+
+@media (max-width: 970px) {
+  .flow {
+    padding: 30px 20px 0px 20px;
+  }
+}

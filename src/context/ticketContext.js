@@ -27,7 +27,11 @@ export function reducer(state, action) {
         ...state,
         people: action.payload,
       };
-
+    case "SET_RESERVATION_ID":
+      return {
+        ...state,
+        resid: action.payload,
+      };
     case "ADD_TO_BASKET":
       const copy = { ...state };
       copy[action.payload.key]++;
@@ -52,7 +56,9 @@ export const TicketProvider = ({ children }) => {
   return (
     <StoreContext.Provider value={data}>
       {/* <Timer /> */}
-      <DispatchContext.Provider value={dispatch}>{children}</DispatchContext.Provider>
+      <DispatchContext.Provider value={dispatch}>
+        {children}
+      </DispatchContext.Provider>
     </StoreContext.Provider>
   );
 };

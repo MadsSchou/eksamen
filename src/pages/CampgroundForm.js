@@ -12,9 +12,9 @@ export default function Home({ data }) {
   const [selectedArea, setSelectedArea] = useState("");
   const [availableAmount, setAvailableAmount] = useState(0);
   const [greenCamping, setGreenCamping] = useState(false);
-  const dispatch = useContext(DispatchContext);
+
   const [resId, setResID] = useState(null);
-  const bucketdata = useContext(StoreContext);
+  const dispatch = useContext(DispatchContext);
   // Disabler reserver knappen, hvis antallet af pladser er 0
   const isButtonDisabled = !selectedArea || availableAmount === 0;
   // Error besked, hvis der ikke er flere pladser i det valgte område
@@ -42,7 +42,7 @@ export default function Home({ data }) {
       },
     });
 
-    const body = {
+    /* const body = {
       area: selectedArea,
       amount: availableAmount,
     };
@@ -56,13 +56,14 @@ export default function Home({ data }) {
     })
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
+      */
   };
 
   const handleAreaChange = (event) => {
     const selectedArea = event.target.value;
 
     const reservationDetails = {
-      area: selectedArea,
+      area: "Muspelheim", //TODO: amount from state,
       amount: 3,
     };
 
@@ -75,7 +76,10 @@ export default function Home({ data }) {
     })
       .then((data) => data.json())
       .then((res) => {
-        bucketdata.reservationId = res.id;
+        dispatch({
+          action: "SET_RESERVATION_ID",
+          payload: res.id,
+        });
       });
 
     setSelectedArea(selectedArea);

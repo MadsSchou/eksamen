@@ -11,12 +11,12 @@ const Timer = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
+      setTimeLeft((prevTimeLeft) => prevTimeLeft - 1); //Tæller ned
     }, 1000);
 
     if (timeLeft === 0) {
       clearInterval(interval);
-      setShowPopup(true); // Show the popup when the timer reaches 0
+      setShowPopup(true); //vis popup timer er 0
     }
 
     return () => {
@@ -25,11 +25,11 @@ const Timer = () => {
   }, [timeLeft]);
 
   const backToStart = () => {
-    dispatch({ action: "SET_TIMER", payload: timeLeft });
+    dispatch({ action: "SET_TIMER", payload: timeLeft }); //Gemmer timer i useContext
     router.push("/");
   };
 
-  // Laver det om til minutter
+  // Laver det om til minutter/sekunder
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 

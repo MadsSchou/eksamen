@@ -7,8 +7,8 @@ function Schedule() {
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
   const [applySorting, setApplySorting] = useState(false);
+  const [searchLetter, setSearchLetter] = useState("");
   const genres = [...new Set(images?.map((item) => item.genre))];
-  console.log(images);
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleGenreSelect = (event) => {
@@ -33,10 +33,17 @@ function Schedule() {
     setSelectedImage(null);
   };
 
+  const handleSearchChange = (event) => {
+    const letter = event.target.value.toLowerCase();
+    setSearchLetter(letter);
+  };
+
   const filteredData = selectedGenre ? images?.filter((item) => item.genre === selectedGenre) : images;
 
+  const searchData = searchLetter ? filteredData?.filter((item) => item.name.toLowerCase().startsWith(searchLetter)) : filteredData;
+
   const sortedData = applySorting
-    ? filteredData?.sort((a, b) => {
+    ? searchData?.sort((a, b) => {
         const nameA = a.name.toLowerCase();
         const nameB = b.name.toLowerCase();
         if (sortOrder === "asc") {
@@ -49,7 +56,7 @@ function Schedule() {
           return 0;
         }
       })
-    : filteredData;
+    : searchData;
 
   return (
     <div className={`${styles.overskrift}`}>
@@ -66,7 +73,7 @@ function Schedule() {
             ))}
           </select>
         </label>
-
+        <input type="text" placeholder="Søg efter band..." value={searchLetter} onChange={handleSearchChange} />
         <div style={{ display: "flex", alignItems: "center" }}>
           <div className={styles.sortButton} onClick={handleSortClick}>
             {sortOrder === "asc" ? "Sorter A-Z" : "Sorter Z-A"}
@@ -81,7 +88,6 @@ function Schedule() {
             <h2>{item.name}</h2>
             {selectedImage === item.logo && (
               <div className={styles.popup} style={{ zIndex: 9999 }}>
-                {" "}
                 <div className={styles.popupContent}>
                   <img src={selectedImage} alt="Selected Image" />
                   <div>

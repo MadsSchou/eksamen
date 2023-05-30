@@ -60,18 +60,17 @@
 .filterSort {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 1rem;
   font-family: "Lato", sans-serif;
 }
 
 .filterSort label {
-  margin-right: -8rem;
   color: #c99844;
 }
 
 .filterSort select {
-  margin-right: 40rem;
+  margin-right: 1rem;
 }
 
 .sortButton {
@@ -138,6 +137,7 @@
 .popupContent button:hover {
   background-color: white;
 }
+
 @media (max-width: 767px) {
   .bandGrid {
     grid-template-columns: repeat(1, 1fr);

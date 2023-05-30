@@ -3,10 +3,22 @@
   border: none;
   background-color: transparent;
   color: #c99844;
+  font-size: 1.2em;
+}
+.contentSchedule p {
+  font-family: "lato", sans-serif;
+}
+.headline {
+  font-family: displayFont;
+  color: white;
+  text-align: center;
 }
 .contentSchedule {
   background-color: #1e1e1e;
   margin: 0 auto;
+}
+.band-images {
+  width: 40%;
 }
 
 .schedule {
@@ -15,7 +27,7 @@
 }
 
 .schedulePlan {
-  /*  width: 400px; */
+  width: 400px;
   margin: 0 auto;
 }
 
@@ -29,37 +41,39 @@
   padding: 10px;
   background-color: #3e3e42;
 }
-
+.svg-container {
+  display: flex;
+  padding-block: 0.3rem;
+}
 .day {
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-block: 10px;
   text-transform: capitalize;
   text-align: center;
-  color: white;
+  color: #c99844;
 }
 
 .time-slots {
   margin-top: 10px;
 }
 
-/* .favorite {
-  fill: white;
-}
-
-.favorite.active {
-  fill: #c99844;
-}
- */
 .svg-container {
   align-self: flex-end;
+}
+.flex-mobile {
+  display: flex;
+  padding-block: 1rem;
 }
 
 .time-slot {
   margin-bottom: 3rem;
-  height: 200px;
+  height: 230px;
   background-color: black;
   display: flex;
   flex-direction: column;
+}
+.time-slot p {
+  padding-inline: 0.5rem;
 }
 
 .break-time-slot {
@@ -119,6 +133,17 @@
   .day {
     font-weight: bold;
     margin-bottom: 10px;
+    text-transform: capitalize;
+    text-align: center;
+    color: white;
+  }
+  .flex-mobile {
+    display: flex;
+    flex-direction: column;
+  }
+  .day {
+    font-weight: bold;
+    margin-block: 10px;
     text-transform: capitalize;
     text-align: center;
     color: white;

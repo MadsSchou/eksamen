@@ -133,7 +133,7 @@ function App() {
                 className={styles["time-range"]}
               >{`${timeSlot.start} - ${timeSlot.end}`}</div>
               <div className={styles["act-details"]}>
-                <div>
+                <div className={styles["flex-mobile"]}>
                   <img
                     className={styles["band-images"]}
                     src={
@@ -156,7 +156,7 @@ function App() {
       <div className={styles.schedule}>
         <div>
           <div className={styles.schedulePlan}>
-            <h1>Tidsplan</h1>
+            <h1 className={styles.headline}>Tidsplan</h1>
             <select
               className={styles.select}
               onChange={(e) => chooseStage(e.target.value)}

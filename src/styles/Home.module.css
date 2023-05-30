@@ -1,39 +1,35 @@
 .headline {
+  /* font-size: 5rem; */
   font-family: "displayFont";
   text-align: center;
   font-weight: 700;
   margin-bottom: 0.5rem;
   line-height: 1.2;
   color: var(--orange);
-  margin-top: 15%;
   font-size: clamp(0.4rem, 8vw, 4.5rem);
-  /* position: relative; */
-  /* z-index: 1; */
+  position: relative;
+  z-index: 1;
 }
 
 .center {
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-align: center;
   color: var(--white);
-  margin-bottom: 10%;
   font-family: var(--font-sans);
   font-size: clamp(0.4rem, 5vw, 2.5rem);
-  /* position: relative; */
+  position: relative;
   z-index: 1;
 }
 
 .container {
-  display: grid;
-  margin: 0 auto;
-  padding: 2rem;
-  background-size: cover;
-  background-position: center;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .imgContainer img {
@@ -78,3 +74,8 @@
 /* .logo a {
   width: clamp(0.4rem, 5vw, 2.5rem);
 } */
+@media (max-width: 767px) {
+  .headline {
+    padding-top: 100px;
+  }
+}

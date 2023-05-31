@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import styles from "./Bands.module.css";
 import { imgContext } from "@/context/ImgContext";
 
-function Schedule() {
+function Bands() {
   const { images } = useContext(imgContext);
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
@@ -108,4 +108,4 @@ function Schedule() {
   );
 }
 
-export default Schedule;
+export default Bands;

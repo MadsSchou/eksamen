@@ -86,7 +86,7 @@ const CardForm = () => {
         <label htmlFor="cardNumber" className={styles["label"]}>
           Kortnummer:
         </label>
-        <input type="text" id="cardNumber" value={cardNumber} onChange={handleCardNumberChange} className={styles["input"]} placeholder="1234-1234-1234-1234" />
+        <input type="text" id="cardNumber" value={cardNumber} onChange={handleCardNumberChange} className={styles["input"]} placeholder="1234-5678-8976-5432" />
       </div>
       <div className={styles["form-group"]}>
         <label htmlFor="expiryDate" className={styles["label"]}>

@@ -16,12 +16,15 @@
 .content {
   max-width: 1200px;
   min-height: 90vh;
+  padding-block: 3rem;
+  font-family: "lato", sans-serif;
 }
 .empty_schedule {
   display: flex;
   flex-direction: column;
   color: var(--white);
-  padding-block: 2rem;
+  padding-block: 3rem;
+  font-family: "lato", sans-serif;
 }
 .line {
   background-color: var(--dark-grey);
@@ -55,6 +58,7 @@
   padding-inline: 1rem;
 }
 .logout {
+  font-family: "lato", sans-serif;
   border: none;
   margin-inline: 1rem;
   padding-inline: 1rem;

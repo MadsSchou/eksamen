@@ -11,8 +11,7 @@ export default function Home() {
     <>
       <Head>
         <title>Thunderstrike Metal Festival</title>
-
-        <link rel="icon" href="/public/assets/Favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <div style={{ position: "relative" }}>
         <Image src={landing_pic} alt="Background image" layout="responsive" />

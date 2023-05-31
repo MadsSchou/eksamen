@@ -1,4 +1,3 @@
-import Head from "next/head";
 import "@/styles/globals.css";
 import Navbar from "@/components/Navigation/Navbar";
 import Footer from "@/components/footer";
@@ -14,9 +13,6 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <Head>
-        <link rel="icon" href="/public/assets/FaviCon.svg" />
-      </Head>
       <AuthProvider>
         <TicketProvider>
           <Context>

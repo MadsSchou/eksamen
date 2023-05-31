@@ -92,7 +92,7 @@ function Schedule() {
                   <img src={selectedImage} alt="Selected Image" />
                   <div>
                     <h3>{item.name}</h3>
-                    <p>Medlemmer: {item.members}</p>
+                    <p>Medlemmer: {item.members.join(", ")}</p>
                     <p>Genre: {item.genre}</p>
                     <p>Bio: {item.bio}</p>
                     <p>{item.logoCredits ? item.logoCredits : "Placeholder"}</p>

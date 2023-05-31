@@ -5,6 +5,7 @@
   color: #c99844;
   font-size: 1.2em;
   cursor: pointer;
+  padding-inline: 1rem;
 }
 .contentSchedule p {
   font-family: "lato", sans-serif;
@@ -28,7 +29,6 @@
 }
 
 .schedulePlan {
-  width: 400px;
   margin: 0 auto;
 }
 

@@ -21,6 +21,7 @@
   background-color: var(--secundary-black);
   padding: 20px;
   text-align: center;
+  color: var(--white);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 30vw;
   height: 20vh;
@@ -55,4 +56,28 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 9999;
+}
+
+@media (max-width: 678px) {
+  .popup {
+    display: grid;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--secundary-black);
+    padding: 10px;
+    text-align: center;
+    color: var(--white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 50vw;
+    height: 25vh;
+    font-family: var(--font-sans);
+    place-content: center;
+  }
+
+  .popup p {
+    margin-bottom: 2vh;
+    padding: 0.5rem;
+  }
 }

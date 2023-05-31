@@ -1,18 +1,17 @@
 .grid_7x1 {
   padding-block: 1.5rem;
   display: grid;
-  /* grid-template-columns: repeat(7, 1fr); */
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 }
 .grid_7x1 h3 {
-  background-color: white;
+  background-color: var(--white);
   padding: 0.3em 1.5em 0.3em 1.5em;
   text-align: center;
   text-transform: capitalize;
 }
 
 .background_color {
-  background-color: #222222;
+  background-color: var(--secundary-black);
 }
 .content {
   max-width: 1200px;
@@ -21,11 +20,11 @@
 .empty_schedule {
   display: flex;
   flex-direction: column;
-  color: white;
+  color: var(--white);
   padding-block: 2rem;
 }
 .line {
-  background-color: #707070;
+  background-color: var(--dark-grey);
   height: 1px;
   width: 70%;
   margin-bottom: 1rem;
@@ -36,7 +35,7 @@
 .empty_schedule a {
   display: flex;
   justify-content: center;
-  border: 1px solid white;
+  border: 1px solid var(--white);
   padding-block: 0.5rem;
   margin-block: 1rem;
 }
@@ -46,20 +45,20 @@
 }
 
 .divider {
-  background-color: #707070;
+  background-color: var(--dark-grey);
   height: 1px;
   width: 100%;
   margin-bottom: 1rem;
 }
 .hi_user {
-  color: #f5c065;
+  color: var(--orange);
   padding-inline: 1rem;
 }
 .logout {
   border: none;
   margin-inline: 1rem;
   padding-inline: 1rem;
-  background-color: #f1bd63;
+  background-color: var(--orange);
 }
 .user_content {
   flex: 1;
@@ -74,12 +73,12 @@
   padding-block: 0.5rem;
   width: 150px;
   height: 210px;
-  background-color: black;
+  background-color: var(--black);
   margin-bottom: 1rem;
 }
 
 .fav_band p {
-  color: white;
+  color: var(--white);
   text-align: center;
   font-family: "lato", sans-serif;
 }
@@ -88,16 +87,16 @@
   display: flex;
   justify-content: bottom;
   border: none;
-  background-color: orange;
+  background-color: var(--orange);
   border-radius: 50%;
   height: 16px;
   width: 16px;
   justify-content: center;
   align-items: center;
-  color: White;
+  color: var(--white);
 }
 .white-text {
-  color: White;
+  color: var(--white);
   padding-bottom: 1rem;
   padding-inline: 1rem;
 }
@@ -107,7 +106,7 @@
 }
 @media (min-width: 768px) {
   .line {
-    background-color: #707070;
+    background-color: var(--dark-grey);
     height: 1px;
     width: 20%;
     margin-bottom: 1rem;

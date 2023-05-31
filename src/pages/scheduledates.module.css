@@ -6,7 +6,9 @@
   font-size: 1.2em;
   cursor: pointer;
   padding-inline: 1rem;
+  font-family: "lato", sans-serif;
 }
+
 .contentSchedule p {
   font-family: "lato", sans-serif;
 }
@@ -51,6 +53,7 @@
   text-transform: capitalize;
   text-align: center;
   color: var(--orange);
+  font-family: "lato", sans-serif;
 }
 
 .time-slots {

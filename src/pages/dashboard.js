@@ -68,11 +68,6 @@ export default function Dashboard() {
           </div>
 
           <div className={styles["divider"]}></div>
-          <div className={styles["grid_7x1"]}>
-            {allDay?.map((day) => {
-              return <h3>{day}</h3>;
-            })}
-          </div>
           <div className={styles["empty_schedule"]}>
             <svg
               xmlns="http://www.w3.org/2000/svg"

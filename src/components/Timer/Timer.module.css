@@ -1,7 +1,7 @@
 .timerContainer {
   display: grid;
-  background-color: var(--secundary-black);
-  color: var(--white);
+  background-color: var(--orange);
+  color: black;
   align-items: center;
   padding: 10px;
   text-align: center;

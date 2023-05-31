@@ -24,29 +24,27 @@ const CardForm = () => {
   };
 
   const handleExpiryMonthChange = (e) => {
-    const input = e.target.value.slice(0, 2); // Limit to 2 characters
+    const input = e.target.value.slice(0, 2);
     setExpiryMonth(input);
   };
 
   const handleExpiryYearChange = (e) => {
-    const input = e.target.value.slice(0, 2); // Limit to 2 characters
+    const input = e.target.value.slice(0, 2);
     setExpiryYear(input);
   };
 
   const handleCVVChange = (e) => {
-    const input = e.target.value.slice(0, 3); // Limit to 3 characters
+    const input = e.target.value.slice(0, 3);
     setCVV(input);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Do something with the form data (e.g., send it to a server)
     console.log("Card Number:", cardNumber);
     console.log("Expiry Date:", `${expiryMonth}/${expiryYear}`);
     console.log("CVV:", cvv);
 
-    // Clear the form fields
     setCardNumber("");
     setExpiryMonth("");
     setExpiryYear("");

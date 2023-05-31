@@ -103,10 +103,35 @@
   text-shadow: 0px 0px 0px transparent;
   padding: 15px 30px 15px 30px;
   font-size: 1rem;
-  cursor: pointer;
   margin-bottom: 2vh;
 }
 
+.clickableNextButton button {
+  display: grid;
+  justify-content: center;
+  color: white;
+  background: var(--orange);
+  box-shadow: 0px 0px 0px transparent;
+  border: 1px solid;
+  text-shadow: 0px 0px 0px transparent;
+  padding: 15px 30px 15px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 2vh;
+}
+.clickableNextButton button:hover {
+  display: grid;
+  justify-content: center;
+  background: var(--yellow);
+  box-shadow: 0px 0px 0px transparent;
+  border: 1px solid var(--orange);
+  text-shadow: 0px 0px 0px transparent;
+  padding: 15px 30px 15px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 2vh;
+  color: var(--white);
+}
 /* flow */
 
 .flow {

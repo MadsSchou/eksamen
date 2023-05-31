@@ -81,8 +81,8 @@ export default function Dashboard() {
             <h2>Din tidsplan er tom!</h2>
             <div className={styles["line"]}></div>
             <p>
-              Tilføj de bands du ikke vil gå glip af på <br></br> festivallen,så
-              du kan holde styr på dit program. <br></br>
+              Tilføj de bands du ikke vil gå glip af på <br></br> festivallen,
+              så du kan holde styr på dit program. <br></br>
               <a href="/scheduledates">Tilføj favoritter</a>
             </p>
           </div>

@@ -73,12 +73,12 @@ function App() {
 
   const renderCalendar = () => {
     if (!chosenSchedule) {
-      return <div>Loading...</div>;
+      return <div className={styles["white"]}>Loading...</div>;
     }
     return Object.entries(chosenSchedule[1]).map(([day, timeSlots]) => {
       return (
         <div key={day} className={styles["day-column"]}>
-          <h3 className={styles.day}>{day}</h3>
+          <h3 className={styles["day"]}>{day}</h3>
           {images && renderTimeSlots(timeSlots, day)}
         </div>
       );

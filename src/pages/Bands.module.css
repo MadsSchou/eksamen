@@ -141,19 +141,32 @@
 }
 
 .popupContent button {
-  background-color: white;
-  color: black;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 14px;
+  display: grid;
+  justify-content: center;
+  background: var(--orange);
+  box-shadow: 0px 0px 0px transparent;
+  border: 1px solid var(--orange);
+  text-shadow: 0px 0px 0px transparent;
+  padding: 15px 30px 15px 30px;
+  font-size: 1rem;
   cursor: pointer;
-  margin-top: 10px;
-  font-family: "Lato", sans-serif;
+  margin-bottom: 2vh;
+  color: var(--white);
 }
 
 .popupContent button:hover {
-  background-color: white;
+  display: grid;
+  justify-content: center;
+  /* background: var(--orange); */
+  background: var(--yellow);
+  box-shadow: 0px 0px 0px transparent;
+  border: 1px solid var(--orange);
+  text-shadow: 0px 0px 0px transparent;
+  padding: 15px 30px 15px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 2vh;
+  color: var(--white);
 }
 
 @media (max-width: 767px) {

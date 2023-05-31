@@ -4,6 +4,7 @@
   background-color: transparent;
   color: #c99844;
   font-size: 1.2em;
+  cursor: pointer;
 }
 .contentSchedule p {
   font-family: "lato", sans-serif;

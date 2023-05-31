@@ -52,3 +52,8 @@
 .form button:hover {
   background-color: #f5c065;
 }
+@media (max-width: 768px) {
+  .stepContainer {
+    width: 88%;
+  }
+}

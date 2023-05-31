@@ -61,7 +61,7 @@ function Schedule() {
   return (
     <div className={`${styles.overskrift}`}>
       <h1>Bands</h1>
-      <div className={styles.filterSort}>
+      <div className={`${styles.filterSort} ${styles.buttonContainer}`}>
         <label htmlFor="genre-select">
           Filtrer genrer:
           <select id="genre-select" value={selectedGenre || "all"} onChange={handleGenreSelect}>
@@ -74,10 +74,8 @@ function Schedule() {
           </select>
         </label>
         <input type="text" placeholder="Søg efter band..." value={searchLetter} onChange={handleSearchChange} />
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <div className={styles.sortButton} onClick={handleSortClick}>
-            {sortOrder === "asc" ? "Sorter A-Z" : "Sorter Z-A"}
-          </div>
+        <div className={styles.sortButton} onClick={handleSortClick}>
+          {sortOrder === "asc" ? "Sorter A-Z" : "Sorter Z-A"}
         </div>
       </div>
 

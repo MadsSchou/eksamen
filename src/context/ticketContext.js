@@ -62,6 +62,7 @@ export const TicketProvider = ({ children }) => {
 
   return (
     <StoreContext.Provider value={data}>
+      {/* <Timer /> */}
       <DispatchContext.Provider value={dispatch}>{children}</DispatchContext.Provider>
     </StoreContext.Provider>
   );

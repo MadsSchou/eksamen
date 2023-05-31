@@ -59,21 +59,23 @@ function Schedule() {
     : searchData;
 
   return (
-    <div className={`${styles.overskrift}`}>
+    <div className={styles.overskrift}>
       <h1>Bands</h1>
-      <div className={`${styles.filterSort} ${styles.buttonContainer}`}>
-        <label htmlFor="genre-select">
-          Filtrer genrer:
-          <select id="genre-select" value={selectedGenre || "all"} onChange={handleGenreSelect}>
-            <option value="all">Alle genrer</option>
-            {genres.map((genre) => (
-              <option key={genre} value={genre}>
-                {genre}
-              </option>
-            ))}
-          </select>
-        </label>
-        <input type="text" placeholder="Søg efter band..." value={searchLetter} onChange={handleSearchChange} />
+      <div className={styles.filterSort}>
+        <div className={styles.buttonContainer}>
+          <label htmlFor="genre-select">
+            Filtrer genrer:
+            <select id="genre-select" value={selectedGenre || "all"} onChange={handleGenreSelect}>
+              <option value="all">Alle genrer</option>
+              {genres.map((genre) => (
+                <option key={genre} value={genre}>
+                  {genre}
+                </option>
+              ))}
+            </select>
+          </label>
+          <input type="text" placeholder="Søg efter band..." value={searchLetter} onChange={handleSearchChange} />
+        </div>
         <div className={styles.sortButton} onClick={handleSortClick}>
           {sortOrder === "asc" ? "Sorter A-Z" : "Sorter Z-A"}
         </div>

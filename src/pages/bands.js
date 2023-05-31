@@ -59,7 +59,7 @@ function Schedule() {
     : searchData;
 
   return (
-    <div className={styles.overskrift}>
+    <div className={`${styles.overskrift} ${styles.searchBar}`}>
       <h1>Bands</h1>
       <input type="text" placeholder="Søg efter band..." value={searchLetter} onChange={handleSearchChange} />
 

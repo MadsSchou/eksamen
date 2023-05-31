@@ -114,8 +114,9 @@ export default function Dashboard() {
             </button>
           </div>
           <div className={styles["divider"]}></div>
-          <h2>Din tidsplan</h2>
-          <h3>Alt på et sted</h3>
+          <h2 className={styles["white-text"]}>
+            Din tidsplan - Alt på ét sted
+          </h2>
 
           <div className={styles["grid_7x1"]}>
             {allDay?.map((day) => {
@@ -134,16 +135,21 @@ export default function Dashboard() {
                     console.log(bandImg);
 
                     return (
-                      <div>
-                        <button onClick={() => handleDelete(band.data())}>
-                          Slet
-                        </button>
+                      <div className={styles["fav_band"]}>
+                        <div className={styles["flex_between"]}>
+                          <p>
+                            {band.data().start} - {band.data().end}
+                          </p>
+                          <button onClick={() => handleDelete(band.data())}>
+                            X
+                          </button>
+                        </div>
+                        <img
+                          className={styles["band-image"]}
+                          src={bandImg?.logo}
+                        />
                         <p>{band.data().act}</p>
-                        <p>
-                          {band.data().start} - {band.data().end}
-                        </p>
-                        <p>{band.data().stage}</p>
-                        <img src={bandImg?.logo} />
+                        <p>Scene: {band.data().stage}</p>
                       </div>
                     );
                   })}

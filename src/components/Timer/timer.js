@@ -15,12 +15,13 @@ const Timer = () => {
     }, 1000);
 
     if (timeLeft === 0) {
+      //Hvis timer er 0 = tiden stopper og popup vises
       clearInterval(interval);
       setShowPopup(true); //vis popup timer er 0
     }
 
     return () => {
-      clearInterval(interval);
+      clearInterval(interval); //Rydder intervallet, timeren stoppes, og der ikke sker yderligere kald af callback-funktionen.
     };
   }, [timeLeft]);
 
@@ -39,10 +40,7 @@ const Timer = () => {
         <div className={styles.overlay}>
           <div className={styles.popup}>
             <h2>Ups!</h2>
-            <p>
-              Reservationen er udløbet, gå tibage til start for vælge dine
-              billetter igen{" "}
-            </p>
+            <p>Reservationen er udløbet, gå tibage til start for vælge dine billetter igen </p>
             <button onClick={backToStart}>Forside</button>
           </div>
         </div>

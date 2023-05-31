@@ -24,6 +24,7 @@
   flex-direction: column;
   color: var(--white);
   padding-block: 3rem;
+  font-family: "lato", sans-serif;
 }
 .line {
   background-color: var(--dark-grey);

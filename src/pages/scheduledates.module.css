@@ -16,6 +16,7 @@
   font-family: displayFont;
   color: var(--white);
   text-align: center;
+  padding-top: 2rem;
 }
 .contentSchedule {
   background-color: var(--secundary-black);

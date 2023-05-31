@@ -1,13 +1,18 @@
-.grid_7x1 {
-  padding-block: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-}
 .grid_7x1 h3 {
   background-color: var(--white);
   padding: 0.3em 1.5em 0.3em 1.5em;
   text-align: center;
   text-transform: capitalize;
+}
+.grid_7x1 {
+  padding-block: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 80%;
+}
+.days {
+  width: 80%;
 }
 
 .background_color {
@@ -75,8 +80,7 @@
 }
 .fav_band {
   padding-block: 0.5rem;
-  width: 150px;
-  height: 210px;
+  width: 80%px;
   background-color: var(--black);
   margin-bottom: 1rem;
 }
@@ -113,6 +117,20 @@
     background-color: var(--dark-grey);
     height: 1px;
     width: 20%;
+    margin-bottom: 1rem;
+  }
+  .grid_7x1 {
+    padding-block: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    width: 100%;
+  }
+  .fav_band {
+    padding-block: 0.5rem;
+    width: 150px;
+    height: 210px;
+    background-color: var(--black);
     margin-bottom: 1rem;
   }
 }

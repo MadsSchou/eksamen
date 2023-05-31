@@ -117,6 +117,9 @@ export default function Dashboard() {
             {allDay?.map((day) => {
               const test = myFav.filter((e) => e.data().day === day);
 
+              if (test.length === 0) {
+                return null;
+              }
               console.log(test);
               return (
                 <div>

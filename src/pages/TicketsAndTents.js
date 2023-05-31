@@ -12,6 +12,7 @@ export default function Home() {
   const [tentCounter2, setTents2] = useState(0);
   const [tentCounter3, setTents3] = useState(0);
   const [canProceed, setCanProceed] = useState(false);
+  const nextButtonClass = canProceed ? styles.clickableNextButton : styles.nextButton;
 
   const router = useRouter();
 
@@ -170,7 +171,7 @@ export default function Home() {
             <Basket basicCounter={basicCounter} vipCounter={vipCounter} />
           </div>
 
-          <div className={styles.nextButton}>
+          <div className={nextButtonClass}>
             <button
               onClick={() => {
                 router.push("/CampgroundForm");

@@ -70,8 +70,8 @@
     text-align: center;
     color: var(--white);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 50vw;
-    height: 25vh;
+    width: 70vw;
+    height: 45vh;
     font-family: var(--font-sans);
     place-content: center;
   }

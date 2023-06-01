@@ -60,15 +60,34 @@
   margin: 0 auto;
 }
 .button {
-  background-color: #f5c065;
-  border: none;
-  color: black;
-  display: flex;
+  display: grid;
   justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 6em;
-  height: 2.5em;
+  background: var(--orange);
+  box-shadow: 0px 0px 0px transparent;
+  border: 1px solid var(--orange);
+  text-shadow: 0px 0px 0px transparent;
+  padding: 15px 30px 15px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 2vh;
+  color: var(--white);
+  font-family: "lato", sans-serif;
+}
+
+.button:hover {
+  display: grid;
+  justify-content: center;
+  /* background: var(--orange); */
+  background: var(--yellow);
+  box-shadow: 0px 0px 0px transparent;
+  border: 1px solid var(--orange);
+  text-shadow: 0px 0px 0px transparent;
+  padding: 15px 30px 15px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 2vh;
+  color: var(--white);
+  font-family: "lato", sans-serif;
 }
 
 @media (min-width: 768px) {

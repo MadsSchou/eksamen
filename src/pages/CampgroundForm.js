@@ -91,7 +91,9 @@ export default function Home({ data }) {
     addToBasket();
     reserveSpot();
   };
-  const centerButtonClass = isButtonDisabled ? styles.centerButton : styles.clickableCenterButton;
+  const centerButtonClass = isButtonDisabled
+    ? styles.centerButton
+    : styles.clickableCenterButton;
 
   return (
     <>
@@ -109,7 +111,12 @@ export default function Home({ data }) {
           <h2>Vælg det område du/i ønsker at bo i</h2>
           <br></br>
           <div>
-            <select className={styles.dropDown} id="areaSelect" value={selectedArea} onChange={handleAreaChange}>
+            <select
+              className={styles.dropDown}
+              id="areaSelect"
+              value={selectedArea}
+              onChange={handleAreaChange}
+            >
               <option>Vælg et område</option>
               {areaData &&
                 areaData.map((area) => (
@@ -133,13 +140,22 @@ export default function Home({ data }) {
 
           <h2>Vil du være med til at støtte den grønne omstilling? </h2>
           <br></br>
-          <p clasName={styles.greenPrice}>249,-</p>
+          <p className={styles.greenPrice}>249,-</p>
           <br></br>
-          <p>Ved at købe en billet til vores festival har du mulighed for at gøre endnu mere for den grønne omstilling! Udover at nyde fantastisk musik og en uforglemmelig oplevelse, kan du vælge at støtte vores grønne initiativer ved at tilføje et ekstra beløb til din billet.</p>
+          <p>
+            Ved at købe en billet til vores festival har du mulighed for at gøre
+            endnu mere for den grønne omstilling! Udover at nyde fantastisk
+            musik og en uforglemmelig oplevelse, kan du vælge at støtte vores
+            grønne initiativer ved at tilføje et ekstra beløb til din billet.
+          </p>
           <br></br>
           <br></br>
           <label>
-            <Checkbox className={styles.checkbox} onChange={() => setGreenCamping(!greenCamping)} /> <b>Tilføj Grøn Camping</b>
+            <Checkbox
+              className={styles.checkbox}
+              onChange={() => setGreenCamping(!greenCamping)}
+            />{" "}
+            <b>Tilføj Grøn Camping</b>
           </label>
         </div>
 
@@ -147,7 +163,9 @@ export default function Home({ data }) {
           <Ordreoversigt resId={resId} />
 
           <div className={styles.column}>
-            {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+            {errorMessage && (
+              <p className={styles.errorMessage}>{errorMessage}</p>
+            )}
             <br></br>
             <div className={centerButtonClass}>
               <Link href="/personalinfo">

@@ -38,9 +38,15 @@ function Bands() {
     setSearchLetter(letter);
   };
 
-  const filteredData = selectedGenre ? images?.filter((item) => item.genre === selectedGenre) : images;
+  const filteredData = selectedGenre
+    ? images?.filter((item) => item.genre === selectedGenre)
+    : images;
 
-  const searchData = searchLetter ? filteredData?.filter((item) => item.name.toLowerCase().startsWith(searchLetter)) : filteredData;
+  const searchData = searchLetter
+    ? filteredData?.filter((item) =>
+        item.name.toLowerCase().startsWith(searchLetter)
+      )
+    : filteredData;
 
   const sortedData = applySorting
     ? searchData?.sort((a, b) => {
@@ -59,32 +65,52 @@ function Bands() {
     : searchData;
 
   return (
-    <div className={`${styles.overskrift} ${styles.searchBar}`}>
-      <h1>Bands</h1>
-      <input type="text" placeholder="Søg efter band..." value={searchLetter} onChange={handleSearchChange} />
-
-      <div className={styles.filterSort}>
-        <div className={styles.buttonContainer}>
-          <label htmlFor="genre-select">
-            <select id="genre-select" value={selectedGenre || "all"} onChange={handleGenreSelect}>
-              <option value="all">Alle genrer</option>
-              {genres.map((genre) => (
-                <option key={genre} value={genre}>
-                  {genre}
-                </option>
-              ))}
-            </select>
-          </label>
+    <div className={styles["background-color"]}>
+      <div className={styles["options"]}>
+        <div className={styles["search_and_headline"]}>
+          <h1 className={styles["overskrift"]}>Bands</h1>
+          <div className={styles["searchbar"]}>
+            <input
+              type="text"
+              placeholder="Søg efter band..."
+              value={searchLetter}
+              onChange={handleSearchChange}
+            />
+          </div>
         </div>
-        <div className={styles.sortButton} onClick={handleSortClick}>
-          {sortOrder === "asc" ? "Sorter A-Z" : "Sorter Z-A"}
+        <div className={styles["sorting_filtering"]}>
+          <div className={styles.filterSort}>
+            <div className={styles.buttonContainer}>
+              <label htmlFor="genre-select">
+                <select
+                  id="genre-select"
+                  value={selectedGenre || "all"}
+                  onChange={handleGenreSelect}
+                >
+                  <option value="all">Alle genrer</option>
+                  {genres.map((genre) => (
+                    <option key={genre} value={genre}>
+                      {genre}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </div>
+          <div className={styles.sortButton} onClick={handleSortClick}>
+            {sortOrder === "asc" ? "Sorter A-Z" : "Sorter Z-A"}
+          </div>
         </div>
       </div>
-
       <div className={`${styles.grid} ${styles.bandGrid}`}>
         {sortedData?.map((item) => (
           <div key={item.id} className={styles.card}>
-            <img src={item.logo} alt={item.name} style={{ maxWidth: "100%" }} onClick={() => handleImageClick(item.logo)} />
+            <img
+              src={item.logo}
+              alt={item.name}
+              style={{ maxWidth: "100%" }}
+              onClick={() => handleImageClick(item.logo)}
+            />
             <h2>{item.name}</h2>
             {selectedImage === item.logo && (
               <div className={styles.popup} style={{ zIndex: 9999 }}>

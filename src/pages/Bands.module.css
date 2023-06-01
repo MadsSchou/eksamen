@@ -1,27 +1,36 @@
 .grid {
   padding: 2rem;
 }
-
+.background-color {
+  background-color: var(--secundary-black);
+}
+.search_and_headline {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+}
+.sorting_filtering {
+  display: flex;
+}
+.options {
+  max-width: 1200px;
+}
 .bandGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 50px;
-  max-width: 1110px;
+  max-width: 1200px;
   background-color: #3e3e42;
   padding: 20px 20px 35px 20px;
 }
 
 .overskrift {
-  text-align: center;
   font-family: displayFont;
   background-color: white;
   color: white;
-  padding-top: 50px;
   background-color: #1e1e1e;
-}
-
-.overskrift h1 {
   font-size: 4rem;
+  margin: 0;
 }
 
 .card {
@@ -57,11 +66,8 @@
 }
 /*Filter, sort and search*/
 .filterSort {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
   font-family: "Lato", sans-serif;
+  margin: 0;
 }
 
 .filterSort label {
@@ -69,12 +75,11 @@
 }
 
 .filterSort select {
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   border: none;
   background-color: transparent;
   color: #c99844;
   cursor: pointer;
-
   font-size: 1em;
 }
 
@@ -83,17 +88,19 @@
   color: #c99844;
   cursor: pointer;
   font-size: 1em;
+  margin-right: 0;
 }
 
 /*Search*/
 
-.searchBar input {
-  padding: 0.5rem;
-  font-size: 1em;
-  border: none;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #000;
+.searchbar {
+  display: flex;
+  text-align: left;
+  align-content: center;
+  height: 2rem;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: 0;
 }
 /*Popup*/
 .popup {
@@ -235,5 +242,31 @@
 
   .popupContent button {
     margin-bottom: 20px;
+  }
+  .search_and_headline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 2rem;
+  }
+  .overskrift {
+    font-family: displayFont;
+    background-color: white;
+    color: white;
+    background-color: #1e1e1e;
+    font-size: 3rem;
+    text-align: center;
+  }
+  .searchbar {
+    display: flex;
+    text-align: left;
+    align-content: center;
+    height: 2rem;
+    margin-block: 1rem;
+    margin-right: auto;
+  }
+  .sorting_filtering {
+    display: flex;
+    padding-inline: 1rem;
   }
 }

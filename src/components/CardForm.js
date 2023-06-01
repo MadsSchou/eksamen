@@ -78,7 +78,7 @@ const CardForm = () => {
     <form onSubmit={handleSubmit} className={styles["card-form"]}>
       <div className={styles["form-group"]}>
         <label htmlFor="name" className={styles["label"]}>
-          Kortholders Fulder Navn:
+          Kortholders fulde navn:
         </label>
         <input type="text" id="name" className={styles["input"]} />
       </div>
@@ -86,23 +86,52 @@ const CardForm = () => {
         <label htmlFor="cardNumber" className={styles["label"]}>
           Kortnummer:
         </label>
-        <input type="text" id="cardNumber" value={cardNumber} onChange={handleCardNumberChange} className={styles["input"]} placeholder="1234-5678-8976-5432" />
+        <input
+          type="text"
+          id="cardNumber"
+          value={cardNumber}
+          onChange={handleCardNumberChange}
+          className={styles["input"]}
+          placeholder="1234-5678-8976-5432"
+        />
       </div>
       <div className={styles["form-group"]}>
         <label htmlFor="expiryDate" className={styles["label"]}>
           UdløbsDato:
         </label>
         <div className={styles["expiry-date-input"]}>
-          <input type="text" id="expiryMonth" value={expiryMonth} onChange={handleExpiryMonthChange} className={styles["input"]} maxLength={2} placeholder="MM" />
+          <input
+            type="text"
+            id="expiryMonth"
+            value={expiryMonth}
+            onChange={handleExpiryMonthChange}
+            className={styles["input"]}
+            maxLength={2}
+            placeholder="MM"
+          />
           <span className={styles["separator"]}>/</span>
-          <input type="text" id="expiryYear" value={expiryYear} onChange={handleExpiryYearChange} className={styles["input"]} maxLength={2} placeholder="YY" />
+          <input
+            type="text"
+            id="expiryYear"
+            value={expiryYear}
+            onChange={handleExpiryYearChange}
+            className={styles["input"]}
+            maxLength={2}
+            placeholder="YY"
+          />
         </div>
       </div>
       <div className={styles["form-group"]}>
         <label htmlFor="cvv" className={styles["label"]}>
           CVV:
         </label>
-        <input type="text" id="cvv" value={cvv} onChange={handleCVVChange} className={styles["input"]} />
+        <input
+          type="text"
+          id="cvv"
+          value={cvv}
+          onChange={handleCVVChange}
+          className={styles["input"]}
+        />
       </div>
       <button
         onClick={() => {

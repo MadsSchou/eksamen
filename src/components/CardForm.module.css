@@ -64,3 +64,19 @@
   margin-bottom: 2vh;
   color: var(--white);
 }
+
+@media (max-width: 700px) {
+  .card-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  .input[type="text"] {
+    width: 93%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+}

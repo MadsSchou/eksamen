@@ -88,12 +88,18 @@ export default function Home() {
     }
   };
 
+  // Laver en konstant og bruger uceContext til at få adgang til DispatchContext
   const dispatch = useContext(DispatchContext);
 
+  // AddToBasket function defineres som en arrow function med paramenteret key
   const addToBasket = (key) => {
+    // Vi kalder på vores dispatch konstant med et action object som argument, som fortæller hvilken action der skal i brug
     dispatch({
+      // Fortæller den hvilken action vi skal dispatch
       action: "ADD_TO_BASKET",
+      // Et object literal som indeholder property som hedder Key
       payload: {
+        //Værdien tildelt til key er key, der sendes som et argument til vores addToBasket function som bruges til at indetificere det item som man vil tilføje til kurven
         key: key,
       },
     });

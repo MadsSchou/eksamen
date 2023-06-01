@@ -23,23 +23,7 @@ function App() {
 
   async function chooseStage(stage) {
     setStages(stage);
-    let chosenSchedule = Object.entries(schedule).find(
-      (item) => item[0] === stage
-    );
-
-    /* 
-      const test2 = chosenSchedule[1];
-      const test = Object.keys(
-        chosenSchedule[1].map((day) => {
-        return {
-          day,
-          items: chosenSchedule[day],
-        };
-      })
-    ); 
-    
-    console.log(test2);
-    */
+    let chosenSchedule = Object.entries(schedule).find((item) => item[0] === stage);
 
     setChosenSchedule(chosenSchedule);
   }
@@ -97,19 +81,12 @@ function App() {
             alreadyFavListed = true;
           }
 
-          const imgForBand = images.filter(
-            (band) => band.name === timeSlot?.act
-          );
+          const imgForBand = images.filter((band) => band.name === timeSlot?.act);
 
           if (timeSlot.act === "break") {
             return (
-              <div
-                key={`${timeSlot.start}-${timeSlot.end}`}
-                className={`${styles["time-slot"]} ${styles["break-time-slot"]}`}
-              >
-                <div
-                  className={styles["time-range"]}
-                >{`${timeSlot.start} - ${timeSlot.end}`}</div>
+              <div key={`${timeSlot.start}-${timeSlot.end}`} className={`${styles["time-slot"]} ${styles["break-time-slot"]}`}>
+                <div className={styles["time-range"]}>{`${timeSlot.start} - ${timeSlot.end}`}</div>
                 <div className={styles["act-details"]}></div>
                 <div className={styles["break-indicator"]}>Break</div>
               </div>
@@ -117,31 +94,14 @@ function App() {
           }
 
           return (
-            <div
-              key={`${timeSlot.start}-${timeSlot.end}`}
-              className={styles["time-slot"]}
-            >
+            <div key={`${timeSlot.start}-${timeSlot.end}`} className={styles["time-slot"]}>
               <div onClick={() => handleNotLoggedIn()}>
-                <FavIcon
-                  data={timeSlot}
-                  stage={stages}
-                  alreadyFav={alreadyFavListed}
-                  day={day}
-                />
+                <FavIcon data={timeSlot} stage={stages} alreadyFav={alreadyFavListed} day={day} />
               </div>
-              <div
-                className={styles["time-range"]}
-              >{`${timeSlot.start} - ${timeSlot.end}`}</div>
+              <div className={styles["time-range"]}>{`${timeSlot.start} - ${timeSlot.end}`}</div>
               <div className={styles["act-details"]}>
                 <div className={styles["flex-mobile"]}>
-                  <img
-                    className={styles["band-images"]}
-                    src={
-                      imgForBand[0]?.logo ||
-                      imgForBand[0]?.logoCredits.split(", ")[2]
-                    }
-                    loading="lazy"
-                  />
+                  <img className={styles["band-images"]} src={imgForBand[0]?.logo || imgForBand[0]?.logoCredits.split(", ")[2]} loading="lazy" />
                   <p>{timeSlot.act}</p>
                 </div>
               </div>
@@ -157,10 +117,7 @@ function App() {
         <div>
           <div className={styles.schedulePlan}>
             <h1 className={styles.headline}>Tidsplan</h1>
-            <select
-              className={styles.select}
-              onChange={(e) => chooseStage(e.target.value)}
-            >
+            <select className={styles.select} onChange={(e) => chooseStage(e.target.value)}>
               <option value="">Vælg scene</option>
               {Object.entries(schedule).map(([stage]) => (
                 <option key={stage} value={stage}>

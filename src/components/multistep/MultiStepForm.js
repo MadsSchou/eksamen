@@ -76,13 +76,13 @@ const MultistepForm = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <div className={styles.counter}>
-        {currentStep}/{totalSteps}
-      </div>
       {steps.map((step, index) => {
         if (index === steps.length - 1) {
           return (
             <div className={styles.stepContainer} key={index}>
+              <div className={styles.counter}>
+                {currentStep}/{totalSteps}
+              </div>
               <h2>Person {index + 1}</h2>
               <label className={styles.formLabel}>
                 Navn{" "}
@@ -131,25 +131,26 @@ const MultistepForm = () => {
                   onBlur={(event) => handleChange(index, event)}
                 />
               </label>
-              <label className={styles.formLabel}>
-                PostNr:
-                <input
-                  type="number"
-                  name="zipcode"
-                  onChange={(e) => handleZipCode(e.target.value)}
-                  onBlur={(event) => handleChange(index, event)}
-                />
-              </label>
-              <label className={styles.formLabel}>
-                City:
-                <input
-                  defaultValue={city}
-                  type="text"
-                  name="city"
-                  onBlur={(event) => handleChange(index, event)}
-                />
-              </label>
-
+              <div className={styles["flex_city"]}>
+                <label className={styles.formLabel}>
+                  PostNr:
+                  <input
+                    type="number"
+                    name="zipcode"
+                    onChange={(e) => handleZipCode(e.target.value)}
+                    onBlur={(event) => handleChange(index, event)}
+                  />
+                </label>
+                <label className={styles.formLabel}>
+                  City:
+                  <input
+                    defaultValue={city}
+                    type="text"
+                    name="city"
+                    onBlur={(event) => handleChange(index, event)}
+                  />
+                </label>
+              </div>
               <label className={styles.formLabel}>
                 Land:{" "}
                 <input

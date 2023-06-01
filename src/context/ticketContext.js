@@ -15,7 +15,10 @@ const myGlobalValue = {
   timer: 0,
 };
 
+//Vi definere en reducer function med et to parametre: state og action
 export function reducer(state, action) {
+  // (switch state operator med cases
+  // Tjekker hvilken action some bliver dispatched - actionType have været mere beskrivende.
   switch (action.action) {
     case "REMOVE_ONE_FROM_BASKET":
       const copyRemove = { ...state };
@@ -34,9 +37,12 @@ export function reducer(state, action) {
         resid: action.payload,
       };
     case "ADD_TO_BASKET":
+      // Tager vores nuværende state og laver en kopi ved brug af spread operator
       const copy = { ...state };
+      // Pluser 1 til kurv
       copy[action.payload.key]++;
       console.log(state, action);
+      // returner det opdateret antal til kurven
       return copy;
 
     case "SET_AREA":
